@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { totalmem } from "os";
 //
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlineMinus, AiFillStar } from 'react-icons/ai'
 import useActions from "../hooks/useActions";
 //
 import mock from "../utils/mockup-9.jpg";
@@ -27,6 +26,10 @@ export default function Card({ card }: any) {
         <span className="text-[#414752] text-[20px] font-medium">
             {card?.title}
         </span>
+        <div className="flex items-center">
+          <AiFillStar color="#fbbf24" />
+          <span className="text-[#79828e] ml-[5px]">4.3 (42)</span>
+        </div>
       </div>
       <div className="flex mt-[10px] justify-between">
         <div className="py-[2px] flex justify-start items-center">
