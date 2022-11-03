@@ -21,8 +21,8 @@ export default function Header() {
       </div>
       <div className="w-[33%] flex justify-center">
         <button onClick={() => router.push('/')}>
-          Logo
-        {/* <Image className="cursor-pointer" width={60} height={60} src={logo} alt="" /> */}
+          {/* Logo */}
+        <Image className="cursor-pointer" width={60} height={60} src={logo} alt="" />
         </button>
       </div>
       <div className="w-[33%] flex items-center justify-end">

@@ -17,12 +17,12 @@ export default function Card() {
       </div>
       <div className="flex mt-[10px] justify-between">
         <div className="py-[2px] flex justify-start items-center">
-            <span className="text-[#FFA500] text-[18px] font-medium">
+            <span className="text-[#FFA500] text-[20px] font-medium">
                 6 490 &#8381; 
             </span>
         </div>
         <button style={{
-          background: 'radial-gradient(232.14% 4719.2% at 71.89% 100%, #FFA500 0%, rgba(255, 165, 0, 0) 100%)'
+          background: 'radial-gradient(303.57% 2034.38% at 71.89% 100%, #8045C6 0%, rgba(128, 69, 198, 0) 100%)'
         }} className=" rounded-[10px] px-[10px] py-[2px] font-medium text-[18px] text-white">
             В корзину
         </button>
