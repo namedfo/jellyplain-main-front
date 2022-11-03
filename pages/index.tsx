@@ -40,7 +40,7 @@ export default function Home() {
             <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">Шорты</button>
             <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">Куртки</button>
           </div>
-          <div className="grid mt-[30px] xl:grid-cols-4 grid-cols-3 gap-5">
+          <div className="grid mt-[30px] xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5">
             {cards.map((card) => (
               <Card key={card.id} card={card} />
             ))}

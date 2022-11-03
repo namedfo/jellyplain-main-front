@@ -40,7 +40,7 @@ export default function Card({ card }: any) {
         <button 
         onClick={() => setCard(card)}
         style={{
-          background: 'radial-gradient(303.57% 2034.38% at 71.89% 100%, #8045C6 0%, rgba(128, 69, 198, 0) 100%)'
+          background: 'radial-gradient(303.57% 2034.38% at 71.89% 100%, #9752E9 0%, rgba(128, 69, 198, 0) 100%)'
         }} className=" rounded-[10px] px-[10px] py-[2px] font-medium text-[16px] text-white">
             В корзину
         </button>
