@@ -26,7 +26,10 @@ export default function Header() {
         </button>
       </div>
       <div className="w-[33%] flex items-center justify-end">
-        <button className="hover:bg-[#E7E9EB] rounded-md p-[6px]">
+        <button className="hover:bg-[#E7E9EB] relative rounded-md p-[6px]">
+          <div className="bg-[#ef7481] shadow-xl bottom-[-3px] left-[22px] text-[12px] px-[5px] absolute text-white rounded-[8px]">
+          1
+          </div>
           <Image width={28} height={28} src={cart} alt="" />
         </button>
         <button 
