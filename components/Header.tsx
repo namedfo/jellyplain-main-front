@@ -90,7 +90,7 @@ const PopupCart = () => {
         </div>
       ) : (
         <>
-          <div className="flex flex-col max-h-[300px] overflow-y-auto divide-y">
+          <div className="flex flex-col max-h-[350px] overflow-y-auto divide-y">
             {cart.map((card: any) => (
               <div key={card?.id} className="flex justify-between py-[10px]">
                 <div className="flex">
@@ -116,7 +116,7 @@ const PopupCart = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-between flex-col">
+                <div className="flex w-[95px] justify-between items-end flex-col">
                   <span className="text-[#FFA500] text-[18px] font-medium">
                     {card?.price} &#8381;
                   </span>

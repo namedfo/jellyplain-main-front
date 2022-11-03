@@ -5,11 +5,13 @@ import Header from "../components/Header";
 import Container from "../layouts/Container";
 //
 import MOCKUP from '../utils/mockup-9.jpg'
+import MOCK from '../utils/mock-1.jpg'
+import MOCKSH from '../utils/mock-sh.jpg'
 
 const cards = [
   { id: 1, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
-  { id: 2, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
-  { id: 3, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
+  { id: 2, title: "Puma MB 0.1 “Rick and Morty”", price: "6 290", image: MOCK },
+  { id: 3, title: "Штаны", price: "2 990", image: MOCKSH },
   { id: 4, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
   { id: 5, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
   { id: 6, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },

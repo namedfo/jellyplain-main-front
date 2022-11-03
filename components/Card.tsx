@@ -23,7 +23,7 @@ export default function Card({ card }: any) {
         <Image objectFit="contain" width={210} alt="" src={card.image} />
       </div>
       <div className="flex flex-col">
-        <span className="text-[#414752] text-[20px] font-medium">
+        <span className="text-[#414752] overflow-hidden whitespace-nowrap text-ellipsis text-[20px] font-medium">
             {card?.title}
         </span>
         <div className="flex items-center">
