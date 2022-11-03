@@ -1,26 +1,29 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-
+import { createSlice } from "@reduxjs/toolkit";
 
 type initialStateType = {
-    user: any,
-    status: 'loading' | 'authorized' | 'unauthorized' | 'error'
-}
-
+  cart: any;
+  cartIsShow: boolean;
+};
 
 const initialState: initialStateType = {
-    user: {},
-    status: 'unauthorized'
-}
- 
+  cart: [],
+  cartIsShow: false,
+};
 
 export const cartSlice = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: {
-       
-    }
-})
+  name: "cart",
+  initialState,
+  reducers: {
+    setCartIsShow: (state: initialStateType, action: any) => ({
+      ...state,
+      cartIsShow: action.payload,
+    }),
+    setCard: (state: initialStateType, action: any) => ({
+      ...state,
+      cart: state.cart.length > 0 ? [ ...state.cart, action.payload ] : [action.payload],
+    }),
+  },
+});
 
-export const cartReducer = cartSlice.reducer
-export const cartActions = cartSlice.actions
+export const cartReducer = cartSlice.reducer;
+export const cartActions = cartSlice.actions;

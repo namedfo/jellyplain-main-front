@@ -40,3 +40,15 @@ a {
     background: black;
   }
 }
+
+
+
+*::-webkit-scrollbar {
+  width: 5px;              
+}
+
+
+*::-webkit-scrollbar-thumb {
+  background-color: #5398bd;  
+  border-radius: 20px;    
+}
