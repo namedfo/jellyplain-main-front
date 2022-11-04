@@ -1,9 +1,9 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 //
 import { AiOutlinePlus, AiOutlineMinus, AiFillStar } from 'react-icons/ai'
+// hooks
 import useActions from "../hooks/useActions";
-//
-import mock from "../utils/mockup-9.jpg";
 
 
 type CardProps = {
@@ -16,15 +16,31 @@ export default function Card({ card }: any) {
 
 
   const { setCard } = useActions()
-  console.log(card)
+  
+
+  const router = useRouter()
+
+  const onHandleProduct = () => {
+    router.push(`/product/${card.id}`)
+  }
 
   return (
     <div className="shadow-jj p-[15px] rounded-[10px] bg-white w-[230px]">
       <div className="w-full h-[180px] flex items-center justify-center">
-        {card.image !== "1" && <Image objectFit="contain" width={210} height={180}  alt="" src={card.image} />}
+        {card.image !== "1" && <Image 
+          onClick={onHandleProduct} 
+          objectFit="contain" 
+          width={210} 
+          height={180}  
+          alt="" 
+          src={card.image} 
+          className="cursor-pointer"
+        />}
       </div>
       <div className="flex flex-col">
-        <span className="text-[#414752] overflow-hidden whitespace-nowrap text-ellipsis text-[20px] font-medium">
+        <span 
+          onClick={onHandleProduct}
+          className="text-[#414752] cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis text-[20px] font-medium">
             {card?.title}
         </span>
         <div className="flex items-center">

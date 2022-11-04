@@ -34,14 +34,16 @@ export default function Header() {
         </button>
       </div>
       <div className="w-[33%] flex relative justify-center">
-        <button className="absolute top-[-9px] flex items-center justify-center rounded-full shadow-popup bg-white w-[80px] h-[80px]" onClick={() => router.push("/")}>
-          {/* Logo */}
+        <button
+          className="absolute top-[-10px] flex items-center justify-center rounded-full hover:shadow-popup shadow-jj bg-white w-[80px] h-[80px]"
+          onClick={() => router.push("/")}
+        >
           <Image
             className="cursor-pointer rounded-full"
             width={80}
             height={80}
             src={logo}
-            alt=""
+            alt="logo"
           />
         </button>
       </div>
@@ -92,9 +94,14 @@ const PopupCart = () => {
         <>
           <div className="flex flex-col max-h-[350px] overflow-y-auto divide-y">
             {cart.map((card: any) => (
-              <div key={card?.id} className="flex px-[10px] justify-between py-[10px]">
+              <div
+                key={card?.id}
+                className="flex px-[10px] justify-between py-[10px]"
+              >
                 <div className="flex">
-                  {card.image !== "1" && <Image width={90} height={90} src={card?.image} alt={""} />}
+                  {card.image !== "1" && (
+                    <Image width={90} height={90} src={card?.image} alt={""} />
+                  )}
                   <div className="flex ml-[10px] flex-col">
                     <span className="text-[#292929] text-[18px] font-medium">
                       {card?.title}
