@@ -34,12 +34,12 @@ export default function Header() {
         </button>
       </div>
       <div className="w-[33%] flex relative justify-center">
-        <button className="absolute top-[-15px] flex items-center justify-center rounded-full shadow-md bg-white w-[90px] h-[90px]" onClick={() => router.push("/")}>
+        <button className="absolute top-[-9px] flex items-center justify-center rounded-full shadow-popup bg-white w-[80px] h-[80px]" onClick={() => router.push("/")}>
           {/* Logo */}
           <Image
             className="cursor-pointer rounded-full"
-            width={90}
-            height={90}
+            width={80}
+            height={80}
             src={logo}
             alt=""
           />
