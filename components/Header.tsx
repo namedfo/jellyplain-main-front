@@ -139,7 +139,7 @@ const PopupCart = () => {
               <span>Итог</span>
               <span>6 111 &#8381;</span>
             </div>
-            <button className="bg-[#307fee] text-white font-medium text-[18px] w-full py-[3px] rounded-[10px]">
+            <button className="bg-[#307fee] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
               Купить
             </button>
           </div>
