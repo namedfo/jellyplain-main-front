@@ -42,7 +42,7 @@ export default function Card({ card }: any) {
         onClick={() => setCard(card)}
         style={{
           background: 'radial-gradient(100% 235.27% at 71.89% 100%, #9752E9 0%, rgba(128, 69, 198, 0) 100%)'
-        }} className=" rounded-[10px] px-[10px] py-[2px] font-medium text-[16px] text-white">
+        }} className="rounded-[10px] px-[10px] py-[2px] font-medium text-[16px] text-white">
             В корзину
         </button>
         {/* <div className="flex mr-[10px] items-center">
