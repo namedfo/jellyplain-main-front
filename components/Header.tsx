@@ -35,13 +35,13 @@ export default function Header() {
       </div>
       <div className="w-[33%] flex relative justify-center">
         <button
-          className="absolute top-[-10px] flex items-center justify-center rounded-full hover:shadow-popup shadow-jj bg-white w-[80px] h-[80px]"
+          className="absolute top-[-7px] flex items-center justify-center rounded-full hover:shadow-popup shadow-jj bg-white w-[75px] h-[75px]"
           onClick={() => router.push("/")}
         >
           <Image
             className="cursor-pointer rounded-full"
-            width={80}
-            height={80}
+            width={75}
+            height={75}
             src={logo}
             alt="logo"
           />
