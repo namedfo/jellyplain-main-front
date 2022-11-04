@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       boxShadow: {
         "jj": "0 3px 24px 0 rgb(34 41 47 / 7%)",
+        "logo": "0 3px 5px 0 rgb(34 41 47 / 7%)",
         "popup": "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"
       }
     },
