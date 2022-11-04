@@ -35,7 +35,7 @@ export default function Header() {
       </div>
       <div className="w-[33%] flex relative justify-center">
         <button
-          className="absolute top-[-7px] flex items-center justify-center rounded-full hover:shadow-md  bg-white w-[75px] h-[75px]"
+          className="absolute top-[-7px] flex items-center justify-center rounded-full hover:shadow-md shadow-jj bg-white w-[75px] h-[75px]"
           onClick={() => router.push("/")}
         >
           <Image
