@@ -26,7 +26,7 @@ export default function Header() {
   const { ref } = useOutside(() => setCartIsShow(false));
 
   return (
-    <div className="w-full px-[15px] flex justify-between bg-white h-[60px] shadow-jj rounded-[10px]">
+    <div className="w-full px-[15px] hidden md:flex justify-between bg-white h-[60px] shadow-jj rounded-[10px]">
       <div className="w-[33%] flex items-center">
         <button className="bg-[#E7E9EB] hover:bg-[#D3D9DF] flex items-center text-[#444F58] rounded-[10px] py-[5px] px-[15px]">
           <IoSearchSharp size={20} />

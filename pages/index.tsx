@@ -53,12 +53,12 @@ export default function Home() {
   return (
     <Container>
       <Header />
-      <div className="flex pt-[50px] justify-between">
-        <div className="w-[270px]">
+      <div className="flex md:pt-[50px] justify-between">
+        <div className="w-[270px] hidden md:flex">
           <Filtred />
         </div>
-        <div className="flex ml-[34px] w-full flex-col">
-          <div className="shadow-jj text-[#5e5b73] text-[18px] font-medium flex justify-evenly py-[20px] p-[15px] w-full rounded-[10px] bg-white">
+        <div className="flex md:ml-[34px] w-full flex-col">
+          <div className="shadow-jj flex flex-wrap text-[#5e5b73] text-[18px] font-medium justify-evenly py-[20px] p-[15px] w-full rounded-[10px] bg-white">
             <button className="bg-[#8A63B9] py-[5px] px-[15px] rounded-[10px] text-white">Все</button>
             <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">Кроссовки</button>
             <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">Худи</button>
@@ -66,7 +66,7 @@ export default function Home() {
             <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">Шорты</button>
             <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">Куртки</button>
           </div>
-          <div className="grid mt-[30px] xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-5">
+          <div className="grid mt-[30px]  xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5">
             {cards?.map((card) => (
               <Card key={card.id} card={card} />
             ))}
