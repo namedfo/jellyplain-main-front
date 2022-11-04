@@ -54,7 +54,7 @@ export default function Home() {
     <Container>
       <Header />
       <div className="flex md:pt-[50px] justify-between">
-        <div className="w-[270px] hidden md:flex">
+        <div className="w-[270px] hidden md:block">
           <Filtred />
         </div>
         <div className="flex md:ml-[34px] w-full flex-col">
