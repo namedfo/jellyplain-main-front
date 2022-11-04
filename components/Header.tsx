@@ -33,13 +33,13 @@ export default function Header() {
           <span className="font-medium ml-[7px] text-[18px]">Поиск</span>
         </button>
       </div>
-      <div className="w-[33%] flex justify-center">
-        <button onClick={() => router.push("/")}>
+      <div className="w-[33%] flex relative justify-center">
+        <button className="absolute top-[-15px] flex items-center justify-center rounded-full shadow-md bg-white w-[90px] h-[90px]" onClick={() => router.push("/")}>
           {/* Logo */}
           <Image
-            className="cursor-pointer"
-            width={60}
-            height={60}
+            className="cursor-pointer rounded-full"
+            width={90}
+            height={90}
             src={logo}
             alt=""
           />
@@ -78,7 +78,7 @@ const PopupCart = () => {
   const { cart } = useTypedSelector((state) => state.cart);
 
   return (
-    <div className="shadow-popup flex flex-col w-[400px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
+    <div className="shadow-popup flex flex-col w-[420px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">
         Корзина
       </span>
@@ -92,9 +92,9 @@ const PopupCart = () => {
         <>
           <div className="flex flex-col max-h-[350px] overflow-y-auto divide-y">
             {cart.map((card: any) => (
-              <div key={card?.id} className="flex justify-between py-[10px]">
+              <div key={card?.id} className="flex px-[10px] justify-between py-[10px]">
                 <div className="flex">
-                  <Image width={90} height={90} src={card?.image} alt={""} />
+                  {card.image !== "1" && <Image width={90} height={90} src={card?.image} alt={""} />}
                   <div className="flex ml-[10px] flex-col">
                     <span className="text-[#292929] text-[18px] font-medium">
                       {card?.title}
@@ -141,4 +141,3 @@ const PopupCart = () => {
     </div>
   );
 };
-

@@ -4,7 +4,7 @@ import logo from '../utils/logo.jpg'
 
 export default function Container({ children }: any) {
   return (
-    <div className="mx-auto pt-[25px] px-[20px] xl:p-0 xl:pt-[25px] h-full max-w-[1280px]">
+    <div className="mx-auto pt-[20px] px-[20px] xl:p-0 xl:pt-[25px] h-full max-w-[1280px]">
       <Head>
         <title>JellyPlain</title>
 
