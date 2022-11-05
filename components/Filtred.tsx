@@ -111,20 +111,38 @@ const Brand = () => {
       </div>
 
       {isOpen && (
-        <div className="my-[7px] flex justify-between">
-          <label className="border py-[2px] px-[5px] rounded-[5px] flex border-[#b3bcc5]">
-            <span className="text-[#949ba2]">от</span>
+        <div>
+          <label className="flex cursor-pointer  items-center space-x-3 mb-2">
             <input
-              className="w-[80px] ml-[6px] outline-none rounded-[5px]"
-              type="number"
+              type="checkbox"
+              name="checked"
+              className="form-tick appearance-none bg-white bg-check h-5 w-5 border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none"
             />
+            <span className="text-gray-700 dark:text-white font-normal">Nike</span>
           </label>
-          <label className="border py-[2px] px-[5px] flex rounded-[5px] border-[#b3bcc5]">
-            <span className="text-[#949ba2]">до</span>
+          <label className="flex cursor-pointer  items-center space-x-3 mb-2">
             <input
-              className="w-[80px] ml-[6px] outline-none rounded-[5px]"
-              type="number"
+              type="checkbox"
+              name="checked"
+              className="form-tick appearance-none bg-white bg-check h-5 w-5 border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none"
             />
+            <span className="text-gray-700 dark:text-white font-normal">Jordan</span>
+          </label>
+          <label className="flex cursor-pointer items-center space-x-3 mb-2">
+            <input
+              type="checkbox"
+              name="checked"
+              className="form-tick appearance-none bg-white bg-check h-5 w-5 border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none"
+            />
+            <span className="text-gray-700 dark:text-white font-normal">Adidas</span>
+          </label>
+          <label className="flex cursor-pointer  items-center space-x-3 mb-2">
+            <input
+              type="checkbox"
+              name="checked"
+              className="form-tick appearance-none bg-white bg-check h-5 w-5 border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none"
+            />
+            <span className="text-gray-700 dark:text-white font-normal">Puma</span>
           </label>
         </div>
       )}

@@ -77,11 +77,11 @@ export default function Card({ card }: any) {
         >
           В корзину
         </button> */}
-        <div className="flex mr-[10px] items-center">
+        <div className="flex  items-center">
           <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
             <AiOutlineMinus color="#8045c6" />
           </button>
-          <span className="font-medium text-[18px] mx-[10px]">1</span>
+          <span className="font-medium text-[18px] mx-[15px]">1</span>
           <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
             <AiOutlinePlus color="#8045c6" />
           </button>
