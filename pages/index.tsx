@@ -7,6 +7,7 @@ import Filtred from "../components/Filtred";
 import Header from "../components/Header";
 // layouts
 import Container from "../layouts/Container";
+import MenuCatalog from "../components/MenuCatalog";
 
 // const cards = [
 //   { id: 1, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
@@ -58,32 +59,13 @@ export default function Home() {
           <Filtred />
         </div>
         <div className="flex md:ml-[34px] w-full flex-col">
-          <div className="shadow-jj flex flex-wrap text-[#5e5b73] text-[18px] font-medium justify-evenly py-[20px] p-[15px] w-full rounded-[10px] bg-white">
-            <button className="bg-[#8A63B9] py-[5px] px-[15px] rounded-[10px] text-white">
-              Все
-            </button>
-            <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
-              Кроссовки
-            </button>
-            <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
-              Худи
-            </button>
-            <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
-              Джерси
-            </button>
-            <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
-              Шорты
-            </button>
-            <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
-              Куртки
-            </button>
-          </div>
-          <div className="grid mt-[30px]  xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5">
+          <MenuCatalog />
+          <div className="flex items-center justify-between flex-wrap">
             {cards?.map((card: any) => (
               <Card key={card.id} card={card} />
             ))}
 
-            <Card />
+            <Card /><Card />
           </div>
         </div>
       </div>

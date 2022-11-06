@@ -22,19 +22,19 @@ export default function Card({ card }: any) {
   };
 
   return (
-    <div className="shadow-jj p-[15px] rounded-[10px] bg-white w-[230px]">
+    <div className="shadow-jj p-[15px] mt-[30px] rounded-[10px] bg-white w-[160px] sm:w-[230px]">
       <div className="w-full h-[180px] flex items-center justify-center">
-        {card?.image !== "1" && (
+        {/* {card?.image !== "1" && (
           <Image
             onClick={onHandleProduct}
             objectFit="contain"
-            width={210}
-            height={180}
+            width={150}
+            height={150}
             alt=""
             src={card?.image}
             className="cursor-pointer"
           />
-        )}
+        )} */}
       </div>
       <div className="flex flex-col">
         <span
@@ -44,7 +44,7 @@ export default function Card({ card }: any) {
           {card?.title}
         </span>
         <div className="flex justify-between">
-          <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
+          {/* <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
             <div className="flex items-center">
               <AiFillStar color="#fbbf24" />
               <span className="text-[#79828e] text-[16px] font-medium ml-[5px]">
@@ -57,7 +57,7 @@ export default function Card({ card }: any) {
                 53
               </span>
             </div>
-          </div>
+          </div> */}
           <span className="font-medium text-[#5B9F32]">Оригинал</span>
         </div>
       </div>
