@@ -1,9 +1,10 @@
 //
-import { AiFillFilter } from "react-icons/ai"
+import { AiFillFilter } from "react-icons/ai";
+import { IoSearchSharp } from "react-icons/io5";
 
 export default function MenuCatalog() {
   return (
-    <div className="shadow-jj flex flex-col sm:text-[18px] text-[16px] font-medium py-[20px] p-[15px] w-full rounded-[10px] bg-white">
+    <div className="shadow-jj flex flex-col sm:text-[18px] text-[16px] font-medium py-[15px] p-[15px] w-full rounded-[10px] bg-white">
       <div className="flex text-[#5e5b73] flex-wrap justify-evenly w-full">
         <button className="bg-[#8A63B9] py-[5px] px-[15px] rounded-[10px] text-white">
           Все
@@ -27,13 +28,14 @@ export default function MenuCatalog() {
       <div className="flex md:hidden flex-col text-[#635d8a] items-center">
         <div className="w-[30%] my-[15px] border h-[1px] " />
         <div className="flex w-full justify-between items-center">
-        <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
-            Поиск
-        </button>
-        <button className="py-[5px] flex items-center hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
+          <button className="py-[5px] flex items-center hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
+            <IoSearchSharp size={20} />
+            <span className="ml-[5px]">Поиск</span>
+          </button>
+          <button className="py-[5px] flex items-center hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
             <AiFillFilter size={18} />
             Фильтрация
-        </button>
+          </button>
         </div>
       </div>
     </div>

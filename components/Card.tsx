@@ -24,17 +24,17 @@ export default function Card({ card }: any) {
   return (
     <div className="shadow-jj p-[15px] mt-[30px] rounded-[10px] bg-white w-[160px] sm:w-[230px]">
       <div className="w-full h-[180px] flex items-center justify-center">
-        {/* {card?.image !== "1" && (
+        {card?.image !== "1" && (
           <Image
             onClick={onHandleProduct}
             objectFit="contain"
             width={150}
-            height={150}
+            height={100}
             alt=""
-            src={card?.image}
+            src="https://i.imgur.com/yDH7fAm.jpg"
             className="cursor-pointer"
           />
-        )} */}
+        )}
       </div>
       <div className="flex flex-col">
         <span
@@ -43,8 +43,8 @@ export default function Card({ card }: any) {
         >
           {card?.title}
         </span>
-        <div className="flex justify-between">
-          {/* <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
+        <div className="flex flex-col sm:flex-row justify-between">
+          <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
             <div className="flex items-center">
               <AiFillStar color="#fbbf24" />
               <span className="text-[#79828e] text-[16px] font-medium ml-[5px]">
@@ -57,11 +57,11 @@ export default function Card({ card }: any) {
                 53
               </span>
             </div>
-          </div> */}
+          </div>
           <span className="font-medium text-[#5B9F32]">Оригинал</span>
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row mt-[10px] justify-between">
+      <div className="flex flex-col sm:flex-row mt-[5px] sm:mt-[10px] justify-between">
         <div className="py-[2px] flex justify-start items-center">
           <span className="text-[#FFA500] text-[20px] font-medium">
             7 777{card?.price} &#8381;
