@@ -14,7 +14,7 @@ export const mainSlice = createSlice({
   reducers: {
     setSelectedCategory: (state: initialStateType, action: any) => ({
         ...state,
-        selectedCategory: action.category
+        selectedCategory: action.payload
     })
   },
 });

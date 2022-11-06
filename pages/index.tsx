@@ -40,6 +40,8 @@ export default function Home() {
 
   const { selectedCategory } = useTypedSelector(state => state.main)
 
+
+  console.log(selectedCategory)
   useEffect(() => {
     (async () => {
       try {
@@ -51,7 +53,7 @@ export default function Home() {
         console.log(error);
       }
     })();
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <Container>
@@ -66,8 +68,6 @@ export default function Home() {
             {cards?.map((card: any) => (
               <Card key={card.id} card={card} />
             ))}
-
-            <Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card />
           </div>
         </div>
       </div>

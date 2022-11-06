@@ -1,27 +1,52 @@
 //
 import { AiFillFilter } from "react-icons/ai";
 import { IoSearchSharp } from "react-icons/io5";
+import useActions from "../hooks/useActions";
+// hooks
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export default function MenuCatalog() {
+  const { selectedCategory } = useTypedSelector((state) => state.main);
+
+  const { setSelectedCategory } = useActions();
+
   return (
     <div className="shadow-jj flex flex-col sm:text-[18px] text-[16px] font-medium py-[15px] p-[15px] w-full rounded-[10px] bg-white">
       <div className="flex text-[#5e5b73] flex-wrap justify-evenly w-full">
-        <button className="bg-[#8A63B9] py-[5px] px-[15px] rounded-[10px] text-white">
+        <button
+          onClick={() => setSelectedCategory("all")}
+          className={`${selectedCategory === "all" ? "bg-[#8A63B9] text-white" : "hover:bg-[#8A63B91A]"} py-[5px] px-[15px] rounded-[10px]`}
+        >
           Все
         </button>
-        <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
+        <button
+          onClick={() => setSelectedCategory("sneakers")}
+          className={`${selectedCategory === "sneakers" ? "bg-[#8A63B9] text-white" : "hover:bg-[#8A63B91A]"} py-[5px] px-[15px] rounded-[10px]`}
+        >
           Кроссовки
         </button>
-        <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
+        <button
+          onClick={() => setSelectedCategory("hoodies")}
+          className={`${selectedCategory === "hoodies" ? "bg-[#8A63B9] text-white" : "hover:bg-[#8A63B91A]"} py-[5px] px-[15px] rounded-[10px]`}
+        >
           Худи
         </button>
-        <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
+        <button
+          onClick={() => setSelectedCategory("jersey")}
+          className={`${selectedCategory === "jersey" ? "bg-[#8A63B9] text-white" : "hover:bg-[#8A63B91A]"} py-[5px] px-[15px] rounded-[10px]`}
+        >
           Джерси
         </button>
-        <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
+        <button
+          onClick={() => setSelectedCategory("shorts")}
+          className={`${selectedCategory === "shorts" ? "bg-[#8A63B9] text-white" : "hover:bg-[#8A63B91A]"} py-[5px] px-[15px] rounded-[10px]`}
+        >
           Шорты
         </button>
-        <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px] ">
+        <button
+          onClick={() => setSelectedCategory("jackets")}
+          className={`${selectedCategory === "jackets" ? "bg-[#8A63B9] text-white" : "hover:bg-[#8A63B91A]"} py-[5px] px-[15px] rounded-[10px]`}
+        >
           Куртки
         </button>
       </div>

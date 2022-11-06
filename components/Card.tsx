@@ -64,7 +64,7 @@ export default function Card({ card }: any) {
       <div className="flex flex-col sm:flex-row mt-[5px] sm:mt-[10px] justify-between">
         <div className="py-[2px] flex justify-start items-center">
           <span className="text-[#FFA500] text-[20px] font-medium">
-            7 777{card?.price} &#8381;
+            {card?.price} &#8381;
           </span>
         </div>
         <button
