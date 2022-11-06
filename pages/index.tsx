@@ -65,7 +65,7 @@ export default function Home() {
               <Card key={card.id} card={card} />
             ))}
 
-            <Card /><Card />
+            <Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card /><Card />
           </div>
         </div>
       </div>
