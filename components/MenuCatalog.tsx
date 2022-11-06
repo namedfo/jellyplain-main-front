@@ -53,11 +53,11 @@ export default function MenuCatalog() {
       <div className="flex md:hidden flex-col text-[#635d8a] items-center">
         <div className="w-[30%] my-[15px] border h-[1px] " />
         <div className="flex w-full justify-between items-center">
-          <button className="py-[5px] flex items-center hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
+          <button className="py-[5px] flex items-center bg-[#8A63B91A] px-[15px] rounded-[10px]">
             <IoSearchSharp size={20} />
             <span className="ml-[5px]">Поиск</span>
           </button>
-          <button className="py-[5px] flex items-center hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
+          <button className="py-[5px] flex items-center bg-[#8A63B91A] px-[15px] rounded-[10px]">
             <AiFillFilter size={18} />
             Фильтрация
           </button>
