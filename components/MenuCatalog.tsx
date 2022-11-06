@@ -24,13 +24,13 @@ export default function MenuCatalog() {
           Куртки
         </button>
       </div>
-      <div className="flex flex-col text-[#635d8a] items-center">
+      <div className="flex md:hidden flex-col text-[#635d8a] items-center">
         <div className="w-[30%] my-[15px] border h-[1px] " />
         <div className="flex w-full justify-between items-center">
         <button className="py-[5px] hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
             Поиск
         </button>
-        <button className="py-[5px] flex items-center hover:bg-[#8A63B91A] px-[7px] rounded-[5px]">
+        <button className="py-[5px] flex items-center hover:bg-[#8A63B91A] px-[15px] rounded-[10px]">
             <AiFillFilter size={18} />
             Фильтрация
         </button>

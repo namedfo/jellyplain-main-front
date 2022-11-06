@@ -61,13 +61,13 @@ export default function Card({ card }: any) {
           <span className="font-medium text-[#5B9F32]">Оригинал</span>
         </div>
       </div>
-      <div className="flex mt-[10px] justify-between">
+      <div className="flex flex-col sm:flex-row mt-[10px] justify-between">
         <div className="py-[2px] flex justify-start items-center">
           <span className="text-[#FFA500] text-[20px] font-medium">
-            {card?.price} &#8381;
+            7 777{card?.price} &#8381;
           </span>
         </div>
-        {/* <button
+        <button
           onClick={() => setCard(card)}
           style={{
             background:
@@ -76,8 +76,8 @@ export default function Card({ card }: any) {
           className="rounded-[10px] px-[10px] py-[2px] font-medium text-[16px] text-white"
         >
           В корзину
-        </button> */}
-        <div className="flex  items-center">
+        </button>
+        {/* <div className="flex  items-center">
           <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
             <AiOutlineMinus color="#8045c6" />
           </button>
@@ -85,7 +85,7 @@ export default function Card({ card }: any) {
           <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
             <AiOutlinePlus color="#8045c6" />
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
