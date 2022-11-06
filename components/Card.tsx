@@ -30,8 +30,8 @@ export default function Card({ card }: any) {
             objectFit="contain"
             width={150}
             height={100}
-            alt=""
-            src="https://i.imgur.com/yDH7fAm.jpg"
+            alt="img"
+            src={card.productChilds[0]?.image[0]?.image}
             className="cursor-pointer"
           />
         )}

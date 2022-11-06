@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
 
 html,
@@ -64,4 +64,20 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+.image-gallery-image,.image-gallery-thumbnail-image {
+  border-radius: 10px;
+}
+
+.image-gallery-thumbnail {
+  border-radius: 15px;
+
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+.image-gallery-thumbnails-wrapper {
+  height: 80px;
 }
