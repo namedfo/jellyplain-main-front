@@ -53,7 +53,7 @@ export default function Card({ card }: any) {
             </div>
             <div className="flex ml-[10px] items-center">
               <BiCommentDots color="#35404A" />
-              <span className="text-[#35404A] text-[16px] font-medium  ml-[5px]">
+              <span className="text-[#79828e] text-[16px] font-medium  ml-[5px]">
                 53
               </span>
             </div>

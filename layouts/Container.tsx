@@ -3,7 +3,7 @@ import MobileMenu from "../components/MobileMenu";
 
 export default function Container({ children }: any) {
   return (
-    <div className="mx-auto relative pt-[15px] px-[10px] xl:p-0 xl:pt-[20px] h-full max-w-[1280px]">
+    <div className="mx-auto relative pt-[10px] px-[5px] xl:p-0 xl:pt-[20px] h-full max-w-[1280px]">
       <Head>
         <title>JellyPlain</title>
 

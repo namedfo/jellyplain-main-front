@@ -8,6 +8,7 @@ import Header from "../components/Header";
 // layouts
 import Container from "../layouts/Container";
 import MenuCatalog from "../components/MenuCatalog";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 // const cards = [
 //   { id: 1, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
@@ -37,13 +38,14 @@ type Card = {
 export default function Home() {
   const [cards, setCards] = useState<any | []>([]);
 
+  const { selectedCategory } = useTypedSelector(state => state.main)
+
   useEffect(() => {
     (async () => {
       try {
         const res = await axios.get(
-          "https://jellyplainv2.herokuapp.com/order/getAll"
+          `https://jellyplainv2.herokuapp.com/order/getAll${selectedCategory === "all" ? "" : `?category=${selectedCategory}`}`
         );
-        console.log(res);
         setCards(res.data);
       } catch (error) {
         console.log(error);

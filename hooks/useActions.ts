@@ -2,9 +2,11 @@ import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 //
 import { cartActions } from "../store/cart/cart.slice";
+import { mainActions } from '../store/main/main.slice';
 
 const AllActions = {
-    ...cartActions
+    ...cartActions,
+    ...mainActions,
 }
 
 
