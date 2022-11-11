@@ -5,7 +5,7 @@ import Container from "../layouts/Container";
 export default function Redirect() {
 
     const router = useRouter()
-    console.log(router)
+    console.log(router.asPath.replace("#", "?"))
     return (
         <Container>
             <div className="w-full h-full flex items-center justify-center">
