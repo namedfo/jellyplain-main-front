@@ -19,7 +19,18 @@ export default function Redirect() {
         const res = await axios.get(
           `https://api.vk.com/method/users.get?user_ids=${data.user_id}&fields=photo_200,bdate&access_token=${data.access_token}&v=5.131`
         );
-        console.log(res)
+        const newData = {
+            id: res.data.response[0].id,
+            first_name: res.data.response[0].first_name,
+            last_name: res.data.response[0].last_name,
+            bdate: res.data.response[0].bdate,
+            image: res.data.response[0].photo_200,
+
+            access_token: data.access_token,
+            expires_in: data.expires_in,
+        }
+
+        console.log(newData)
       } catch (error) {}
     })();
   }, []);
