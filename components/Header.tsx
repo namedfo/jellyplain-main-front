@@ -33,7 +33,7 @@ export default function Header() {
     <div className="w-full px-[15px] hidden md:flex justify-between bg-white h-[60px] shadow-jj rounded-[10px]">
       <Auth isOpen={isOpenAuth} onClose={() => setIsOpenAuth(false)} />
       <div className="w-[33%] flex items-center">
-        <button className="bg-[#86368D1A] hover:bg-[#86368D33] flex items-center text-[#703D75] rounded-[10px] py-[5px] px-[15px]">
+        <button className="bg-[#86368D1A] hover:bg-[#86368D33] flex items-center text-[#58355a] rounded-[10px] py-[5px] px-[15px]">
           <IoSearchSharp size={20} />
           <span className="font-medium ml-[7px] text-[18px]">Поиск</span>
         </button>
@@ -66,7 +66,7 @@ export default function Header() {
                 {cart.length}
               </div>
             )}
-            <Image color="#924C98" width={28} height={28} src={cartImg} alt="" />
+            <Image color="#58355a" width={28} height={28} src={cartImg} alt="" />
           </button>
           {cartIsShow && <PopupCart />}
         </div>
@@ -74,7 +74,7 @@ export default function Header() {
           onClick={() => setIsOpenAuth(true)}
           className="hover:bg-[#86368D1A] rounded-md p-[6px] ml-[20px]"
         >
-          <FaRegUser color="#703D75" size={26} />
+          <FaRegUser color="#58355a" size={26} />
         </button>
       </div>
     </div>
