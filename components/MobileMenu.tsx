@@ -14,7 +14,7 @@ export default function MobileMenu() {
         className="hover:bg-[#8045C61A] rounded-[10px] p-[5px]"
       >
         <HiHome 
-            color={router.pathname === "/" ? "#8a63b9" : '#DBD9D9'} 
+            color={router.pathname === "/" ? "#86368D" : '#DBD9D9'} 
             size={34}
         />
       </button>
@@ -23,7 +23,7 @@ export default function MobileMenu() {
         className="hover:bg-[#8045C61A] rounded-[10px] p-[5px]"
       >
         <FaShoppingBasket 
-            color={router.pathname === "/cart" ? "#8a63b9" : '#DBD9D9'}  
+            color={router.pathname === "/cart" ? "#86368D" : '#DBD9D9'}  
             size={32} 
         />
       </button>
@@ -32,7 +32,7 @@ export default function MobileMenu() {
         className="hover:bg-[#8045C61A] rounded-[10px] p-[5px]"
       >
         <FaUserAlt 
-            color={router.pathname === "/profile" ? "#8a63b9" : '#DBD9D9'}  
+            color={router.pathname === "/profile" ? "#86368D" : '#DBD9D9'}  
             size={28} 
         />
       </button>

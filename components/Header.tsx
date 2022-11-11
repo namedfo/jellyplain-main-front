@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 import { useRouter } from "next/router";
 //
 import { IoSearchSharp } from "react-icons/io5";
@@ -11,8 +12,11 @@ import cartImg from "../utils/jj-cart.svg";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import useActions from "../hooks/useActions";
 import useOutside from "../hooks/useOutside";
+// modals
+import Auth from "../modals/Auth";
 
 export default function Header() {
+  const [isOpenAuth, setIsOpenAuth] = useState(false)
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
 
   const { setCartIsShow } = useActions();
@@ -27,8 +31,9 @@ export default function Header() {
 
   return (
     <div className="w-full px-[15px] hidden md:flex justify-between bg-white h-[60px] shadow-jj rounded-[10px]">
+      <Auth isOpen={isOpenAuth} onClose={() => setIsOpenAuth(false)} />
       <div className="w-[33%] flex items-center">
-        <button className="bg-[#E7E9EB] hover:bg-[#D3D9DF] flex items-center text-[#444F58] rounded-[10px] py-[5px] px-[15px]">
+        <button className="bg-[#86368D1A] hover:bg-[#86368D33] flex items-center text-[#703D75] rounded-[10px] py-[5px] px-[15px]">
           <IoSearchSharp size={20} />
           <span className="font-medium ml-[7px] text-[18px]">Поиск</span>
         </button>
@@ -54,22 +59,22 @@ export default function Header() {
             style={{
               backgroundColor: cartIsShow ? "#E7E9EB" : "",
             }}
-            className="hover:bg-[#E7E9EB] rounded-md p-[6px]"
+            className="hover:bg-[#86368D1A] rounded-md p-[6px]"
           >
             {cart?.length > 0 && (
               <div className="bg-[#ef7481] shadow-xl bottom-[-3px] left-[22px] text-[12px] px-[5px] absolute text-white rounded-[8px]">
                 {cart.length}
               </div>
             )}
-            <Image width={28} height={28} src={cartImg} alt="" />
+            <Image color="#924C98" width={28} height={28} src={cartImg} alt="" />
           </button>
           {cartIsShow && <PopupCart />}
         </div>
         <button
-          onClick={() => router.push("/profile")}
-          className="hover:bg-[#E7E9EB] rounded-md p-[6px] ml-[20px]"
+          onClick={() => setIsOpenAuth(true)}
+          className="hover:bg-[#86368D1A] rounded-md p-[6px] ml-[20px]"
         >
-          <FaRegUser color="#35404A" size={26} />
+          <FaRegUser color="#703D75" size={26} />
         </button>
       </div>
     </div>

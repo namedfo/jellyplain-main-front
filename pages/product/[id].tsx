@@ -6,6 +6,9 @@ import { BiCommentDots } from "react-icons/bi";
 import Header from "../../components/Header";
 // layouts
 import Container from "../../layouts/Container";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import useActions from "../../hooks/useActions";
 
 const images = [
   {
@@ -29,6 +32,24 @@ const images = [
 ];
 
 export default function Product() {
+  const [product, setProduct] = useState<any>(undefined)
+
+  const { setCard } = useActions()
+
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get(`https://jellyplainv2.herokuapp.com/order/${1}`)
+      } catch (error) {
+        
+      }
+    })()
+  }, [])
+
+
+
+
   return (
     <Container>
       <Header />
@@ -50,14 +71,14 @@ export default function Product() {
           </div>
         </div> */}
         <div className="flex justify-between mt-[25px]">
-          <div className="shadow-jj flex justify-center rounded-[10px] bg-white p-[15px]">
+          <div className="shadow-jj w-[600px] flex justify-center rounded-[10px] bg-white p-[15px]">
             <ImageGallery autoPlay={true} items={images} />
           </div>
           <div>
             <div className="shadow-jj rounded-[10px] w-[650px] bg-white py-[15px] px-[25px]">
               <div className="flex justify-between">
                 <div className="flex flex-col">
-                  <span className="text-[20px] font-medium">Title</span>
+                  <span className="text-[20px] font-medium">Названия</span>
                   <div className="flex justify-between">
                     <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
                       <div className="flex items-center">
@@ -78,12 +99,15 @@ export default function Product() {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center flex-col">
+                <div className="flex items-end  flex-col">
                   <span className="text-[#ffa500] font-medium text-[18px]">
-                    PRICE
+                    Цена
                   </span>
-                  <button className="bg-[#8a63b9] hover:shadow-xl hover:bg-[#8062a7] text-white font-medium px-[15px] py-[3px] rounded-[10px]">
-                    <span>in cart</span>
+                  <button 
+                    onClick={() => setCard(product)}
+                    className="bg-[#8a63b9] hover:bg-[#8062a7] text-white font-medium px-[15px] py-[3px] rounded-[10px]"
+                  >
+                    <span>В корзину</span>
                   </button>
                 </div>
               </div>
