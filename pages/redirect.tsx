@@ -17,7 +17,7 @@ export default function Redirect() {
       try {
         const res = await axios.post("https://jellyplainv2.herokuapp.com/auth/login/vk", {
           token: data.access_token,
-          userId: data.user_id,
+          userId: +data.user_id,
         });
 
         console.log(res);
