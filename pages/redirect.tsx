@@ -15,7 +15,7 @@ export default function Redirect() {
         user_id: dirtyData[6],
       };
       try {
-        const res = await axios.post("https://jellyplainv2.herokuapp.com", {
+        const res = await axios.post("https://jellyplainv2.herokuapp.com/auth/login/vk", {
           token: data.access_token,
           userId: data.user_id,
         });
