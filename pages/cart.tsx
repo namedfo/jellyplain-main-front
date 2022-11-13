@@ -8,14 +8,14 @@ import Container from "../layouts/Container";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 export default function Cart() {
-  const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
+  const { cart } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
   return (
     <Container>
       <Header />
       <div className="h-full md:mt-[30px] pb-[70px]">
-        <div className="h-full rounded-[10px] bg-white shadow-jj">
-          <div className="flex overflow-y-auto flex-col px-[10px] overflow-y-auto divide-y">
+        <div className="h-full overflow-y-auto rounded-[10px] bg-white shadow-jj">
+          <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
             {cart?.map((card: any) => (
               <Elem key={card.id} card={card} />
             ))}
