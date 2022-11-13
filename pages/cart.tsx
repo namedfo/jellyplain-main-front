@@ -15,7 +15,7 @@ export default function Cart() {
       <Header />
       <div className="h-full md:mt-[30px] pb-[70px]">
         <div className="h-full rounded-[10px] bg-white shadow-jj">
-          <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
+          <div className="flex overflow-y-auto flex-col px-[10px] overflow-y-auto divide-y">
             {cart?.map((card: any) => (
               <Elem key={card.id} card={card} />
             ))}
