@@ -31,7 +31,7 @@ export default function Card({ card }: any) {
             width={150}
             height={100}
             alt="img"
-            src={card.productChilds[0]?.image[0]?.image}
+            src={card.productChilds[0]?.images[0]?.url}
             className="cursor-pointer"
           />
         )}
@@ -39,7 +39,7 @@ export default function Card({ card }: any) {
       <div className="flex flex-col">
         <span
           onClick={onHandleProduct}
-          className="text-[#414752] cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis text-[20px] font-medium"
+          className="text-[#414752] cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis text-[18px] font-medium"
         >
           {card?.title}
         </span>
