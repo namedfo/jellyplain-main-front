@@ -9,12 +9,12 @@ export default function Redirect() {
 
   useEffect(() => {
     (async () => {
-      // const dirtyData = router.asPath.split(/[&\/=]/);
+      const dirtyData = router.asPath.split(/[&\/=\/?]/);
       // const data: any = {
       //   access_token: dirtyData[2],
       //   user_id: dirtyData[6],
       // };
-      console.log(router)
+      console.log(dirtyData)
       try {
         // const res = await axios.post("http://5.23.48.96:3000/auth/login/vk", {
         //   token: data.access_token,
