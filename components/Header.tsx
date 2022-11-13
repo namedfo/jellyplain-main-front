@@ -18,6 +18,7 @@ import Auth from "../modals/Auth";
 export default function Header() {
   const [isOpenAuth, setIsOpenAuth] = useState(false)
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
+  const { isAuth } = useTypedSelector(state => state.user);
 
   const { setCartIsShow } = useActions();
 
@@ -71,7 +72,12 @@ export default function Header() {
           {cartIsShow && <PopupCart />}
         </div>
         <button
-          onClick={() => setIsOpenAuth(true)}
+          onClick={() => {
+            if (!isAuth) {
+              return setIsOpenAuth(true)
+            }
+            return router.push('/profile')
+          }}
           className="hover:bg-[#86368D1A] rounded-md p-[6px] ml-[20px]"
         >
           <FaRegUser color="#58355a" size={26} />
