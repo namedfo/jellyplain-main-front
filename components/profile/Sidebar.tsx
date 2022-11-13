@@ -1,14 +1,18 @@
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export default function Sidebar() {
-  const { isAuth } = useTypedSelector((state) => state.user);
+  const { isAuth, user } = useTypedSelector((state) => state.user);
   return (
     <>
       {isAuth ? (
         <div className="flex w-full justify-between">
           <div className="flex flex-col">
             <div className="shadow-jj p-[15px] flex flex-col items-center rounded-[10px] bg-white w-[240px]">
-              <div className="border rounded-full w-[120px] h-[120px]"></div>
+              <img 
+                className="border rounded-full w-[120px] h-[120px]"
+                src={user.avatar_url}
+                alt="avatar"
+              />
               <div className="flex mt-[12px] text-[20px] items-center">
                 <span>Миша</span>
                 <span className="ml-[8px]">Полещенков</span>
