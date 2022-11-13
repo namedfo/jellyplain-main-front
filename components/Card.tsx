@@ -29,7 +29,7 @@ export default function Card({ card }: any) {
             onClick={onHandleProduct}
             alt="img"
             src={card.productChilds[0]?.images[0]?.url}
-            className="cursor-pointer w-[235px] 400:w-[200px] 400:h-[90px] object-contain border rounded-[10px]"
+            className="cursor-pointer w-[235px] 400:w-[200px] 400:h-[140px] object-contain border rounded-[10px]"
           />
         )}
       </div>
