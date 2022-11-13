@@ -1,8 +1,12 @@
+import Image from "next/image";
+//
 import { useEffect } from "react";
 import $api from "../config";
 // hooks
 import useActions from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+//
+import loading from '../utils/jj-loading.gif'
 
 export default function AuthWrapper({ children }: any) {
   const { isLoading } = useTypedSelector((state) => state.user);
@@ -30,7 +34,6 @@ export default function AuthWrapper({ children }: any) {
         setUser(user)
         setIsAuth(true)
         setIsLoading("success");
-        console.log(res);
       } catch (error) {
         setIsLoading("error");
       }
@@ -38,7 +41,12 @@ export default function AuthWrapper({ children }: any) {
   }, []);
 
   if (isLoading === "loading") {
-    return <div>loading..</div>;
+    return <div className="h-full flex items-center justify-center">
+        <Image 
+            src={loading}
+            alt="loading"
+        />
+    </div>;
   }
 
   return <div>{children}</div>;
