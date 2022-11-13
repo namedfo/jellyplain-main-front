@@ -22,7 +22,7 @@ export default function Card({ card }: any) {
   };
 
   return (
-    <div className="shadow-jj p-[15px] mt-[30px] rounded-[10px] bg-white w-[160px] sm:w-[235px]">
+    <div className="shadow-jj p-[15px] mt-[30px] mx-[20px] 400:mx-[0] rounded-[10px] bg-white w-full 400:w-[235px]">
       <div className="w-full h-[180px] flex items-center justify-center">
         {card?.image !== "1" && (
           <Image
@@ -43,25 +43,25 @@ export default function Card({ card }: any) {
         >
           {card?.title}
         </span>
-        <div className="flex flex-col sm:flex-row justify-between">
+        <div className="flex flex-row justify-between">
           <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
             <div className="flex items-center">
               <AiFillStar color="#fbbf24" />
-              <span className="text-[#79828e] text-[16px] font-medium ml-[5px]">
+              <span className="text-[#79828e] text-[17px] font-medium ml-[5px]">
                 4.3
               </span>
             </div>
             <div className="flex ml-[10px] items-center">
               <BiCommentDots color="#35404A" />
-              <span className="text-[#79828e] text-[16px] font-medium  ml-[5px]">
+              <span className="text-[#79828e] text-[17px] font-medium  ml-[5px]">
                 53
               </span>
             </div>
           </div>
-          <span className="font-medium text-[#5B9F32]">Оригинал</span>
+          <span className="font-medium text-[17px] text-[#5B9F32]">Оригинал</span>
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row mt-[5px] sm:mt-[10px] justify-between">
+      <div className="flex flex-row mt-[5px] sm:mt-[10px] justify-between">
         <div className="py-[2px] flex justify-start items-center">
           <span className="text-[#FFA500] text-[20px] font-medium">
             {card?.price} &#8381;
@@ -75,7 +75,7 @@ export default function Card({ card }: any) {
           }}
           className="rounded-[10px] px-[10px] py-[2px] font-medium text-[16px] text-white"
         >
-          В корзину
+          Подробнее
         </button>
         {/* <div className="flex  items-center">
           <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">

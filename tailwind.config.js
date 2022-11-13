@@ -9,6 +9,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        '400': "400px"
+      },
       boxShadow: {
         "jj": "0 3px 24px 0 rgb(34 41 47 / 7%)",
         "logo": "0 3px 5px 0 rgb(34 41 47 / 7%)",

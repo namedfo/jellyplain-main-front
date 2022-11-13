@@ -109,9 +109,9 @@ const PopupCart = () => {
                 key={card?.id}
                 className="flex px-[10px] justify-between py-[10px]"
               >
-                <div className="flex">
+                <div className="flex items-center">
                   {card.image !== "1" && (
-                    <Image width={90} height={90} src={card?.image} alt={""} />
+                    <img className="object-contain h-[90px] w-[90px]" src={card.productChilds[0]?.images[0]?.url} />
                   )}
                   <div className="flex ml-[10px] flex-col">
                     <span className="text-[#292929] text-[18px] font-medium">
