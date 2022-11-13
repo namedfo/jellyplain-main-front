@@ -24,6 +24,10 @@ export const userSlice = createSlice({
       ...state,
       user: action.payload,
     }),
+    setIsLoading: (state: initialStateType, action: any) => ({
+      ...state,
+      isLoading: action.payload,
+    }),
   },
 });
 

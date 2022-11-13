@@ -16,16 +16,8 @@ export default function Redirect() {
         const res = await axios.post("https://jellyplainv2.herokuapp.com/auth/login/vk", {
           code: dirtyData[3]
         });
-        const user = {
-          id: res.data.id,
-          createdAt: res.data.createdAt,
-          first_name: res.data.first_name,
-          last_name: res.data.last_name,
-          avatar_url: res.data.avatar_url,
-        }
 
         localStorage.setItem("jjwt", res.data.token)
-        localStorage.setItem("userjj", JSON.stringify(user))
 
         router.push('/')
 
