@@ -85,7 +85,6 @@ export default function Product() {
               <div className="block sm:hidden">
                 {productChild.images && (
                   <ImageGallery
-                    showFullscreenButton={false}
                     showThumbnails={false}
                     showPlayButton={false}
                     showBullets={true}
@@ -96,7 +95,7 @@ export default function Product() {
               </div>
             </div>
             <div>
-              <div className="shadow-jj mt-[25px] sm:mt-0 flex flex-col rounded-[10px] w-[650px] bg-white py-[15px] px-[25px]">
+              <div className="shadow-jj mt-[10px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[25px]">
                 <Title product={product} />
                 <div>
                   <span className="text-[#775C5C] font-medium text-[18px]">
@@ -111,7 +110,7 @@ export default function Product() {
                 <div className="flex flex-col mt-[30px]">
                   <div className="flex justify-between">
                     <span className="text-[#4A3333] font-medium text-[20px]">
-                      Comments
+                      Reviews
                     </span>
                     <button className="border text-[#8a63b9] hover:bg-[#8045C61A] px-[8px] rounded-[10px] font-medium text-[16px] border-[#8a63b9]">
                       Оставить отзыв
