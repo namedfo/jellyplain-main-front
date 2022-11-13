@@ -4,7 +4,7 @@ export default function Sidebar() {
   const { isAuth, user, isLoading } = useTypedSelector((state) => state.user);
   return (
     <>
-      {!isAuth && (
+      {isAuth && (
         <div className="flex w-full justify-between">
           <div className="flex flex-col">
             <div className="shadow-jj p-[15px] flex flex-col items-center rounded-[10px] bg-white w-[240px]">
