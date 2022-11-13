@@ -41,7 +41,6 @@ export default function Home() {
   const { selectedCategory } = useTypedSelector(state => state.main)
 
 
-  console.log(selectedCategory)
   useEffect(() => {
     (async () => {
       try {
@@ -49,7 +48,6 @@ export default function Home() {
           `https://jellyplainv2.herokuapp.com/product/getAll${selectedCategory === "all" ? "" : `?category=${selectedCategory}`}`
         );
         setCards(res.data);
-        console.log(res)
       } catch (error) {
         console.log(error);
       }
