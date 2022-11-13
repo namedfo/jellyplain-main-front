@@ -30,7 +30,7 @@ export default function MobileMenu() {
         className="hover:bg-[#8045C61A] relative rounded-[10px] p-[5px]"
       >
         {cart?.length > 0 && (
-              <div className="bg-[#ef7481] shadow-xl bottom-[-3px] left-[22px] text-[12px] px-[6px] absolute text-white rounded-[8px]">
+              <div className="bg-[#ef7481] shadow-xl bottom-[-3px] left-[22px] text-[12px] px-[3px] absolute text-white rounded-[8px]">
                 {cart.length}
               </div>
             )}
