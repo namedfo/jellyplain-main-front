@@ -12,7 +12,7 @@ export default function AuthWrapper({ children }: any) {
     useEffect(() => {
         (async () => {
             try {
-                const res = await $api.get('https://jellyplainv2.herokuapp.com/auth')
+                const res = await $api.get('https://jellyplainv2.herokuapp.com/auth/one')
 
                 console.log(res)
             } catch (error) {
