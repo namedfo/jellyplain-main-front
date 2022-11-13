@@ -22,7 +22,7 @@ export default function Sidebar() {
               <span className="absolute text-[#444f58] left-[15px] top-[3px]">
                 меню
               </span>
-              <button className="text-[#86368d] mt-[15px] w-[90%] hover:bg-[#8A63B91A] rounded-[10px] py-[6px] font-medium text-[20px]">
+              <button className="text-[#86368d] mt-[15px] w-[95%] hover:bg-[#8A63B91A] rounded-[10px] py-[6px] font-medium text-[20px]">
                 Заказы
               </button>
             </div>
