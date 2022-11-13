@@ -22,7 +22,7 @@ export default function Card({ card }: any) {
   };
 
   return (
-    <div className="shadow-jj p-[15px] mt-[30px] mx-[35px] 400:mx-[0] rounded-[10px] bg-white w-full 400:w-[235px]">
+    <div className="shadow-jj p-[15px] mt-[30px] 400:mx-[0] rounded-[10px] bg-white w-[250px] 400:w-[235px]">
       <div className="w-full h-[180px] flex items-center justify-center">
         {card?.image !== "1" && (
           <Image

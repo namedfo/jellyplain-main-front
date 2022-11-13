@@ -65,7 +65,7 @@ export default function Home() {
         </div>
         <div className="flex md:ml-[34px] w-full flex-col">
           <MenuCatalog />
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex justify-center 400:justify-start items-center gap-3 flex-wrap">
             {cards?.map((card: any) => (
               <Card key={card.id} card={card} />
             ))}
