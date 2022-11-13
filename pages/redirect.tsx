@@ -10,18 +10,14 @@ export default function Redirect() {
   useEffect(() => {
     (async () => {
       const dirtyData = router.asPath.split(/[&\/=\/?]/);
-      // const data: any = {
-      //   access_token: dirtyData[2],
-      //   user_id: dirtyData[6],
-      // };
-      console.log(dirtyData)
-      try {
-        // const res = await axios.post("http://5.23.48.96:3000/auth/login/vk", {
-        //   token: data.access_token,
-        //   userId: +data.user_id,
-        // });
 
-        // console.log(res);
+      console.log(dirtyData[3])
+      try {
+        const res = await axios.post("http://5.23.48.96:3000/auth/login/vk", {
+          code: dirtyData[3]
+        });
+
+        console.log(res);
       } catch (error) {}
     })();
   }, []);
