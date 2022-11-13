@@ -7,6 +7,7 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import useActions from "../hooks/useActions";
 
 export default function MobileMenu() {
+  const { cart } = useTypedSelector(state => state.cart);
   const { isAuth } = useTypedSelector(state => state.user)
 
   const { setIsOpenAuth } = useActions()
@@ -26,8 +27,13 @@ export default function MobileMenu() {
       </button>
       <button
         onClick={() => router.push("/cart")}
-        className="hover:bg-[#8045C61A] rounded-[10px] p-[5px]"
+        className="hover:bg-[#8045C61A] relative rounded-[10px] p-[5px]"
       >
+        {cart?.length > 0 && (
+              <div className="bg-[#ef7481] shadow-xl bottom-[-3px] left-[22px] text-[12px] px-[6px] absolute text-white rounded-[8px]">
+                {cart.length}
+              </div>
+            )}
         <FaShoppingBasket 
             color={router.pathname === "/cart" ? "#86368D" : '#DBD9D9'}  
             size={32} 
