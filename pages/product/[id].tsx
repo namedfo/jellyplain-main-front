@@ -95,7 +95,7 @@ export default function Product() {
               </div>
             </div>
             <div>
-              <div className="shadow-jj mt-[10px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[25px]">
+              {/* <div className="shadow-jj mt-[10px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[25px]">
                 <Title product={product} />
                 <div>
                   <span className="text-[#775C5C] font-medium text-[18px]">
@@ -117,7 +117,7 @@ export default function Product() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
