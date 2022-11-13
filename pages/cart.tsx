@@ -14,7 +14,7 @@ export default function Cart() {
     <Container>
       <Header />
       <div className="h-full pb-[70px]">
-        <div className="h-full shadow-jj">
+        <div className="h-full bg-white shadow-jj">
           <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
             {cart?.map((card: any) => (
               <Elem key={card.id} card={card} />
@@ -49,7 +49,7 @@ const Elem = ({ card }: any) => {
           />
         )}
         <div className="flex ml-[10px] flex-col">
-          <span className="text-[#292929] text-[18px] font-medium">
+          <span className="text-[#292929] text-[16px] font-medium">
             {card?.title}
           </span>
           <div>
@@ -68,7 +68,7 @@ const Elem = ({ card }: any) => {
         </div>
       </div>
       <div className="flex w-[95px] justify-between items-end flex-col">
-        <span className="text-[#FFA500] text-[18px] font-medium">
+        <span className="text-[#FFA500] text-[16px] font-medium">
           {card?.price} &#8381;
         </span>
         <button className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
