@@ -47,7 +47,7 @@ const VK = () => {
         fontSize: "18px",
         fontStyle: "700",
       }}
-      onClick={() => router.push("https://oauth.vk.com/authorize?client_id=51473574&display=page&redirect_uri=https://http://5.23.48.96:3333/redirect&scope=friends&response_type=token&v=5.131&state=123456")}
+      onClick={() => router.push("https://oauth.vk.com/authorize?client_id=51473574&display=page&redirect_uri=http://5.23.48.96:3333/redirect&scope=friends&response_type=token&v=5.131&state=123456")}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
