@@ -13,7 +13,7 @@ export default function Redirect() {
 
       console.log(dirtyData[3])
       try {
-        const res = await axios.post("http://5.23.48.96:3000/auth/login/vk", {
+        const res = await axios.post("https://jellyplainv2.herokuapp.com/auth/login/vk", {
           code: dirtyData[3]
         });
 
