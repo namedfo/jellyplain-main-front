@@ -11,20 +11,24 @@ export default function Redirect() {
     (async () => {
       const dirtyData = router.asPath.split(/[&\/=\/?]/);
 
-      console.log(dirtyData[3])
       try {
         const res = await axios.post("https://jellyplainv2.herokuapp.com/auth/login/vk", {
           code: dirtyData[3]
         });
 
-        console.log(res);
+        localStorage.setItem("jjwt", res.data.token)
+        localStorage.setItem("userjj", JSON.stringify({
+          first_name: res.data.first_name,
+          last_name: res.data.last_name,
+          avatar_url: res.data.avatar_url,
+        }))
       } catch (error) {}
     })();
   }, []);
   return (
     <Container>
       <div className="w-full h-full flex items-center justify-center">
-        Auth in process...
+        Авторизация, пожалуйста подождите...
       </div>
     </Container>
   );
