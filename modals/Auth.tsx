@@ -47,7 +47,7 @@ const VK = () => {
         fontSize: "18px",
         fontStyle: "700",
       }}
-      onClick={() => router.push("https://oauth.vk.com/authorize?client_id=51473574&display=page&redirect_uri=htts://jellyplain-main.vercel.app/redirect&scope=friends&response_type=code&v=5.131&state=123456")}
+      onClick={() => router.push("https://oauth.vk.com/authorize?client_id=51473574&display=page&redirect_uri=https://jellyplain-main.vercel.app/redirect&scope=friends&response_type=code&v=5.131&state=123456")}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
