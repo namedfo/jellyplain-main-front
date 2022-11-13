@@ -4,18 +4,24 @@ export default function Sidebar() {
   const { isAuth, user, isLoading } = useTypedSelector((state) => state.user);
   return (
     <>
-      {isAuth && (
+      {!isAuth && (
         <div className="flex w-full justify-between">
           <div className="flex flex-col">
             <div className="shadow-jj p-[15px] flex flex-col items-center rounded-[10px] bg-white w-[240px]">
-              <img 
-                className="border rounded-full w-[120px] h-[120px]"
-                src={user?.avatar_url}
-                alt="avatar"
-              />
+              {user?.avatar_url ? (
+                <img
+                  className="border rounded-full w-[120px] h-[120px]"
+                  src={user?.avatar_url}
+                  alt="avatar"
+                />
+              ) : (
+                <div className="border text-[#5e5850] text-[28px] rounded-full flex items-center justify-center w-[120px] h-[120px]">
+                  <span>{"M".charAt(0)}</span>
+                </div>
+              )}
               <div className="flex mt-[12px] text-[20px] items-center">
-                <span>Миша</span>
-                <span className="ml-[8px]">Полещенков</span>
+                <span>{user?.first_name}</span>
+                <span className="ml-[8px]">{user?.last_name}</span>
               </div>
             </div>
             <div className="relative shadow-jj mt-[30px] p-[15px] flex flex-col items-center rounded-[10px] bg-white w-[240px]">
@@ -34,7 +40,7 @@ export default function Sidebar() {
           </div>
         </div>
       )}
-      {isLoading === 'error' &&(
+      {isLoading === "error" && (
         <div
           style={{
             height: "calc(100% - 70px)",
