@@ -14,16 +14,18 @@ export default function Cart() {
     <Container>
       <Header />
       <div className="h-full pb-[70px]">
-        <div className="flex flex-col h-full shadow-jj px-[10px] overflow-y-auto divide-y">
-          {cart?.map((card: any) => (
-            <Elem key={card.id} card={card} />
-          ))}
+        <div className="h-full shadow-jj">
+          <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
+            {cart?.map((card: any) => (
+              <Elem key={card.id} card={card} />
+            ))}
+          </div>
           {isAuth ? (
-            <button className="bg-[#307fee] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
+            <button className="bg-[#307fee] my-[15px] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
               Купить
             </button>
           ) : (
-            <button className=" text-[#307fee] hover:underline font-medium text-[17px] w-full rounded-[10px]">
+            <button className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]">
               Чтобы продолжить покупку, необходимо авторизоваться
             </button>
           )}
