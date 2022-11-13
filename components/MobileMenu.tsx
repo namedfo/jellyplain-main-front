@@ -2,8 +2,14 @@ import { useRouter } from "next/router";
 //
 import { HiHome } from "react-icons/hi";
 import { FaUserAlt, FaShoppingBasket } from "react-icons/fa";
+// hooks
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import useActions from "../hooks/useActions";
 
 export default function MobileMenu() {
+  const { isAuth } = useTypedSelector(state => state.user)
+
+  const { setIsOpenAuth } = useActions()
 
   const router = useRouter();
 
@@ -28,7 +34,12 @@ export default function MobileMenu() {
         />
       </button>
       <button
-        onClick={() => router.push("/profile")}
+        onClick={() => {
+          if (!isAuth) {
+            return setIsOpenAuth(true)
+          }
+          return router.push('/profile')
+        }}
         className="hover:bg-[#8045C61A] rounded-[10px] p-[5px]"
       >
         <FaUserAlt 

@@ -43,8 +43,8 @@ export default function AuthWrapper({ children }: any) {
   if (isLoading === "loading") {
     return <div className="h-full flex items-center justify-center">
         <Image 
-            height={120}
-            width={120}
+            height={110}
+            width={110}
             src={loading}
             alt="loading"
         />

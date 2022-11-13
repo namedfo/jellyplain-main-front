@@ -16,11 +16,11 @@ import useOutside from "../hooks/useOutside";
 import Auth from "../modals/Auth";
 
 export default function Header() {
-  const [isOpenAuth, setIsOpenAuth] = useState(false)
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector(state => state.user);
+  const { isOpenAuth } = useTypedSelector(state => state.main)
 
-  const { setCartIsShow } = useActions();
+  const { setCartIsShow, setIsOpenAuth } = useActions();
 
   const router = useRouter();
 

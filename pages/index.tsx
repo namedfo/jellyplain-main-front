@@ -49,6 +49,7 @@ export default function Home() {
           `https://jellyplainv2.herokuapp.com/order/getAll${selectedCategory === "all" ? "" : `?category=${selectedCategory}`}`
         );
         setCards(res.data);
+        console.log(res)
       } catch (error) {
         console.log(error);
       }
