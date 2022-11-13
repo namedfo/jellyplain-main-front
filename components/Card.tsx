@@ -23,15 +23,13 @@ export default function Card({ card }: any) {
 
   return (
     <div className="shadow-jj p-[15px] mt-[30px] 400:mx-[0] rounded-[10px] bg-white w-[270px] 400:w-[235px]">
-      <div className="w-full h-[140px] flex items-center justify-center">
+      <div className="w-full h-[170px] 400:h-[140px] flex items-center justify-center">
         {card?.image !== "1" && (
           <img
             onClick={onHandleProduct}
-            width={200}
-            height={90}
             alt="img"
             src={card.productChilds[0]?.images[0]?.url}
-            className="cursor-pointer object-contain border rounded-[10px]"
+            className="cursor-pointer w-[235px] 400:w-[200px] 400:h-[90px] object-contain border rounded-[10px]"
           />
         )}
       </div>
