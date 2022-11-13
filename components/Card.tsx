@@ -23,20 +23,19 @@ export default function Card({ card }: any) {
 
   return (
     <div className="shadow-jj p-[15px] mt-[30px] 400:mx-[0] rounded-[10px] bg-white w-[270px] 400:w-[235px]">
-      <div className="w-full h-[180px] flex items-center justify-center">
+      <div className="w-full h-[140px] flex items-center justify-center">
         {card?.image !== "1" && (
-          <Image
+          <img
             onClick={onHandleProduct}
-            objectFit="contain"
-            width={150}
-            height={100}
+            width={200}
+            height={90}
             alt="img"
             src={card.productChilds[0]?.images[0]?.url}
-            className="cursor-pointer"
+            className="cursor-pointer object-contain border rounded-[10px]"
           />
         )}
       </div>
-      <div className="flex flex-col">
+      <div className="flex mt-[10px] flex-col">
         <span
           onClick={onHandleProduct}
           className="text-[#414752] cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis text-[18px] font-medium"
