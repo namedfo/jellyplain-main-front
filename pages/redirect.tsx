@@ -18,6 +18,8 @@ export default function Redirect() {
 
         localStorage.setItem("jjwt", res.data.token)
         localStorage.setItem("userjj", JSON.stringify({
+          id: res.data.id,
+          createdAt: res.data.createdAt,
           first_name: res.data.first_name,
           last_name: res.data.last_name,
           avatar_url: res.data.avatar_url,
