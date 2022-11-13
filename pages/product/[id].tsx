@@ -75,21 +75,21 @@ export default function Product() {
           <div className="flex flex-col xl:flex-row justify-between sm:mt-[25px]">
             <div className="shadow-jj w-full sm:w-[600px] flex justify-center rounded-[10px] bg-white p-[15px]">
               <div className="hidden sm:flex">
-                {productChild.images && (
+                {productChild?.images && (
                 <ImageGallery
                   autoPlay={true}
-                  items={getImgFormat(productChild.images)}
+                  items={getImgFormat(productChild?.images)}
                 />
               )}
               </div>
               <div className="block sm:hidden">
-                {productChild.images && (
+                {productChild?.images && (
                   <ImageGallery
                     showThumbnails={false}
                     showPlayButton={false}
                     showBullets={true}
                     autoPlay={true}
-                    items={getImgFormat(productChild.images)}
+                    items={getImgFormat(productChild?.images)}
                   />
                 )}
               </div>
