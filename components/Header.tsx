@@ -17,8 +17,8 @@ import Auth from "../modals/Auth";
 
 export default function Header() {
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
-  const { isAuth } = useTypedSelector(state => state.user);
-  const { isOpenAuth } = useTypedSelector(state => state.main)
+  const { isAuth } = useTypedSelector((state) => state.user);
+  const { isOpenAuth } = useTypedSelector((state) => state.main);
 
   const { setCartIsShow, setIsOpenAuth } = useActions();
 
@@ -67,16 +67,22 @@ export default function Header() {
                 {cart.length}
               </div>
             )}
-            <Image color="#58355a" width={28} height={28} src={cartImg} alt="" />
+            <Image
+              color="#58355a"
+              width={28}
+              height={28}
+              src={cartImg}
+              alt=""
+            />
           </button>
           {cartIsShow && <PopupCart />}
         </div>
         <button
           onClick={() => {
             if (!isAuth) {
-              return setIsOpenAuth(true)
+              return setIsOpenAuth(true);
             }
-            return router.push('/profile')
+            return router.push("/profile");
           }}
           className="hover:bg-[#86368D1A] rounded-md p-[6px] ml-[20px]"
         >
@@ -89,9 +95,10 @@ export default function Header() {
 
 const PopupCart = () => {
   const { cart } = useTypedSelector((state) => state.cart);
+  const { isAuth } = useTypedSelector((state) => state.main);
 
   return (
-    <div className="shadow-popup flex flex-col w-[420px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
+    <div className="shadow-popup z-10 flex flex-col w-[420px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">
         Корзина
       </span>
@@ -104,14 +111,17 @@ const PopupCart = () => {
       ) : (
         <>
           <div className="flex flex-col max-h-[350px] overflow-y-auto divide-y">
-            {cart.map((card: any) => (
+            {cart?.map((card: any) => (
               <div
                 key={card?.id}
                 className="flex px-[10px] justify-between py-[10px]"
               >
                 <div className="flex items-center">
                   {card?.image !== "1" && (
-                    <img className="object-contain h-[90px] w-[90px]" src={card.productChilds[0]?.images[0]?.url} />
+                    <img
+                      className="object-contain h-[90px] w-[90px]"
+                      src={card?.productChilds[0]?.images[0]?.url}
+                    />
                   )}
                   <div className="flex ml-[10px] flex-col">
                     <span className="text-[#292929] text-[18px] font-medium">
@@ -150,9 +160,15 @@ const PopupCart = () => {
               <span>Итог</span>
               <span>6 111 &#8381;</span>
             </div>
-            <button className="bg-[#307fee] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
-              Купить
-            </button>
+            {isAuth ? (
+              <button className="bg-[#307fee] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
+                Купить
+              </button>
+            ) : (
+              <button className=" text-[#307fee] hover:underline font-medium text-[17px] w-full rounded-[10px]">
+                Чтобы продолжить покупку, необходимо авторизоваться
+              </button>
+            )}
           </div>
         </>
       )}
