@@ -4,10 +4,11 @@ const $api = axios.create({
   baseURL: "https://jellyplainv2.herokuapp.com/",
 });
 
-$api.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${localStorage.getItem("jjwt")}`;
+$api.interceptors.request.use((config: any) => {
+  config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
   return config;
-});
+})
+
 
 
 
