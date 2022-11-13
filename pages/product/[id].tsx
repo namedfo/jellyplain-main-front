@@ -40,7 +40,8 @@ export default function Product() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get(`https://jellyplainv2.herokuapp.com/order/${1}`)
+        const res = await axios.get(`https://jellyplainv2.herokuapp.com/product/getOne?id=${1}`)
+        console.log(res)
       } catch (error) {
         
       }

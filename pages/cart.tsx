@@ -13,7 +13,7 @@ export default function Cart() {
   return (
     <Container>
       <Header />
-      <div className="h-full pb-[70px]">
+      <div className="h-full md:mt-[30px] pb-[70px]">
         <div className="h-full rounded-[10px] bg-white shadow-jj">
           <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
             {cart?.map((card: any) => (

@@ -46,7 +46,7 @@ export default function Home() {
     (async () => {
       try {
         const res = await axios.get(
-          `https://jellyplainv2.herokuapp.com/order/getAll${selectedCategory === "all" ? "" : `?category=${selectedCategory}`}`
+          `https://jellyplainv2.herokuapp.com/product/getAll${selectedCategory === "all" ? "" : `?category=${selectedCategory}`}`
         );
         setCards(res.data);
         console.log(res)
