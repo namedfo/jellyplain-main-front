@@ -8,7 +8,7 @@ export default function Profile() {
     return (
         <Container>
             <Header />
-            <div className="pt-[50px] h-full">
+            <div className="pt-0 sm:pt-[50px] h-full">
                 <Sidebar />
             </div>
         </Container>
