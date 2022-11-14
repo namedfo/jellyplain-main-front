@@ -1,5 +1,6 @@
 // components
 import Header from "../components/Header";
+import LLoading from "../components/Loading";
 import Sidebar from "../components/profile/Sidebar";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 // layouts
@@ -12,9 +13,9 @@ export default function Profile() {
     <Container>
       <Header />
       <div className="pt-0 sm:pt-[50px] h-full">
-        {isAuth && isLoading === "success" ? (
-          <Sidebar />
-        ) : (
+        {isAuth && isLoading === "success" && <Sidebar />}
+        {isLoading === "loading" && <LLoading />}
+        {isLoading === "error" && (
           <div
             style={{
               height: "calc(100% - 70px)",
