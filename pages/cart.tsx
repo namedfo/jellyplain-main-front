@@ -21,11 +21,11 @@ export default function Cart() {
             ))}
           </div>
           {isAuth ? (
-            <button className="bg-[#307fee] my-[15px] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
+            <button className="bg-[#307fee] mb-[65px] my-[15px] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
               Купить
             </button>
           ) : (
-            <button className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]">
+            <button className=" text-[#307fee] mb-[65px] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]">
               Чтобы продолжить покупку, необходимо авторизоваться
             </button>
           )}
