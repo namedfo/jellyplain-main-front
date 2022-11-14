@@ -251,7 +251,7 @@ const Reviews = () => {
               <div className="flex items-center">
                 <div className="flex items-center">
                   <AiFillStar color="#fbbf24" />
-                  <span className="text-slate-500 leading-[18px] text-[17px] font-medium ml-[5px]">
+                  <span className="text-slate-500 leading-[18px] text-[17px] font-medium ml-[3px]">
                     4
                   </span>
                 </div>

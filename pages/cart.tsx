@@ -18,35 +18,45 @@ export default function Cart() {
     <Container>
       <Header />
       <div className="h-full md:mt-[30px]">
-        <div className="overflow-y-auto rounded-[10px] bg-white shadow-jj">
-          <span className="text-[20px] ml-[15px] mb-[7px] text-[#292929] font-medium">
-            Корзина
-          </span>
-          <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
-            {cart?.map((card: any) => (
-              <Elem key={card.id} card={card} />
-            ))}
-          </div>
-          <div className="px-[15px] mt-[10px]">
-            <div className="flex text-[18px] text-[#212121] font-medium justify-between">
-              <span>Итог</span>
-              <span>6 111 &#8381;</span>
+        {cart?.length > 0 ? (
+          <>
+            <div className="overflow-y-auto rounded-[10px] bg-white shadow-jj">
+              <span className="text-[20px] ml-[15px] mb-[7px] text-[#292929] font-medium">
+                Корзина
+              </span>
+              <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
+                {cart?.map((card: any) => (
+                  <Elem key={card.id} card={card} />
+                ))}
+              </div>
+              <div className="px-[15px] mt-[10px]">
+                <div className="flex text-[18px] text-[#212121] font-medium justify-between">
+                  <span>Итог</span>
+                  <span>6 111 &#8381;</span>
+                </div>
+              </div>
+              {isAuth ? (
+                <button className="bg-[#307fee] my-[15px] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
+                  Купить
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsOpenAuth(true)}
+                  className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]"
+                >
+                  Чтобы продолжить покупку, необходимо авторизоваться
+                </button>
+              )}
             </div>
+            <div className="h-[75px]" />
+          </>
+        ) : (
+          <div className="h-full flex items-center justify-center">
+            <span className="font-medium text-slate-600">
+              Ваша корзина пуста :(
+            </span>
           </div>
-          {isAuth ? (
-            <button className="bg-[#307fee] my-[15px] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
-              Купить
-            </button>
-          ) : (
-            <button
-              onClick={() => setIsOpenAuth(true)}
-              className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]"
-            >
-              Чтобы продолжить покупку, необходимо авторизоваться
-            </button>
-          )}
-        </div>
-        <div className="h-[75px]" />
+        )}
       </div>
     </Container>
   );
