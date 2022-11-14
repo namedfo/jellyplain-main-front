@@ -20,7 +20,7 @@ export default function Cart() {
               <Elem key={card.id} card={card} />
             ))}
           </div>
-          <div className="px-[15px]">
+          <div className="px-[15px] mt-[10px]">
             <div className="flex text-[18px] text-[#212121] font-medium justify-between">
               <span>Итог</span>
               <span>6 111 &#8381;</span>
