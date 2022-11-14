@@ -15,7 +15,7 @@ export default function MobileMenu() {
   const router = useRouter();
 
   return (
-    <div className="shadow-jj md:hidden flex justify-around items-center px-[20px] h-[60px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]">
+    <div className={`shadow-jj md:hidden flex ${router.pathname === '/product/[id]' ? "justify-between" : "justify-around"} items-center px-[20px] h-[60px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]`}>
       {router.pathname === "/product/[id]" ? (
         <>
           <button
