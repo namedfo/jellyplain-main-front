@@ -15,17 +15,21 @@ export default function MobileMenu() {
   const router = useRouter();
 
   return (
-    <div className="shadow-jj md:hidden flex justify-around items-center px-[20px] h-[55px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]">
+    <div className="shadow-jj md:hidden flex justify-around items-center px-[20px] h-[60px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]">
       {router.pathname === "/product/[id]" ? (
         <>
-          <span className="text-[#ffa500] font-medium text-[22px]">
-            6990 &#8381;
-          </span>
           <button
             // onClick={() => setCard(product)}
-            className="bg-[#8a63b9] text-[17px] hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
+            className="border-[#8a63b9] h-[42px] border shadow-md flex flex-col justify-center items-center hover:bg-[#8062a7] text-[#8a63b9] font-medium px-[15px] py-[4px] rounded-[15px]"
           >
-            <span>В корзину</span>
+            <span className="leading-[26px] text-[17px]">В корзину</span>
+          </button>
+          <button
+            // onClick={() => setCard(product)}
+            className="bg-[#8a63b9] border shadow-md flex flex-col items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[15px]"
+          >
+            <span className="leading-[17px] text-[17px]">Купить сейчас</span>
+            <span className="leading-[15px] text-[14px]">6990 &#8381;</span>
           </button>
         </>
       ) : (

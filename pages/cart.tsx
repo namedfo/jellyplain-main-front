@@ -5,11 +5,15 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import Header from "../components/Header";
 // layouts
 import Container from "../layouts/Container";
+// hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import useActions from "../hooks/useActions";
 
 export default function Cart() {
   const { cart } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
+  const { setIsOpenAuth } = useActions()
+
   return (
     <Container>
       <Header />
@@ -31,12 +35,12 @@ export default function Cart() {
               Купить
             </button>
           ) : (
-            <button className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]">
+            <button onClick={() => setIsOpenAuth(true)} className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]">
               Чтобы продолжить покупку, необходимо авторизоваться
             </button>
           )}
         </div>
-        <div className="h-[75px]"></div>
+        <div className="h-[75px]" />
       </div>
     </Container>
   );

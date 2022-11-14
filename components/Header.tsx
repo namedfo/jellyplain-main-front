@@ -75,7 +75,12 @@ export default function Header() {
               alt=""
             />
           </button>
-          {cartIsShow && <PopupCart />}
+          {cartIsShow && (
+            <PopupCart
+              setCartIsShow={setCartIsShow}
+              setIsOpenAuth={setIsOpenAuth}
+            />
+          )}
         </div>
         <button
           onClick={() => {
@@ -93,7 +98,7 @@ export default function Header() {
   );
 }
 
-const PopupCart = () => {
+const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
   const { cart } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
 
@@ -165,7 +170,13 @@ const PopupCart = () => {
                 Купить
               </button>
             ) : (
-              <button className=" text-[#307fee] hover:underline font-medium text-[17px] w-full rounded-[10px]">
+              <button
+                onClick={() => {
+                  setCartIsShow(false);
+                  setIsOpenAuth(true);
+                }}
+                className=" text-[#307fee] hover:underline font-medium text-[17px] w-full rounded-[10px]"
+              >
                 Чтобы продолжить покупку, необходимо авторизоваться
               </button>
             )}
