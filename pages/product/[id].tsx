@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import ImageGallery from "react-image-gallery";
 //
 import { AiFillStar, AiOutlineArrowLeft } from "react-icons/ai";
-import { IoIosSend } from 'react-icons/io'
+import { IoIosSend } from "react-icons/io";
 import { BiCommentDots } from "react-icons/bi";
 // components
 import Header from "../../components/Header";
@@ -248,26 +248,37 @@ const Reviews = () => {
             <div className="border bg-[whitesmoke] rounded-full h-[40px] w-[40px]" />
             <div className="flex font-medium ml-[10px] flex-col">
               <span className="leading-[18px]">Misha Poleschenkov</span>
-              <span className="leading-[18px]">rating</span>
+              <div className="flex items-center">
+                <div className="flex items-center">
+                  <AiFillStar color="#fbbf24" />
+                  <span className="text-slate-500 leading-[18px] text-[17px] font-medium ml-[5px]">
+                    4
+                  </span>
+                </div>
+                <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+                <span className="text-slate-500 leading-[18px] text-[17px] font-medium">
+                  date
+                </span>
+              </div>
             </div>
           </div>
           <div className="text-[18px] leading-[20px]">
             <span className="break-words">
               sssssssssssssssssssssssssssssssssssssss
             </span>
-            <button className="text-[#86368d] ml-[30px] text-[16px] hover:underline">
+            {/* <button className="text-[#86368d] ml-[30px] text-[16px] hover:underline">
               дополнить
-            </button>
+            </button> */}
           </div>
-          <div className="flex mt-[10px] items-center">
-            <div className="border mr-[15px] bg-[whitesmoke] rounded-full h-[32px] w-[32px]" />
+          {/* <div className="flex mt-[10px] items-center">
+            <div className="border mr-[10px] bg-[whitesmoke] rounded-full h-[32px] w-[32px]" />
             <input 
               className="w-full h-full px-[12px] rounded-[10px] border outline-none"
             />
-            <button className="bg-[#0077ff] ml-[15px] px-[8px] py-[3px] rounded-[12px]">
+            <button className="bg-[#0077ff] ml-[10px] px-[8px] py-[3px] rounded-[12px]">
                 <IoIosSend color="white" size={24} />
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex pt-[15px] flex-col">
