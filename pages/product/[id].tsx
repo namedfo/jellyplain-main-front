@@ -40,6 +40,8 @@ export default function Product() {
 
   const [isLoading, setIsLoading] = useState<any>("idle");
 
+  const { setCard } = useActions();
+
   useEffect(() => {
     (async () => {
       setIsLoading("loading");
@@ -97,10 +99,10 @@ export default function Product() {
               </div>
             </div>
             <div className="flex flex-col">
-              <Info product={product} />
+              <Info setCard={setCard} product={product} />
               <Reviews />
             </div>
-            <div className="block sm:hidden mt-[75px]"></div>
+            <div className="block sm:hidden mt-[75px]" />
           </div>
         </div>
       )}
@@ -108,23 +110,69 @@ export default function Product() {
   );
 }
 
-const Info = ({ product }: any) => {
+const Info = ({ product, setCard }: any) => {
   return (
     <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[15px]">
-      <Title product={product} />
-
-      <div>
-        <span className="text-[#775C5C] font-medium text-[18px]">Colors</span>
+      <Title setCard={setCard} product={product} />
+      <div className="mt-[10px]">
+        <span className="text-[#775C5C] font-medium text-[18px]">Цвета</span>
+        <div className="flex flex-wrap mt-[5px]">
+          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-white border" />
+          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-[#a78bfa] border" />
+          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-[#facc15] border" />
+          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-black border" />
+        </div>
       </div>
-      <div>
-        <span className="text-[#775C5C] font-medium text-[18px]">Sizes</span>
+      <div className="mt-[10px]">
+        <span className="text-[#775C5C] font-medium text-[18px]">Размеры</span>
+        <div className="my-[7px] flex flex-wrap">
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            38
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            39
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            40
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            41
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            42
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            43
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            44
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            45
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            46
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            47
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            48
+          </button>
+          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
+            49
+          </button>
+          <button className="border bg-[#BEA0E2] text-white my-[3px] ml-[5px] px-[17px] py-[3px] rounded-[10px]">
+            50
+          </button>
+        </div>
       </div>
       <div className="flex sm:hidden items-center justify-between">
         <span className="text-[#ffa500] font-medium text-[22px]">
           {product?.price} &#8381;
         </span>
         <button
-          // onClick={() => setCard(product)}
+          onClick={() => setCard(product)}
           className="bg-[#8a63b9] text-[17px] hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
         >
           <span>В корзину</span>
@@ -134,9 +182,7 @@ const Info = ({ product }: any) => {
   );
 };
 
-const Title = ({ product }: any) => {
-  const { setCard } = useActions();
-
+const Title = ({ product, setCard }: any) => {
   return (
     <div className="flex justify-between">
       <div className="flex flex-col">
