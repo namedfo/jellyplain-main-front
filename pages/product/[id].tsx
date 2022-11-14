@@ -73,25 +73,27 @@ export default function Product() {
       ) : (
         <div className="flex md:pt-[50px] h-full flex-col">
           <div className="flex flex-col xl:flex-row justify-between sm:mt-[25px]">
-            <div className="shadow-jj w-full sm:w-[600px] flex justify-center rounded-[10px] bg-white p-[15px]">
-              <div className="hidden sm:flex">
-                {productChild?.images && (
-                <ImageGallery
-                  autoPlay={true}
-                  items={getImgFormat(productChild?.images)}
-                />
-              )}
-              </div>
-              <div className="block sm:hidden">
-                {productChild?.images && (
-                  <ImageGallery
-                    showThumbnails={false}
-                    showPlayButton={false}
-                    showBullets={true}
-                    autoPlay={true}
-                    items={getImgFormat(productChild?.images)}
-                  />
-                )}
+            <div>
+              <div className="shadow-jj w-full sm:w-[600px] flex justify-center rounded-[10px] bg-white p-[15px]">
+                <div className="hidden sm:flex">
+                  {productChild?.images && (
+                    <ImageGallery
+                      autoPlay={true}
+                      items={getImgFormat(productChild?.images)}
+                    />
+                  )}
+                </div>
+                <div className="block sm:hidden">
+                  {productChild?.images && (
+                    <ImageGallery
+                      showThumbnails={false}
+                      showPlayButton={false}
+                      showBullets={true}
+                      autoPlay={true}
+                      items={getImgFormat(productChild?.images)}
+                    />
+                  )}
+                </div>
               </div>
             </div>
             <div>
@@ -107,16 +109,7 @@ export default function Product() {
                     Sizes
                   </span>
                 </div>
-                <div className="flex flex-col mt-[30px]">
-                  <div className="flex justify-between">
-                    <span className="text-[#4A3333] font-medium text-[20px]">
-                      Reviews
-                    </span>
-                    <button className="border text-[#8a63b9] hover:bg-[#8045C61A] px-[8px] rounded-[10px] font-medium text-[16px] border-[#8a63b9]">
-                      Оставить отзыв
-                    </button>
-                  </div>
-                </div>
+                <Reviews />
               </div>
             </div>
           </div>
@@ -163,6 +156,71 @@ const Title = ({ product }: any) => {
         >
           <span>В корзину</span>
         </button>
+      </div>
+    </div>
+  );
+};
+
+const Reviews = () => {
+  return (
+    <div className="flex flex-col mt-[30px]">
+      <div className="flex justify-between">
+        <span className="text-[#4A3333] font-medium text-[20px]">Отзывы</span>
+        <button className="border text-[#8a63b9] hover:bg-[#8045C61A] px-[8px] rounded-[10px] font-medium text-[16px] border-[#8a63b9]">
+          Оставить отзыв
+        </button>
+      </div>
+      <div className="flex  divide-y gap-[15px] mt-[10px] flex-col">
+        <div className="flex pt-[15px] flex-col">
+          <div className="flex items-center">
+            <div className="border bg-[whitesmoke] rounded-full h-[40px] w-[40px]" />
+            <div className="flex font-medium ml-[10px] flex-col">
+              <span className="leading-[18px]">Misha Poleschenkov</span>
+              <span className="leading-[18px]">rating</span>
+            </div>
+          </div>
+          <span className="text-[18px] leading-[20px] break-words">
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+          </span>
+        </div>
+
+        <div className="flex pt-[15px] flex-col">
+          <div className="flex items-center">
+            <div className="border bg-[whitesmoke] rounded-full h-[40px] w-[40px]" />
+            <div className="flex font-medium ml-[10px] flex-col">
+              <span className="leading-[18px]">Misha Poleschenkov</span>
+              <span className="leading-[18px]">rating</span>
+            </div>
+          </div>
+          <span className="text-[18px] leading-[20px] break-words">
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+          </span>
+        </div>
+        <div className="flex pt-[15px] flex-col">
+          <div className="flex items-center">
+            <div className="border bg-[whitesmoke] rounded-full h-[40px] w-[40px]" />
+            <div className="flex font-medium ml-[10px] flex-col">
+              <span className="leading-[18px]">Misha Poleschenkov</span>
+              <span className="leading-[18px]">rating</span>
+            </div>
+          </div>
+          <span className="text-[18px] leading-[20px] break-words">
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+          </span>
+        </div>
+        <div className="flex pt-[15px] flex-col">
+          <div className="flex items-center">
+            <div className="border bg-[whitesmoke] rounded-full h-[40px] w-[40px]" />
+            <div className="flex font-medium ml-[10px] flex-col">
+              <span className="leading-[18px]">Misha Poleschenkov</span>
+              <span className="leading-[18px]">rating</span>
+            </div>
+          </div>
+          <span className="text-[18px] leading-[20px] break-words">
+            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+          </span>
+        </div>
+        <div className="block sm:hidden mt-[75px]"></div>
       </div>
     </div>
   );
