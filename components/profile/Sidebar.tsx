@@ -21,7 +21,7 @@ export default function Sidebar() {
   };
   return (
     <>
-      {!isAuth && (
+      {isAuth && (
         <div className="flex flex-col md:flex-row w-full justify-between">
           <div className="flex flex-col">
             <div className="shadow-jj relative p-[15px] flex flex-col items-center rounded-[10px] bg-white w-full sm:w-[240px]">
