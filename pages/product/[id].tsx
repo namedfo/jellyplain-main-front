@@ -97,31 +97,7 @@ export default function Product() {
               </div>
             </div>
             <div className="flex flex-col">
-              <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[25px]">
-                <Title product={product} />
-
-                <div>
-                  <span className="text-[#775C5C] font-medium text-[18px]">
-                    Colors
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[#775C5C] font-medium text-[18px]">
-                    Sizes
-                  </span>
-                </div>
-                <div className="flex sm:hidden items-center justify-between">
-                  <span className="text-[#ffa500] font-medium text-[20px] sm:text-[22px]">
-                    {product?.price} &#8381;
-                  </span>
-                  <button
-                    // onClick={() => setCard(product)}
-                    className="bg-[#8a63b9] text-[17px] hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
-                  >
-                    <span>В корзину</span>
-                  </button>
-                </div>
-              </div>
+              <Info product={product} />
               <Reviews />
             </div>
             <div className="block sm:hidden mt-[75px]"></div>
@@ -131,6 +107,32 @@ export default function Product() {
     </Container>
   );
 }
+
+const Info = ({ product }: any) => {
+  return (
+    <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[15px]">
+      <Title product={product} />
+
+      <div>
+        <span className="text-[#775C5C] font-medium text-[18px]">Colors</span>
+      </div>
+      <div>
+        <span className="text-[#775C5C] font-medium text-[18px]">Sizes</span>
+      </div>
+      <div className="flex sm:hidden items-center justify-between">
+        <span className="text-[#ffa500] font-medium text-[22px]">
+          {product?.price} &#8381;
+        </span>
+        <button
+          // onClick={() => setCard(product)}
+          className="bg-[#8a63b9] text-[17px] hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
+        >
+          <span>В корзину</span>
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const Title = ({ product }: any) => {
   const { setCard } = useActions();
