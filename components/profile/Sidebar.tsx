@@ -42,7 +42,7 @@ export default function Sidebar() {
               </div>
               <button
                 onClick={onHandleExit}
-                className="absolute block font-medium sm:hidden text-[#A53D3D] right-[15px] top-[5px]"
+                className="absolute font-medium text-[#A53D3D] right-[15px] top-[5px]"
               >
                 выйти
               </button>
@@ -53,12 +53,6 @@ export default function Sidebar() {
               </span>
               <button className="text-[#86368d] mt-[20px] sm:mt-[15px] w-[98%] hover:bg-[#8A63B91A] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]">
                 Заказы
-              </button>
-              <button
-                onClick={onHandleExit}
-                className="text-[#A53D3D] hidden sm:block mt-[20px] sm:mt-[30px] w-[98%] hover:bg-[#A53D3D1A] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]"
-              >
-                Выйти
               </button>
             </div>
           </div>
