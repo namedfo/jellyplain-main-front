@@ -4,7 +4,7 @@ import useActions from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export default function Sidebar() {
-  const { user, isLoading } = useTypedSelector((state) => state.user);
+  const { user } = useTypedSelector((state) => state.user);
 
   const { setUser, setIsAuth } = useActions();
 
@@ -32,7 +32,7 @@ export default function Sidebar() {
               />
             ) : (
               <div className="border bg-[whitesmoke] text-[#5e5850] text-[28px] rounded-full flex items-center justify-center w-[120px] h-[120px]">
-                <span>{"M".charAt(0)}</span>
+                <span>{user?.first_name.charAt(0)}</span>
               </div>
             )}
             <div className="flex mt-[12px] text-[20px] items-center">
