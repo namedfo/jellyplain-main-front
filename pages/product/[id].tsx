@@ -223,7 +223,7 @@ const Title = ({ product, setCard }: any) => {
 
 const Reviews = () => {
   return (
-    <div className="flex w-full shadow-jj bg-white sm:w-[650px] py-[15px] px-[25px] flex-col mt-[7px] sm:mt-[30px]">
+    <div className="flex w-full shadow-jj rounded-[10px] bg-white sm:w-[650px] p-[15px] flex-col mt-[7px] sm:mt-[30px]">
       <div className="flex justify-between">
         <span className="text-[#4A3333] font-medium text-[20px]">Отзывы</span>
         <button className="border text-[#8a63b9] hover:bg-[#8045C61A] px-[8px] rounded-[10px] font-medium text-[16px] border-[#8a63b9]">
