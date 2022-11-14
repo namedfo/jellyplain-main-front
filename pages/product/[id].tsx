@@ -97,8 +97,9 @@ export default function Product() {
               </div>
             </div>
             <div>
-              <div className="shadow-jj mt-[10px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[25px]">
+              <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[25px]">
                 <Title product={product} />
+
                 <div>
                   <span className="text-[#775C5C] font-medium text-[18px]">
                     Colors
@@ -108,6 +109,17 @@ export default function Product() {
                   <span className="text-[#775C5C] font-medium text-[18px]">
                     Sizes
                   </span>
+                </div>
+                <div className="flex sm:hidden items-center justify-between">
+                  <span className="text-[#ffa500] font-medium text-[20px] sm:text-[22px]">
+                    {product?.price} &#8381;
+                  </span>
+                  <button
+                    // onClick={() => setCard(product)}
+                    className="bg-[#8a63b9] text-[17px] hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
+                  >
+                    <span>В корзину</span>
+                  </button>
                 </div>
                 <Reviews />
               </div>
@@ -125,7 +137,9 @@ const Title = ({ product }: any) => {
   return (
     <div className="flex justify-between">
       <div className="flex flex-col">
-        <span className="text-[22px] font-medium">{product?.title}</span>
+        <span className="text-[20px] sm:text-[22px] font-medium">
+          {product?.title}
+        </span>
         <div className="flex justify-start">
           <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
             <div className="flex items-center">
@@ -146,7 +160,7 @@ const Title = ({ product }: any) => {
           </span>
         </div>
       </div>
-      <div className="flex items-end  flex-col">
+      <div className="hidden sm:flex items-end  flex-col">
         <span className="text-[#ffa500] font-medium text-[22px]">
           {product?.price} &#8381;
         </span>
@@ -163,7 +177,7 @@ const Title = ({ product }: any) => {
 
 const Reviews = () => {
   return (
-    <div className="flex flex-col mt-[30px]">
+    <div className="flex flex-col mt-[50px] sm:mt-[30px]">
       <div className="flex justify-between">
         <span className="text-[#4A3333] font-medium text-[20px]">Отзывы</span>
         <button className="border text-[#8a63b9] hover:bg-[#8045C61A] px-[8px] rounded-[10px] font-medium text-[16px] border-[#8a63b9]">
