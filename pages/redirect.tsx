@@ -9,7 +9,7 @@ import Container from "../layouts/Container";
 export default function Redirect() {
   const router = useRouter();
 
-  const { setIsAuth } = useActions()
+  const { setIsAuth, setIsLoading } = useActions()
 
 
   useEffect(() => {
@@ -23,6 +23,7 @@ export default function Redirect() {
 
         localStorage.setItem("jjwt", res.data.token)
         setIsAuth(true)
+        setIsLoading("success")
 
         router.push('/')
 
