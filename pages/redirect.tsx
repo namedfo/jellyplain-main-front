@@ -19,7 +19,7 @@ export default function Redirect() {
 
         localStorage.setItem("jjwt", res.data.token)
 
-        router.push('/')
+        router.push('/profile')
 
       } catch (error) {}
     })();
