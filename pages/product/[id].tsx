@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 //
 import ImageGallery from "react-image-gallery";
 //
-import { AiFillStar, AiOutlineArrowLeft  } from "react-icons/ai";
+import { AiFillStar, AiOutlineArrowLeft } from "react-icons/ai";
+import { IoIosSend } from 'react-icons/io'
 import { BiCommentDots } from "react-icons/bi";
 // components
 import Header from "../../components/Header";
@@ -43,7 +44,7 @@ export default function Product() {
 
   const { setCard } = useActions();
 
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     (async () => {
@@ -89,9 +90,10 @@ export default function Product() {
                   )}
                 </div>
                 <div className="block sm:hidden relative">
-                  <button 
+                  <button
                     onClick={() => router.push("/")}
-                    className="absolute rounded-[10px] p-[3px] hover:bg-[#8A63B91A] left-0 z-10 top-0">
+                    className="absolute rounded-[10px] p-[3px] hover:bg-[#8A63B91A] left-0 z-10 top-0"
+                  >
                     <AiOutlineArrowLeft size={26} color="#86368d" />
                   </button>
                   {productChild?.images && (
@@ -230,6 +232,16 @@ const Reviews = () => {
           Оставить отзыв
         </button>
       </div>
+      <div>
+        <textarea
+          className="flex-1 mt-[12px] appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+          id="comment"
+          placeholder="Напишите свой отзыв"
+          name="comment"
+          rows={3}
+          cols={40}
+        ></textarea>
+      </div>
       <div className="flex  divide-y gap-[15px] mt-[10px] flex-col">
         <div className="flex pt-[15px] flex-col">
           <div className="flex items-center">
@@ -239,9 +251,23 @@ const Reviews = () => {
               <span className="leading-[18px]">rating</span>
             </div>
           </div>
-          <span className="text-[18px] leading-[20px] break-words">
-            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-          </span>
+          <div className="text-[18px] leading-[20px]">
+            <span className="break-words">
+              sssssssssssssssssssssssssssssssssssssss
+            </span>
+            <button className="text-[#86368d] ml-[30px] text-[16px] hover:underline">
+              дополнить
+            </button>
+          </div>
+          <div className="flex mt-[10px] items-center">
+            <div className="border mr-[15px] bg-[whitesmoke] rounded-full h-[32px] w-[32px]" />
+            <input 
+              className="w-full h-full px-[12px] rounded-[10px] border outline-none"
+            />
+            <button className="bg-[#0077ff] ml-[15px] p-[3px] rounded-[10px]">
+                <IoIosSend color="white" size={24} />
+            </button>
+          </div>
         </div>
 
         <div className="flex pt-[15px] flex-col">

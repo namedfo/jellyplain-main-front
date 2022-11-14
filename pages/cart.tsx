@@ -12,13 +12,16 @@ import useActions from "../hooks/useActions";
 export default function Cart() {
   const { cart } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
-  const { setIsOpenAuth } = useActions()
+  const { setIsOpenAuth } = useActions();
 
   return (
     <Container>
       <Header />
       <div className="h-full md:mt-[30px]">
         <div className="overflow-y-auto rounded-[10px] bg-white shadow-jj">
+          <span className="text-[20px] ml-[15px] mb-[7px] text-[#292929] font-medium">
+            Корзина
+          </span>
           <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
             {cart?.map((card: any) => (
               <Elem key={card.id} card={card} />
@@ -35,7 +38,10 @@ export default function Cart() {
               Купить
             </button>
           ) : (
-            <button onClick={() => setIsOpenAuth(true)} className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]">
+            <button
+              onClick={() => setIsOpenAuth(true)}
+              className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]"
+            >
               Чтобы продолжить покупку, необходимо авторизоваться
             </button>
           )}
