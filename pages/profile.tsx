@@ -6,17 +6,25 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import Container from "../layouts/Container";
 
 export default function Profile() {
+  const { isAuth, isLoading } = useTypedSelector((state) => state.user);
 
-    const { isAuth } = useTypedSelector(state => state.user)
-
-    return (
-        <Container>
-            <Header />
-            <div className="pt-0 sm:pt-[50px] h-full">
-                {isAuth && (
-                    <Sidebar />
-                )}
-            </div>
-        </Container>
-    )
+  return (
+    <Container>
+      <Header />
+      <div className="pt-0 sm:pt-[50px] h-full">
+        {isAuth && isLoading === "success" ? (
+          <Sidebar />
+        ) : (
+          <div
+            style={{
+              height: "calc(100% - 70px)",
+            }}
+            className="flex items-center text-[#86368d] font-medium text-[22px] justify-center"
+          >
+            Вы неавторизованы
+          </div>
+        )}
+      </div>
+    </Container>
+  );
 }

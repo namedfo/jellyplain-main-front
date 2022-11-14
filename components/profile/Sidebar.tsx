@@ -61,16 +61,7 @@ export default function Sidebar() {
           </div>
         </div>
       </div>
-      {isLoading === "error" && (
-        <div
-          style={{
-            height: "calc(100% - 70px)",
-          }}
-          className="flex items-center text-[#86368d] font-medium text-[22px] justify-center"
-        >
-          Вы неавторизованы
-        </div>
-      )}
+      
     </>
   );
 }
