@@ -20,7 +20,7 @@ export default function MobileMenu() {
         <>
           <button
             // onClick={() => setCard(product)}
-            className="border-[#8a63b9] h-[42px] border shadow-md flex flex-col justify-center items-center hover:bg-[#8062a7] text-[#8a63b9] font-medium px-[15px] py-[4px] rounded-[15px]"
+            className="border-[#8a63b9] hover:text-white h-[42px] border shadow-md flex flex-col justify-center items-center hover:bg-[#8062a7] text-[#8a63b9] font-medium px-[15px] py-[4px] rounded-[15px]"
           >
             <span className="leading-[26px] text-[17px]">В корзину</span>
           </button>
