@@ -264,7 +264,7 @@ const Reviews = () => {
             <input 
               className="w-full h-full px-[12px] rounded-[10px] border outline-none"
             />
-            <button className="bg-[#0077ff] ml-[15px] p-[3px] rounded-[10px]">
+            <button className="bg-[#0077ff] ml-[15px] px-[8px] py-[3px] rounded-[12px]">
                 <IoIosSend color="white" size={24} />
             </button>
           </div>
