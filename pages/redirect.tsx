@@ -9,7 +9,7 @@ import Container from "../layouts/Container";
 export default function Redirect() {
   const router = useRouter();
 
-  const { setIsAuth, setIsLoading } = useActions()
+  const { setIsAuth, setUser, setIsLoading } = useActions()
 
 
   useEffect(() => {
@@ -20,10 +20,20 @@ export default function Redirect() {
         const res = await axios.post("https://jellyplainv2.herokuapp.com/auth/login/vk", {
           code: dirtyData[3]
         });
+        const user = {
+          id: res.data.id,
+          createdAt: res.data.createdAt,
+          first_name: res.data.first_name,
+          last_name: res.data.last_name,
+          avatar_url: res.data.avatar_url,
+        };
 
+        localStorage.setItem("userjj", JSON.stringify(user));
         localStorage.setItem("jjwt", res.data.token)
+
+        setUser(user)
         setIsAuth(true)
-        setIsLoading("success")
+        setIsLoading("success");
 
         router.push('/')
 
