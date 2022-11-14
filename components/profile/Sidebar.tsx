@@ -46,7 +46,7 @@ export default function Sidebar() {
               выйти
             </button>
           </div>
-          <div className="relative shadow-jj mt-[30px] p-[15px] flex flex-row sm:flex-col items-center rounded-[10px] bg-white w-full sm:w-[240px]">
+          <div className="relative shadow-jj mt-[30px] p-[15px] flex flex-row sm:flex-col justify-center items-center rounded-[10px] bg-white w-full sm:w-[240px]">
             <span className="absolute text-[#444f58] left-[15px] top-[3px]">
               меню
             </span>
