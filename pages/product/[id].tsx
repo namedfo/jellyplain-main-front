@@ -122,8 +122,9 @@ export default function Product() {
                   </button>
                 </div>
               </div>
-                <Reviews />
+              <Reviews />
             </div>
+            <div className="block sm:hidden mt-[75px]"></div>
           </div>
         </div>
       )}
@@ -234,7 +235,6 @@ const Reviews = () => {
             sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
           </span>
         </div>
-        <div className="block sm:hidden mt-[75px]"></div>
       </div>
     </div>
   );
