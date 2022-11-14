@@ -56,7 +56,7 @@ export default function Sidebar() {
               </button>
               <button
                 onClick={onHandleExit}
-                className="text-[#A53D3D] hidden sm:block mt-[20px] sm:mt-[80px] w-[98%] hover:bg-[#A53D3D1A] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]"
+                className="text-[#A53D3D] hidden sm:block mt-[20px] sm:mt-[30px] w-[98%] hover:bg-[#A53D3D1A] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]"
               >
                 Выйти
               </button>
