@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+// hooks
+import useActions from "../hooks/useActions";
 // layouts
 import Container from "../layouts/Container";
 
 export default function Redirect() {
   const router = useRouter();
+
+  const { setIsAuth } = useActions()
 
 
   useEffect(() => {
@@ -18,8 +22,9 @@ export default function Redirect() {
         });
 
         localStorage.setItem("jjwt", res.data.token)
+        setIsAuth(true)
 
-        router.push('/profile')
+        router.push('/')
 
       } catch (error) {}
     })();
