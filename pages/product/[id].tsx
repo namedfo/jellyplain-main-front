@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 //
 import ImageGallery from "react-image-gallery";
 //
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineArrowLeft  } from "react-icons/ai";
 import { BiCommentDots } from "react-icons/bi";
 // components
 import Header from "../../components/Header";
@@ -41,6 +42,8 @@ export default function Product() {
   const [isLoading, setIsLoading] = useState<any>("idle");
 
   const { setCard } = useActions();
+
+  const router = useRouter()
 
   useEffect(() => {
     (async () => {
@@ -85,7 +88,12 @@ export default function Product() {
                     />
                   )}
                 </div>
-                <div className="block sm:hidden">
+                <div className="block sm:hidden relative">
+                  <button 
+                    onClick={() => router.push("/")}
+                    className="absolute rounded-[10px] p-[3px] hover:bg-[#8A63B91A] left-0 z-10 top-0">
+                    <AiOutlineArrowLeft size={26} color="#86368d" />
+                  </button>
                   {productChild?.images && (
                     <ImageGallery
                       showThumbnails={false}
@@ -166,17 +174,6 @@ const Info = ({ product, setCard }: any) => {
             50
           </button>
         </div>
-      </div>
-      <div className="flex sm:hidden items-center justify-between">
-        <span className="text-[#ffa500] font-medium text-[22px]">
-          {product?.price} &#8381;
-        </span>
-        <button
-          onClick={() => setCard(product)}
-          className="bg-[#8a63b9] text-[17px] hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
-        >
-          <span>В корзину</span>
-        </button>
       </div>
     </div>
   );
