@@ -27,7 +27,7 @@ export default function MobileMenu() {
             <span className="leading-[26px] text-[16px]">В корзину</span>
           </button>
           <button
-            // onClick={() => setCard(product)}
+            onClick={() => router.push("/checkout")}
             className="bg-[#8a63b9] border shadow-md flex flex-col items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[15px]"
           >
             <span className="leading-[17px] text-[17px]">Купить сейчас</span>
