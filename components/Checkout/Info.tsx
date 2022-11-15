@@ -24,7 +24,7 @@ const Address = () => {
     <div className="flex flex-col">
       <button
         onClick={() => router.push("/")}
-        className="rounded-[10px] mb-[10px] flex items-center px-[10px] p-[3px] hover:bg-[#8A63B91A]"
+        className="rounded-[10px] mb-[10px] flex md:hidden items-center px-[10px] p-[3px] hover:bg-[#8A63B91A]"
       >
         <AiOutlineArrowLeft size={26} color="#86368d" />
         <span className="text-[#86368d] ml-[15px] font-medium text-[20px]">

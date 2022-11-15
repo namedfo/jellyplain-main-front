@@ -63,7 +63,7 @@ const Total = () => {
       </div>
       <button
         type="button"
-        className="py-1 px-4 mt-[30px] w-full bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white font-medium  rounded-lg"
+        className="py-1 px-4 mt-[30px] w-full bg-[#8a63b9] hover:bg-[#8062a7] text-white font-medium rounded-lg"
       >
         Buy
       </button>
