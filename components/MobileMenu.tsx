@@ -38,10 +38,10 @@ export default function MobileMenu() {
     } else if (router.pathname === "/checkout") {
       return (
         <>
-        <span className="font-medium text-[#292929] text-[18px]">6990 rub</span>
+        <span className="font-medium text-slate-800 text-[20px]">6990 rub</span>
         <button
           type="button"
-          className="py-2 px-8  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white font-medium  rounded-[10px]"
+          className="py-[5px] px-8  bg-[#8a63b9] hover:bg-[#8062a7] text-white text-[18px] font-medium  rounded-[10px]"
         >
           Купить
         </button>

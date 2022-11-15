@@ -1,6 +1,11 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 //
-import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import {
+  AiOutlineArrowDown,
+  AiOutlineArrowUp,
+  AiOutlineArrowLeft,
+} from "react-icons/ai";
 
 export default function Info() {
   return (
@@ -13,8 +18,19 @@ export default function Info() {
 
 const Address = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const router = useRouter();
   return (
     <div className="flex flex-col">
+      <button
+        onClick={() => router.push("/")}
+        className="rounded-[10px] mb-[10px] flex items-center px-[15px] p-[3px] hover:bg-[#8A63B91A]"
+      >
+        <AiOutlineArrowLeft size={26} color="#86368d" />
+        <span className="text-[#86368d] ml-[15px] font-medium text-[20px]">
+            Назад
+        </span>
+      </button>
       <div className="flex items-center justify-between">
         <div
           onClick={() => setIsOpen((prev) => !prev)}
