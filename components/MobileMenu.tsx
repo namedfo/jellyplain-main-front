@@ -14,9 +14,11 @@ export default function MobileMenu() {
 
   const router = useRouter();
 
-  return (
-    <div className={`shadow-jj md:hidden flex justify-around items-center ${router.pathname === '/product/[id]' ? "px-[10px]" : "px-[20px]"} h-[60px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]`}>
-      {router.pathname === "/product/[id]" ? (
+  console.log(router);
+
+  const getContent = () => {
+    if (router.pathname === "/product/[id]") {
+      return (
         <>
           <button
             // onClick={() => setCard(product)}
@@ -32,7 +34,21 @@ export default function MobileMenu() {
             <span className="leading-[15px] text-[14px]">6990 &#8381;</span>
           </button>
         </>
-      ) : (
+      );
+    } else if (router.pathname === "/checkout") {
+      return (
+        <>
+        <span className="font-medium text-[#292929] text-[18px]">6990 rub</span>
+        <button
+          type="button"
+          className="py-2 px-8  bg-pink-600 hover:bg-pink-700 focus:ring-pink-500 focus:ring-offset-pink-200 text-white font-medium  rounded-[10px]"
+        >
+          Купить
+        </button>
+      </>
+      )
+    } else {
+      return (
         <>
           <button
             onClick={() => router.push("/")}
@@ -72,7 +88,17 @@ export default function MobileMenu() {
             />
           </button>
         </>
-      )}
+      );
+    }
+  };
+
+  return (
+    <div
+      className={`shadow-jj md:hidden flex justify-around items-center ${
+        router.pathname === "/product/[id]" ? "px-[10px]" : "px-[20px]"
+      } h-[60px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]`}
+    >
+      {getContent()}
     </div>
   );
 }
