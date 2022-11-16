@@ -1,6 +1,7 @@
 // components
 import Header from "../components/Header";
 import LLoading from "../components/Loading";
+import Settings from "../components/profile/Settings";
 import Sidebar from "../components/profile/Sidebar";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 // layouts
@@ -13,9 +14,16 @@ export default function Profile() {
     <Container>
       <Header />
       <div className="pt-0 sm:pt-[50px] h-full">
-        {isAuth && isLoading === "success" && <Sidebar />}
+        <div className="flex flex-col md:flex-row justify-between w-full">
+          {<Sidebar />}
+          <div className="mt-[10px] sm:mt-0 flex w-full md:ml-[80px]">
+            <div className="w-full">
+              <Settings />
+            </div>
+          </div>
+        </div>
         {isLoading === "loading" && <LLoading />}
-        {isLoading === "error" && (
+        {/* {isLoading === "error" && (
           <div
             style={{
               height: "calc(100% - 70px)",
@@ -24,7 +32,7 @@ export default function Profile() {
           >
             Вы неавторизованы
           </div>
-        )}
+        )} */}
       </div>
     </Container>
   );
