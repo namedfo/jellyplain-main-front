@@ -50,13 +50,13 @@ export default function Sidebar({ onHandleChangeMenu, menuActive }: any) {
         </span>
         <button
           onClick={() => onHandleChangeMenu("orders")}
-          className={`${menuActive.name === "orders" ? "text-white bg-[#86368d]" : "text-[#86368d] hover:bg-[#8A63B91A]"} mt-[20px] sm:mt-[15px] w-[98%] rounded-[10px] py-[4px] font-medium text-[18px]`}
+          className={`${menuActive.name === "orders" ? "text-white bg-fuchsia-500" : "text-[#86368d] hover:bg-[#8A63B91A]"} mt-[20px] sm:mt-[15px] w-[98%] rounded-[10px] py-[4px] font-medium text-[18px]`}
         >
           Заказы
         </button>
         <button
           onClick={() => onHandleChangeMenu("settings")}
-          className={`${menuActive.name === "settings" ? "text-white bg-[#86368d]" : "text-[#86368d] hover:bg-[#8A63B91A]"} mt-[20px] sm:mt-[15px] w-[98%] rounded-[10px] py-[4px] font-medium text-[18px]`}
+          className={`${menuActive.name === "settings" ? "text-white bg-fuchsia-500" : "text-[#86368d] hover:bg-[#8A63B91A]"} mt-[20px] sm:mt-[15px] w-[98%] rounded-[10px] py-[4px] font-medium text-[18px]`}
         >
           Настройки
         </button>
