@@ -23,7 +23,7 @@ export default function Settings() {
 
   return (
     <div className="shadow-jj relative w-full py-[15px] px-[20px] flex flex-col rounded-[10px] bg-white">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-end md:justify-between items-center">
         <span className="text-[20px] hidden md:block font-medium text-[#292929]">
           Настройки
         </span>
