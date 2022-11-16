@@ -3,7 +3,7 @@ import { Router, useRouter } from "next/router";
 import useActions from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-export default function Sidebar() {
+export default function Sidebar({ onHandleChangeMenu, menuActive }: any) {
   const { user } = useTypedSelector((state) => state.user);
 
   const { setUser, setIsAuth } = useActions();
@@ -48,10 +48,16 @@ export default function Sidebar() {
         <span className="absolute text-[#444f58] left-[15px] top-[3px]">
           меню
         </span>
-        <button className="text-[#86368d] mt-[20px] sm:mt-[15px] w-[98%] hover:bg-[#8A63B91A] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]">
+        <button
+          onClick={() => onHandleChangeMenu("orders")}
+          className={`${menuActive.name === "orders" ? "text-white bg-[#86368d]" : "text-[#86368d] hover:bg-[#8A63B91A]"} mt-[20px] sm:mt-[15px] w-[98%] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]`}
+        >
           Заказы
         </button>
-        <button className="text-[#86368d] mt-[20px] sm:mt-[15px] w-[98%] hover:bg-[#8A63B91A] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]">
+        <button
+          onClick={() => onHandleChangeMenu("settings")}
+          className={`${menuActive.name === "settings" ? "text-white bg-[#86368d]" : "text-[#86368d] hover:bg-[#8A63B91A]"} mt-[20px] sm:mt-[15px] w-[98%] rounded-[10px] py-[5px] font-medium text-[18px] sm:text-[20px]`}
+        >
           Настройки
         </button>
       </div>
