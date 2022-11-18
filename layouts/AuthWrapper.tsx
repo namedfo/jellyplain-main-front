@@ -17,7 +17,7 @@ export default function AuthWrapper({ children }: any) {
       setIsLoading("loading");
       try {
         const res = await $api.get(
-          "https://jellyplainv2.herokuapp.com/auth/one"
+          "https://jellyplainv2.herokuapp.com/auth/me"
         );
         const user = {
           id: res.data.id,
