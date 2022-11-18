@@ -1,22 +1,25 @@
 import { useState } from "react";
+// components
+import AddressUser from "./AddressUser";
+import ProfileUser from "./ProfileUser";
 
 export default function Settings() {
   const [activeTab, setActiveTab] = useState({
     name: "profile",
-    component: "profile",
+    component: <ProfileUser />,
   });
 
   const onHandleChangeTab = (tab: string) => {
     if (tab === "profile") {
       setActiveTab({
         name: "profile",
-        component: "profile",
+        component: <ProfileUser />,
       });
     }
     if (tab === "address") {
       setActiveTab({
         name: "address",
-        component: "address",
+        component: <AddressUser />,
       });
     }
   };
@@ -52,6 +55,9 @@ export default function Settings() {
             Адрес
           </button>
         </div>
+      </div>
+      <div>
+        {activeTab.component}
       </div>
     </div>
   );

@@ -2,8 +2,8 @@ import { useState } from "react";
 // components
 import Header from "../components/Header";
 import LLoading from "../components/Loading";
-import Orders from "../components/profile/Orders";
-import Settings from "../components/profile/Settings";
+import Orders from "../components/profile/orders";
+import Settings from "../components/profile/settings";
 import Sidebar from "../components/profile/Sidebar";
 // hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -45,7 +45,10 @@ export default function Profile() {
           <div className="mt-[10px] sm:mt-0 flex w-full md:ml-[80px]">
             <div className="w-full">{menuActive.component}</div>
           </div>
+            <div className="h-[80px] md:h-0" />
         </div>
+
+        
         {isLoading === "loading" && <LLoading />}
         {/* {isLoading === "error" && (
           <div
