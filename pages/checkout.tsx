@@ -55,7 +55,7 @@ const Total = () => {
       </span>
       <div className="flex mt-[10px] text-[17px] items-center justify-between">
         <span>Товары (15)</span>
-        <span>price</span>
+        <span>23 000 rub</span>
       </div>
       <div className="flex text-[17px] items-center justify-between">
         <span>Стоимость доставки</span>
@@ -65,7 +65,7 @@ const Total = () => {
         type="button"
         className="py-1 px-4 mt-[30px] w-full bg-[#8a63b9] hover:bg-[#8062a7] text-white font-medium rounded-lg"
       >
-        Buy
+        К оплате
       </button>
     </div>
   );

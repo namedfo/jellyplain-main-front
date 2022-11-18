@@ -9,7 +9,7 @@ import Address from "./Address";
 
 export default function Info() {
   return (
-    <div className="shadow-jjflex flex-col text-[18px] rounded-[10px] bg-white px-[20px] py-[15px]">
+    <div className="shadow-jj flex flex-col text-[18px] rounded-[10px] bg-white px-[20px] py-[15px]">
       <Address />
       <ShippingCost />
     </div>

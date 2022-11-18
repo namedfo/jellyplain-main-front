@@ -36,15 +36,17 @@ export default function MobileMenu() {
     } else if (router.pathname === "/checkout") {
       return (
         <>
-        <span className="font-medium text-slate-800 text-[20px]">6990 rub</span>
-        <button
-          type="button"
-          className="py-[5px] px-6  bg-[#8a63b9] hover:bg-[#8062a7] text-white text-[18px] font-medium  rounded-[10px]"
-        >
-          К оплате
-        </button>
-      </>
-      )
+          <span className="font-medium text-slate-800 text-[20px]">
+            6990 rub
+          </span>
+          <button
+            type="button"
+            className="py-[5px] px-6  bg-[#8a63b9] hover:bg-[#8062a7] text-white text-[18px] font-medium  rounded-[10px]"
+          >
+            К оплате
+          </button>
+        </>
+      );
     } else {
       return (
         <>
@@ -92,7 +94,9 @@ export default function MobileMenu() {
 
   return (
     <div
-      className={`shadow-jj md:hidden flex justify-around items-center ${
+      className={`shadow-jj md:hidden ${
+        router.pathname === "/paidfor" ? "hidden" : "flex"
+      } justify-around items-center ${
         router.pathname === "/product/[id]" ? "px-[10px]" : "px-[20px]"
       } h-[60px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]`}
     >
