@@ -8,8 +8,8 @@ export default function PaidFor() {
   return (
     <Container>
       <div className="flex h-full items-center justify-center">
-        <div className="shadow-jj text-[#292929] font-medium items-center justify-center flex flex-col rounded-[20px] bg-white py-[15px] px-[20px] sm:px-[30px]">
-          <span className="text-[20px]">Заказ успешно оформлен</span>
+        <div className="shadow-jj text-[#292929] font-medium items-center justify-center flex flex-col rounded-[20px] bg-white py-[15px] px-[10px] sm:px-[30px]">
+          <span className="text-[18px] sm:text-[20px]">Заказ успешно оформлен</span>
           <span className="text-[#3ea938] text-[30px] sm:text-[38px]">
             Спасибо за заказ!
           </span>
