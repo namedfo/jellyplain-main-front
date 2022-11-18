@@ -3,6 +3,7 @@ import { useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 
 export default function Orders() {
+  const [isShow, setIsShow] = useState(false);
   const [activeTab, setActiveTab] = useState({
     name: "active",
     component: "active",
@@ -57,7 +58,7 @@ export default function Orders() {
       </div>
       <div className="flex flex-wrap justify-between pt-[20px]">
         <div className="py-[10px] flex flex-col px-[15px] rounded-[10px] border">
-          <div className="flex text-[12px] justify-between">
+          <div className="flex text-[7px] sm:text-[12px] justify-between">
             <div className="flex text-gray-400 items-center">
               <span>Оплачено</span>
               <BsArrowRightShort size={22} />
@@ -89,22 +90,41 @@ export default function Orders() {
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="text-[16px] text-slate-900 font-medium">
-              Получатель:
-            </span>
-            <span className="ml-[20px] text-slate-900">
-              Misha Poleshchenkov
-            </span>
-            <span className="ml-[20px] text-slate-900">+7 952 996 49 01</span>
+            <div className="flex justify-end">
+              {isShow ? (
+                <button onClick={() => setIsShow(false)} className="text-indigo-500 hover:text-indigo-800">
+                  Скрыть
+                </button>
+              ) : (
+                <button onClick={() => setIsShow(true)} className="text-indigo-500 hover:text-indigo-800">
+                  Подробная информация
+                </button>
+              )}
+            </div>
+            {isShow && (
+              <>
+                <div className="flex flex-col">
+                  <span className="text-[16px] text-slate-900 font-medium">
+                    Получатель:
+                  </span>
+                  <span className="ml-[20px] text-slate-900">
+                    Misha Poleshchenkov
+                  </span>
+                  <span className="ml-[20px] text-slate-900">
+                    +7 952 996 49 01
+                  </span>
+                </div>
+                <div className="h-[1px] my-[12px] mx-auto w-[95%] bg-neutral-200" />
+                <div className="flex flex-col">
+                  <span className="text-[16px] text-slate-900 font-medium">
+                    Адрес доставки:
+                  </span>
+                  <span className="ml-[20px] text-slate-900">адрес...</span>
+                </div>
+                <div className="h-[1px] my-[12px] mx-auto w-[95%] bg-neutral-200" />
+              </>
+            )}
           </div>
-          <div className="h-[1px] my-[12px] mx-auto w-[90%] bg-neutral-200" />
-          <div className="flex flex-col">
-            <span className="text-[16px] text-slate-900 font-medium">
-              Адрес доставки:
-            </span>
-            <span className="ml-[20px] text-slate-900">адрес...</span>
-          </div>
-          <div className="h-[1px] my-[12px] mx-auto w-[90%] bg-neutral-200" />
           <div className="flex flex-col">
             <div className="flex justify-between">
               <span className="text-[16px] text-slate-900 font-medium">
