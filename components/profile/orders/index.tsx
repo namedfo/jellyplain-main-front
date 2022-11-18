@@ -97,14 +97,14 @@ export default function Orders() {
             </span>
             <span className="ml-[20px] text-slate-900">+7 952 996 49 01</span>
           </div>
-          <div className="h-[1px] my-[8px] mx-auto w-[90%] bg-neutral-200" />
+          <div className="h-[1px] my-[12px] mx-auto w-[90%] bg-neutral-200" />
           <div className="flex flex-col">
             <span className="text-[16px] text-slate-900 font-medium">
               Адрес доставки:
             </span>
             <span className="ml-[20px] text-slate-900">адрес...</span>
           </div>
-          <div className="h-[1px] my-[8px] mx-auto w-[90%] bg-neutral-200" />
+          <div className="h-[1px] my-[12px] mx-auto w-[90%] bg-neutral-200" />
           <div className="flex flex-col">
             <div className="flex justify-between">
               <span className="text-[16px] text-slate-900 font-medium">
