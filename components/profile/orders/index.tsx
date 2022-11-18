@@ -75,9 +75,12 @@ export default function Orders() {
               <span>В пути</span>
             </div>
           </div>
-          <div className="flex my-[3px] items-center justify-between">
+          <div className="flex flex-col text-[16px] sm:flex-row my-[3px] sm:items-center justify-between">
             <span>Заказ создан: 21.01.2022</span>
-            <span>№2929</span>
+            <div className="flex items-center">
+              <span className="block mr-[5px] sm:hidden">Номер заказа:</span>
+              <span>№2929</span>
+            </div>
           </div>
           <div>
             <div className="bg-neutral-100 my-[5px] rounded-[5px] pb-[8px] px-[10px]">
@@ -92,11 +95,17 @@ export default function Orders() {
           <div className="flex flex-col">
             <div className="flex justify-end">
               {isShow ? (
-                <button onClick={() => setIsShow(false)} className="text-indigo-500 hover:text-indigo-800">
+                <button
+                  onClick={() => setIsShow(false)}
+                  className="text-indigo-500 hover:text-indigo-800"
+                >
                   Скрыть
                 </button>
               ) : (
-                <button onClick={() => setIsShow(true)} className="text-indigo-500 hover:text-indigo-800">
+                <button
+                  onClick={() => setIsShow(true)}
+                  className="text-indigo-500 hover:text-indigo-800"
+                >
                   Подробная информация
                 </button>
               )}
