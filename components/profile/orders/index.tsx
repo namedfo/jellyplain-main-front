@@ -57,7 +57,7 @@ export default function Orders() {
         </div>
       </div>
       <div className="flex flex-wrap justify-between pt-[20px]">
-        <div className="py-[10px] flex flex-col px-[15px] rounded-[10px] border">
+        <div className="py-[5px] sm:py-[10px] flex flex-col px-[10px] sm:px-[15px] rounded-[10px] border">
           <div className="flex text-[7px] sm:text-[12px] justify-between">
             <div className="flex text-gray-400 items-center">
               <span>Оплачено</span>
@@ -80,7 +80,7 @@ export default function Orders() {
             <span>№2929</span>
           </div>
           <div>
-            <div className="bg-neutral-100 my-[5px] rounded-[5px] pb-[4px] px-[10px]">
+            <div className="bg-neutral-100 my-[5px] rounded-[5px] pb-[8px] px-[10px]">
               <span className="text-[14px] text-slate-900 leading-[5px]">
                 Товары
               </span>
