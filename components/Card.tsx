@@ -65,7 +65,7 @@ export default function Card({ card }: any) {
           </span>
         </div>
         <button
-          onClick={() => setCard(card)}
+          onClick={() => router.push(`/product/${card?.id}`)}
           style={{
             background:
               "radial-gradient(158.93% 1439.29% at 71.89% 100%, #86368D 0%, rgba(134, 54, 141, 0) 100%)",
