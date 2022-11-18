@@ -1,4 +1,6 @@
 import { useState } from "react";
+// icons
+import { BsArrowRightShort } from "react-icons/bs";
 
 export default function Orders() {
   const [activeTab, setActiveTab] = useState({
@@ -51,6 +53,40 @@ export default function Orders() {
           >
             Завершенные
           </button>
+        </div>
+      </div>
+      <div className="flex flex-wrap justify-between pt-[20px]">
+        <div className="py-[10px] flex flex-col px-[15px] rounded-[10px] border">
+          <div className="flex text-[12px] justify-between">
+            <div className="flex text-gray-400 items-center">
+              <span>Оплачено</span>
+              <BsArrowRightShort size={22} />
+            </div>
+            <div className="flex text-red-600 items-center">
+              <span>Ожидает подтверждения</span>
+              <BsArrowRightShort size={22} />
+            </div>
+            <div className="flex text-gray-400 items-center">
+              <span>Подтвержденно</span>
+              <BsArrowRightShort size={22} />
+            </div>
+            <div className="flex text-gray-400 items-center">
+              <span>В пути</span>
+            </div>
+          </div>
+          <div className="flex my-[3px] items-center justify-between">
+            <span>Заказ создан: 21.01.2022</span>
+            <span>
+              №2929
+            </span>
+          </div>
+          <div>
+            <div className="bg-neutral-100 my-[5px] rounded-[5px] py-[7px] px-[10px]">
+              <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]">
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
