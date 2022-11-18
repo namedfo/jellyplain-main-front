@@ -76,15 +76,51 @@ export default function Orders() {
           </div>
           <div className="flex my-[3px] items-center justify-between">
             <span>Заказ создан: 21.01.2022</span>
-            <span>
-              №2929
-            </span>
+            <span>№2929</span>
           </div>
           <div>
-            <div className="bg-neutral-100 my-[5px] rounded-[5px] py-[7px] px-[10px]">
-              <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]">
-
+            <div className="bg-neutral-100 my-[5px] rounded-[5px] pb-[4px] px-[10px]">
+              <span className="text-[14px] text-slate-900 leading-[5px]">
+                Товары
+              </span>
+              <div className="flex">
+                <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]"></div>
               </div>
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[16px] text-slate-900 font-medium">
+              Получатель:
+            </span>
+            <span className="ml-[20px] text-slate-900">
+              Misha Poleshchenkov
+            </span>
+            <span className="ml-[20px] text-slate-900">+7 952 996 49 01</span>
+          </div>
+          <div className="h-[1px] my-[8px] mx-auto w-[90%] bg-neutral-200" />
+          <div className="flex flex-col">
+            <span className="text-[16px] text-slate-900 font-medium">
+              Адрес доставки:
+            </span>
+            <span className="ml-[20px] text-slate-900">адрес...</span>
+          </div>
+          <div className="h-[1px] my-[8px] mx-auto w-[90%] bg-neutral-200" />
+          <div className="flex flex-col">
+            <div className="flex justify-between">
+              <span className="text-[16px] text-slate-900 font-medium">
+                Итого:
+              </span>
+              <span className="text-[16px] text-slate-900 font-medium">
+                24 690 Р
+              </span>
+            </div>
+            <div className="ml-[20px] flex justify-between items-center text-slate-900">
+              <span>Товары (15)</span>
+              <span>24 000 Р</span>
+            </div>
+            <div className="ml-[20px] flex justify-between items-center text-slate-900">
+              <span>Доставка</span>
+              <span>850 P</span>
             </div>
           </div>
         </div>
