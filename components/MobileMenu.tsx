@@ -5,6 +5,7 @@ import { FaUserAlt, FaShoppingBasket } from "react-icons/fa";
 // hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import useActions from "../hooks/useActions";
+import BtnToPaid from "./checkout/BtnToPaid";
 
 export default function MobileMenu() {
   const { cart } = useTypedSelector((state) => state.cart);
@@ -39,12 +40,7 @@ export default function MobileMenu() {
           <span className="font-medium text-slate-800 text-[20px]">
             6990 rub
           </span>
-          <button
-            type="button"
-            className="py-[5px] px-6  bg-[#8a63b9] hover:bg-[#8062a7] text-white text-[18px] font-medium  rounded-[10px]"
-          >
-            К оплате
-          </button>
+          <BtnToPaid />
         </>
       );
     } else {

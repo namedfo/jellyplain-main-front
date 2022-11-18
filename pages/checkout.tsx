@@ -2,9 +2,10 @@ import { useState } from "react";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 // components
 import Header from "../components/Header";
-import Info from "../components/Checkout/Info";
+import Info from "../components/checkout/Info";
 // layouts
 import Container from "../layouts/Container";
+import BtnToPaid from "../components/checkout/BtnToPaid";
 
 export default function Checkout() {
   return (
@@ -61,12 +62,7 @@ const Total = () => {
         <span>Стоимость доставки</span>
         <span>850 руб</span>
       </div>
-      <button
-        type="button"
-        className="py-1 px-4 mt-[30px] w-full bg-[#8a63b9] hover:bg-[#8062a7] text-white font-medium rounded-lg"
-      >
-        К оплате
-      </button>
+      <BtnToPaid />
     </div>
   );
 };

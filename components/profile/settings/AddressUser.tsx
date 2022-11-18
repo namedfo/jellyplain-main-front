@@ -1,4 +1,4 @@
-import Address from "../../Checkout/Address";
+import Address from "../../checkout/Address";
 
 export default function AddressUser() {
   return (
@@ -138,18 +138,6 @@ export default function AddressUser() {
             className=" rounded-lg border flex-1 appearance-none border-gray-300 w-full py-1 px-2 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             name="email"
             placeholder="Индекс"
-          />
-        </div>
-        <div className="mx-[15px] w-[200px] relative ">
-          <label htmlFor="required-email" className="text-gray-700">
-            Телефон
-          </label>
-          <input
-            type="text"
-            id="required-email"
-            className=" rounded-lg border flex-1 appearance-none border-gray-300 w-full py-1 px-2 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-            name="email"
-            placeholder="Телефон"
           />
         </div>
       </div>

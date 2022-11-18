@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 //
 import ImageGallery from "react-image-gallery";
 //
 import { AiFillStar, AiOutlineArrowLeft } from "react-icons/ai";
-import { IoIosSend } from "react-icons/io";
+import { MdLogin } from "react-icons/md";
 import { BiCommentDots } from "react-icons/bi";
 // components
 import Header from "../../components/Header";
@@ -14,6 +14,8 @@ import LLoading from "../../components/Loading";
 import Container from "../../layouts/Container";
 // hooks
 import useActions from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import Rating from "../../components/UI/Rating";
 
 const images = [
   {
@@ -224,24 +226,50 @@ const Title = ({ product, setCard }: any) => {
 };
 
 const Reviews = () => {
+  const { isAuth } = useTypedSelector((state) => state.user);
+
+  const { setIsOpenAuth } = useActions();
+
+  const handleRating = (index: number) => {
+    console.log(index)
+  }
+
   return (
     <div className="flex w-full shadow-jj rounded-[10px] bg-white sm:w-[650px] p-[15px] flex-col mt-[7px] sm:mt-[30px]">
-      <div className="flex justify-between">
-        <span className="text-[#4A3333] font-medium text-[20px]">Отзывы</span>
-        <button className="border text-[#8a63b9] hover:bg-[#8045C61A] px-[8px] rounded-[10px] font-medium text-[16px] border-[#8a63b9]">
-          Оставить отзыв
+      {isAuth ? (
+        <>
+          <div className="flex justify-between">
+            <span className="text-[#4A3333] font-medium text-[20px]">
+              Отзывы
+            </span>
+            <button className="border text-[#8a63b9] hover:bg-[#8045C61A] px-[8px] rounded-[10px] font-medium text-[16px] border-[#8a63b9]">
+              Оставить отзыв
+            </button>
+          </div>
+          <div className="flex flex-col">
+            <Rating handleRating={handleRating} />
+            <textarea
+              className="flex-1 mt-[12px] appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+              id="comment"
+              placeholder="Напишите свой отзыв"
+              name="comment"
+              rows={3}
+              cols={40}
+            ></textarea>
+          </div>
+        </>
+      ) : (
+        <button
+          onClick={() => setIsOpenAuth(true)}
+          className=" text-[#307fee] justify-center flex items-center hover:underline font-medium text-[17px] w-full rounded-[10px]"
+        >
+          <span className="mr-[5px]">
+            Чтобы написать отзыв, необходимо авторизоваться
+          </span>
+          <MdLogin size={20} color="#307fee" />
         </button>
-      </div>
-      <div>
-        <textarea
-          className="flex-1 mt-[12px] appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-          id="comment"
-          placeholder="Напишите свой отзыв"
-          name="comment"
-          rows={3}
-          cols={40}
-        ></textarea>
-      </div>
+        // <Rating />
+      )}
       <div className="flex  divide-y gap-[15px] mt-[10px] flex-col">
         <div className="flex pt-[15px] flex-col">
           <div className="flex items-center">
