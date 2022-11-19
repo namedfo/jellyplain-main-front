@@ -112,7 +112,7 @@ export default function Product() {
             </div>
             <div className="flex flex-col">
               <Info setCard={setCard} product={product} />
-              <Reviews />
+              {/* <Reviews /> */}
             </div>
             <div className="block sm:hidden mt-[75px]" />
           </div>

@@ -102,6 +102,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
   const { cart } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
 
+  console.log(cart);
   return (
     <div className="shadow-popup z-10 flex flex-col w-[420px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">
@@ -118,19 +119,17 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
           <div className="flex flex-col max-h-[350px] overflow-y-auto divide-y">
             {cart?.map((card: any) => (
               <div
-                key={card?.id}
+                key={card?.info?.id}
                 className="flex px-[10px] justify-between py-[10px]"
               >
                 <div className="flex items-center">
-                  {card?.image !== "1" && (
-                    <img
-                      className="object-contain h-[90px] w-[90px]"
-                      src={card?.productChilds[0]?.images[0]?.url}
-                    />
-                  )}
+                  <img
+                    className="object-contain h-[90px] w-[90px]"
+                    src={card?.info?.productChilds[0]?.images[0]?.url}
+                  />
                   <div className="flex ml-[10px] flex-col">
                     <span className="text-[#292929] text-[18px] font-medium">
-                      {card?.title}
+                      {card?.info?.title}
                     </span>
                     <div>
                       <span>size and </span>
@@ -141,7 +140,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                         <AiOutlineMinus color="#8045c6" />
                       </button>
                       <span className="font-medium text-[18px] mx-[10px]">
-                        1
+                        {card?.count}
                       </span>
                       <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
                         <AiOutlinePlus color="#8045c6" />
@@ -151,7 +150,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                 </div>
                 <div className="flex w-[95px] justify-between items-end flex-col">
                   <span className="text-[#FFA500] text-[18px] font-medium">
-                    {card?.price} &#8381;
+                    {card?.totalPrice} &#8381;
                   </span>
                   <button className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
                     remove

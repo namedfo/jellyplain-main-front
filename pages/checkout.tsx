@@ -49,8 +49,10 @@ const Products = () => {
 };
 
 const Total = () => {
+
   return (
     <div className="shadow-jj rounded-[10px] w-[420px] bg-white py-[15px] px-[20px]">
+      <div className="payment-form"></div>
       <span className="text-[20px] my-[30px] font-medium text-[#292929]">
         Оплата
       </span>

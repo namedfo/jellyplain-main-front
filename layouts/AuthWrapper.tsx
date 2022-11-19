@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useEffect } from "react";
 // components
 import LLoading from "../components/Loading";
@@ -28,10 +29,10 @@ export default function AuthWrapper({ children }: any) {
         };
 
         localStorage.setItem("userjj", JSON.stringify(user));
-        localStorage.setItem("jjwt", res.data.token)
+        localStorage.setItem("jjwt", res.data.token);
 
-        setUser(user)
-        setIsAuth(true)
+        setUser(user);
+        setIsAuth(true);
         setIsLoading("success");
       } catch (error) {
         setIsLoading("error");
@@ -40,8 +41,11 @@ export default function AuthWrapper({ children }: any) {
   }, []);
 
   if (isLoading === "loading") {
-    return <LLoading />
+    return <LLoading />;
   }
-
-  return <div className="h-full">{children}</div>;
+  return (
+    <div className="h-full">
+      {children}
+    </div>
+  );
 }

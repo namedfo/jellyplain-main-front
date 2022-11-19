@@ -18,12 +18,38 @@ export const cartSlice = createSlice({
       ...state,
       cartIsShow: action.payload,
     }),
-    setCard: (state: initialStateType, action: any) => ({
-      ...state,
-      cart: state.cart.length > 0 ? [ ...state.cart, action.payload ] : [action.payload],
-    }),
+    setCard: (state: initialStateType, action: any) => {
+      if (state.cart.some((card: any) => card.info.id === action.payload.id)) {
+        return {
+          ...state,
+          cart: state.cart.map((elem: any) =>
+            elem.info.id === action.payload.id
+              ? {
+                  info: {
+                    ...elem.info,
+                  },
+                  count: elem.count + 1,
+                  totalPrice: elem.totalPrice + action.payload.price,
+                }
+              : elem
+          ),
+        };
+      }
+      return {
+        ...state,
+        cart: [
+          ...state.cart,
+          {
+            info: {
+              ...action.payload,
+            },
+            count: 1,
+            totalPrice: action.payload.price,
+          },
+        ],
+      };
+    },
   },
 });
-
 export const cartReducer = cartSlice.reducer;
 export const cartActions = cartSlice.actions;
