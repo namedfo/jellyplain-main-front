@@ -200,7 +200,7 @@ const Info = ({ allColors, product, productChild, setCard, setProductChild }: an
               <div
                 onClick={() => setProductChild(elem?.productChild)}
                 className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] h-[30px] border ${
-                  i === 0 ? "border-[2px] border-slate-400" : ""
+                  productChild.id === elem?.productChild.id ? "border-[2px] border-slate-400" : ""
                 }`}
               >
                 {elem?.colors?.map((color: any, j: number) => (
