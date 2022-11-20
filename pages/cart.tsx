@@ -8,6 +8,7 @@ import Container from "../layouts/Container";
 // hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import useActions from "../hooks/useActions";
+import sizes from "../utils/helping/sizes";
 
 export default function Cart() {
   const { cart } = useTypedSelector((state) => state.cart);
@@ -65,29 +66,58 @@ export default function Cart() {
 const Elem = ({ card }: any) => {
   return (
     <div
-      // key={card?.id}
       className="flex px-[10px] justify-between py-[10px]"
     >
       <div className="flex items-center">
-        {card?.image !== "1" && (
-          <img
-            className="object-contain h-[90px] w-[90px]"
-            src={card?.productChilds[0]?.images[0]?.url}
-          />
-        )}
+        <img
+          className="object-contain h-[90px] w-[90px]"
+          src={card?.info?.productChild?.images[0]?.url}
+        />
         <div className="flex ml-[10px] flex-col">
-          <span className="text-[#292929] text-[16px] font-medium">
-            {card?.title}
+          <span className="text-[#292929] text-[18px] font-medium">
+            {card?.info?.title}
           </span>
-          <div>
-            <span>size and </span>
-            <span>color</span>
+          <div className="flex items-center">
+            <span className="mr-[3px]">Размер: </span>
+            <span>{sizes[card?.info?.productChild?.size].size}</span>
+            <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+            <span className="mr-[3px]">
+              Цвет
+              {card?.info?.productChild?.colors.length > 1 && "(а)"}:
+            </span>
+
+            <div
+              className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] hover:border-[2px] h-[20px] border`}
+            >
+              {card?.info?.productChild?.colors?.map(
+                (color: any, j: number) => (
+                  <div
+                    style={{
+                      backgroundColor: color.hex,
+                      borderTopLeftRadius: j === 0 ? "3px" : "",
+                      borderBottomLeftRadius: j === 0 ? "3px" : "",
+                      borderTopRightRadius:
+                        card?.info?.productChild?.colors?.length - 1 === j
+                          ? "3px"
+                          : "",
+                      borderBottomRightRadius:
+                        card?.info?.productChild?.colors?.length - 1 === j
+                          ? "3px"
+                          : "",
+                    }}
+                    className="w-full h-full"
+                  />
+                )
+              )}
+            </div>
           </div>
           <div className="flex mr-[10px] items-center">
             <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
               <AiOutlineMinus color="#8045c6" />
             </button>
-            <span className="font-medium text-[18px] mx-[10px]">1</span>
+            <span className="font-medium text-[18px] mx-[10px]">
+              {card?.count}
+            </span>
             <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
               <AiOutlinePlus color="#8045c6" />
             </button>
@@ -95,8 +125,8 @@ const Elem = ({ card }: any) => {
         </div>
       </div>
       <div className="flex w-[95px] justify-between items-end flex-col">
-        <span className="text-[#FFA500] text-[16px] font-medium">
-          {card?.price} &#8381;
+        <span className="text-[#FFA500] text-[18px] font-medium">
+          {card?.totalPrice} &#8381;
         </span>
         <button className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
           remove

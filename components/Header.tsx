@@ -102,8 +102,7 @@ export default function Header() {
 const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
   const { cart } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
-
-  console.log(cart);
+  
   return (
     <div className="shadow-popup z-10 flex flex-col w-[440px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">

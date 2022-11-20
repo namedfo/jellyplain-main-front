@@ -110,7 +110,7 @@ export default function Product() {
           <div className="flex flex-col xl:flex-row justify-between sm:mt-[25px]">
             <div>
               <div className="shadow-jj w-full sm:w-[600px] flex justify-center rounded-[10px] bg-white p-[15px]">
-                <div className="hidden sm:flex">
+                <div className="hidden md:flex">
                   {productChild?.images && (
                     <ImageGallery
                       autoPlay={true}
@@ -155,8 +155,6 @@ export default function Product() {
   );
 }
 
-
-
 const Info = ({
   allColors,
   product,
@@ -186,9 +184,9 @@ const Info = ({
         <span className="text-[#775C5C] font-medium text-[18px]">Цвета</span>
         <div className="flex flex-wrap mt-[5px]">
           {allColors?.map((elem: any, i: number) => {
-            console.log(elem);
             return (
               <div
+                key={elem?.productChild.id}
                 onClick={() => setProductChild(elem?.productChild)}
                 className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] h-[30px] border ${
                   productChild.id === elem?.productChild.id
@@ -198,6 +196,7 @@ const Info = ({
               >
                 {elem?.colors?.map((color: any, j: number) => (
                   <div
+                    key={color}
                     style={{
                       backgroundColor: color,
                       borderTopLeftRadius: j === 0 ? "8px" : "",
