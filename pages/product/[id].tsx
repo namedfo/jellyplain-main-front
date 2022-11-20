@@ -48,7 +48,7 @@ export default function Product() {
 
   const [isLoading, setIsLoading] = useState<any>("idle");
 
-  const router = useRouter();
+  const router = useRouter()
 
   useEffect(() => {
     (async () => {
@@ -57,7 +57,6 @@ export default function Product() {
         const res = await axios.get(
           `https://jellyplainv2.herokuapp.com/product/getOne?id=${Number(router.query.id)}`
         );
-        console.log(res.data)
         setProduct({
           id: res.data.id,
           price: res.data.price,
@@ -66,10 +65,14 @@ export default function Product() {
           productChild: {
             colors: res.data.productChilds[0].colors,
             images: res.data.productChilds[0].images,
-            size: res.data.productChilds[0].sizesSneakers[0],
+            size: res.data.productChilds[0].sizesSneakers,
           },
         });
-        setProductChild(res.data.productChilds[0]);
+        console.log(res.data.productChilds[0])
+        setProductChild({
+          ...res.data.productChilds[0],
+          size: res.data.productChilds[0].sizesSneakers
+        });
 
         setAllColors(() => {
           let colors: any = [];
@@ -176,7 +179,7 @@ const Info = ({
   };
 
   useEffect(() => {
-    onChangeProduct(productChild?.sizesSneakers[0]);
+    onChangeProduct(productChild?.sizes);
   }, [productChild]);
 
   return (
