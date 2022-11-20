@@ -17,6 +17,7 @@ import useActions from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Rating from "../../components/UI/Rating";
 import sizes from "../../utils/helping/sizes";
+import types from "../../utils/helping/types";
 
 const images = [
   {
@@ -261,7 +262,7 @@ const Title = ({ product }: any) => {
             </div>
           </div> */}
           <span className="font-medium text-[18px] text-[#5B9F32]">
-            Оригинал
+            {types[product.type]}
           </span>
         </div>
       </div>

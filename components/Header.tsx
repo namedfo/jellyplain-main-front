@@ -108,7 +108,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
   const { removeCard } = useActions();
 
   const newCart = Object.values(cart)
-  
+
   return (
     <div className="shadow-popup z-10 flex flex-col w-[440px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">
@@ -147,7 +147,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                       </span>
 
                       <div
-                        className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] hover:border-[2px] h-[20px] border`}
+                        className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] h-[20px] border`}
                       >
                         {card?.info?.productChild?.colors?.map(
                           (color: any, j: number) => (
@@ -193,7 +193,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                     {card?.totalPrice} &#8381;
                   </span>
                   <button onClick={() => removeCard(card?.id)} className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
-                    remove
+                    удалить
                   </button>
                 </div>
               </div>

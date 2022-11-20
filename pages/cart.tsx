@@ -11,9 +11,9 @@ import useActions from "../hooks/useActions";
 import sizes from "../utils/helping/sizes";
 
 export default function Cart() {
-  const { cart } = useTypedSelector((state) => state.cart);
+  const { cart, totalPrice } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
-  const { setIsOpenAuth } = useActions();
+  const { setIsOpenAuth, removeCard } = useActions();
 
    
 
@@ -29,13 +29,13 @@ export default function Cart() {
               </span>
               <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
                 {cart?.map((card: any) => (
-                  <Elem key={card.id} card={card} />
+                  <Elem removeCard={removeCard} key={card.id} card={card} />
                 ))}
               </div>
               <div className="px-[15px] mt-[10px]">
                 <div className="flex text-[18px] text-[#212121] font-medium justify-between">
                   <span>Итог</span>
-                  <span>6 111 &#8381;</span>
+                  <span>{totalPrice} &#8381;</span>
                 </div>
               </div>
               {isAuth ? (
@@ -65,7 +65,7 @@ export default function Cart() {
   );
 }
 
-const Elem = ({ card }: any) => {
+const Elem = ({ removeCard, card }: any) => {
   return (
     <div
       className="flex px-[10px] justify-between py-[10px]"
@@ -89,7 +89,7 @@ const Elem = ({ card }: any) => {
             </span>
 
             <div
-              className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] hover:border-[2px] h-[20px] border`}
+              className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] h-[20px] border`}
             >
               {card?.info?.productChild?.colors?.map(
                 (color: any, j: number) => (
@@ -130,8 +130,8 @@ const Elem = ({ card }: any) => {
         <span className="text-[#FFA500] text-[18px] font-medium">
           {card?.totalPrice} &#8381;
         </span>
-        <button className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
-          remove
+        <button onClick={() => removeCard(card.id)} className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
+          удалить
         </button>
       </div>
     </div>

@@ -20,19 +20,28 @@ export const cartSlice = createSlice({
       ...state,
       cartIsShow: action.payload,
     }),
+    plus: (state: initialStateType, action: any) => {
+
+    },
+    minus: (state: initialStateType, action: any) => {
+
+    },
     removeCard: (state: initialStateType, action: any) => {
       const newObject = { ...state.cart }
+
+      const totalPrice = newObject[action.payload].totalPrice
+
       delete newObject[action.payload];
 
       return {
         ...state,
+        totalPrice: state.totalPrice - totalPrice,
         cart: newObject
       }
     },
     setCard: (state: initialStateType, action: any) => {
-      console.log(action.payload.productChild)
       const id = `${action.payload.id}_${action.payload.productChild.size}_${action.payload.productChild.colors.map((color: any) => color.hex).join()}`;
-      console.log(id)
+      
       if (
         state?.cart[id] &&
         state?.cart[id]?.info?.productChild?.size ===
