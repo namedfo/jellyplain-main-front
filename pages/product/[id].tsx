@@ -50,15 +50,12 @@ export default function Product() {
 
   const router = useRouter();
 
-  console.log(product)
-  console.log(productChild)
-
   useEffect(() => {
     (async () => {
       setIsLoading("loading");
       try {
         const res = await axios.get(
-          `https://jellyplainv2.herokuapp.com/product/getOne?id=${1}`
+          `https://jellyplainv2.herokuapp.com/product/getOne?id=${Number(router.query.id)}`
         );
         console.log(res.data)
         setProduct({
