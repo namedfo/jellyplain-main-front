@@ -20,6 +20,15 @@ export const cartSlice = createSlice({
       ...state,
       cartIsShow: action.payload,
     }),
+    removeCard: (state: initialStateType, action: any) => {
+      const newObject = { ...state.cart }
+      delete newObject[action.payload];
+
+      return {
+        ...state,
+        cart: newObject
+      }
+    },
     setCard: (state: initialStateType, action: any) => {
       console.log(action.payload.productChild)
       const id = `${action.payload.id}_${action.payload.productChild.size}_${action.payload.productChild.colors.map((color: any) => color.hex).join()}`;

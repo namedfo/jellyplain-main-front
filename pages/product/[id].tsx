@@ -219,6 +219,7 @@ const Info = ({
         <div className="my-[7px] flex flex-wrap">
           {productChild?.sizes?.map((size: any) => (
             <button
+              key={size}
               onClick={() => onChangeProduct(size)}
               className={`border ${
                 product?.productChild?.size === size
@@ -237,8 +238,6 @@ const Info = ({
 
 const Title = ({ product }: any) => {
   const { setCard } = useActions();
-
-  console.log(product);
 
   return (
     <div className="flex justify-between">

@@ -105,8 +105,10 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
   const { cart, totalPrice } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
 
+  const { removeCard } = useActions();
+
   const newCart = Object.values(cart)
-  console.log(newCart)
+  
   return (
     <div className="shadow-popup z-10 flex flex-col w-[440px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">
@@ -190,7 +192,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                   <span className="text-[#FFA500] text-[18px] font-medium">
                     {card?.totalPrice} &#8381;
                   </span>
-                  <button className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
+                  <button onClick={() => removeCard(card?.id)} className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
                     remove
                   </button>
                 </div>
