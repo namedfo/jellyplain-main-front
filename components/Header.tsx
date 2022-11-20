@@ -31,6 +31,8 @@ export default function Header() {
 
   const { ref } = useOutside(() => setCartIsShow(false));
 
+
+  const newCart = Object.values(cart)
   return (
     <div className="w-full px-[15px] hidden md:flex justify-between bg-white h-[60px] shadow-jj rounded-[10px]">
       <Auth isOpen={isOpenAuth} onClose={() => setIsOpenAuth(false)} />
@@ -63,9 +65,9 @@ export default function Header() {
             }}
             className="hover:bg-[#86368D1A] rounded-md p-[6px]"
           >
-            {cart?.length > 0 && (
+            {newCart?.length > 0 && (
               <div className="bg-[#ef7481] shadow-xl bottom-[-3px] left-[22px] text-[12px] px-[5px] absolute text-white rounded-[8px]">
-                {cart.length}
+                {newCart.length}
               </div>
             )}
             <Image
@@ -100,15 +102,17 @@ export default function Header() {
 }
 
 const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
-  const { cart } = useTypedSelector((state) => state.cart);
+  const { cart, totalPrice } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
-  
+
+  const newCart = Object.values(cart)
+  console.log(newCart)
   return (
     <div className="shadow-popup z-10 flex flex-col w-[440px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">
         Корзина
       </span>
-      {cart?.length === 0 ? (
+      {newCart?.length === 0 ? (
         <div className="w-full py-[30px] text-center">
           <span className="font-medium text-[#8A8A8A]">
             Ваша корзина пуста :(
@@ -117,9 +121,9 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
       ) : (
         <>
           <div className="flex flex-col max-h-[350px] overflow-y-auto divide-y">
-            {cart?.map((card: any) => (
+            {newCart?.map((card: any) => (
               <div
-                key={card?.info?.id}
+                key={card?.id}
                 className="flex px-[10px] justify-between py-[10px]"
               >
                 <div className="flex items-center">
@@ -196,7 +200,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
           <div>
             <div className="flex text-[18px] text-[#212121] font-medium justify-between">
               <span>Итог</span>
-              <span>6 111 &#8381;</span>
+              <span>{totalPrice} &#8381;</span>
             </div>
             {isAuth ? (
               <button className="bg-[#307fee] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">

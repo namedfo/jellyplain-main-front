@@ -15,6 +15,8 @@ export default function MobileMenu() {
 
   const router = useRouter();
 
+  const newCart = Object.values(cart)
+
   const getContent = () => {
     if (router.pathname === "/product/[id]") {
       return (
@@ -59,9 +61,9 @@ export default function MobileMenu() {
             onClick={() => router.push("/cart")}
             className="hover:bg-[#8045C61A] relative rounded-[10px] p-[5px]"
           >
-            {cart?.length > 0 && (
+            {newCart?.length > 0 && (
               <div className="bg-[#ef7481] shadow-xl bottom-[-3px] left-[22px] text-[12px] px-[3px] absolute text-white rounded-[8px]">
-                {cart.length}
+                {newCart.length}
               </div>
             )}
             <FaShoppingBasket

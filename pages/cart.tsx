@@ -15,6 +15,8 @@ export default function Cart() {
   const { isAuth } = useTypedSelector((state) => state.user);
   const { setIsOpenAuth } = useActions();
 
+   
+
   return (
     <Container>
       <Header />
@@ -70,11 +72,11 @@ const Elem = ({ card }: any) => {
     >
       <div className="flex items-center">
         <img
-          className="object-contain h-[90px] w-[90px]"
+          className="object-contain h-[70px] w-[70px]"
           src={card?.info?.productChild?.images[0]?.url}
         />
         <div className="flex ml-[10px] flex-col">
-          <span className="text-[#292929] text-[18px] font-medium">
+          <span className="text-[#292929] text-[16px] font-medium">
             {card?.info?.title}
           </span>
           <div className="flex items-center">
