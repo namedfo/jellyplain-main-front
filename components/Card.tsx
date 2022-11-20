@@ -41,7 +41,7 @@ export default function Card({ card }: any) {
           {card?.title}
         </span>
         <div className="flex flex-row justify-between">
-          <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
+          {/* <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
             <div className="flex items-center">
               <AiFillStar color="#fbbf24" />
               <span className="text-[#79828e] text-[17px] font-medium ml-[5px]">
@@ -54,7 +54,7 @@ export default function Card({ card }: any) {
                 53
               </span>
             </div>
-          </div>
+          </div> */}
           <span className="font-medium text-[17px] text-[#5B9F32]">Оригинал</span>
         </div>
       </div>

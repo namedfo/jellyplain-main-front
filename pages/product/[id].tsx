@@ -42,6 +42,8 @@ export default function Product() {
   const [product, setProduct] = useState<any>(undefined);
   const [productChild, setProductChild] = useState<any>(undefined);
 
+  const [allColors, setAllColors] = useState<any>(undefined);
+
   const [isLoading, setIsLoading] = useState<any>("idle");
 
   const { setCard } = useActions();
@@ -57,6 +59,22 @@ export default function Product() {
         );
         setProduct(res.data);
         setProductChild(res.data.productChilds[0]);
+
+        setAllColors(() => {
+          let colors: any = [];
+          res?.data?.productChilds?.forEach((elem: any) => {
+            colors = [
+              ...colors,
+              {
+                colors: elem.colors.map((color: any) => color.hex),
+                productChild: elem,
+              },
+            ];
+          });
+
+          return colors;
+        });
+
         setIsLoading("success");
       } catch (error) {
         setIsLoading("error");
@@ -111,7 +129,13 @@ export default function Product() {
               </div>
             </div>
             <div className="flex flex-col">
-              <Info setCard={setCard} product={product} />
+              <Info
+                productChild={productChild}
+                allColors={allColors}
+                setCard={setCard}
+                product={product}
+                setProductChild={setProductChild}
+              />
               {/* <Reviews /> */}
             </div>
             <div className="block sm:hidden mt-[75px]" />
@@ -122,61 +146,97 @@ export default function Product() {
   );
 }
 
-const Info = ({ product, setCard }: any) => {
+const sizes: any = {
+  eu36: {
+    size: 36,
+  },
+  eu37: {
+    size: 37,
+  },
+  eu375: {
+    size: 37.5,
+  },
+  eu38: {
+    size: 38,
+  },
+  eu39: {
+    size: 39,
+  },
+  eu40: {
+    size: 40,
+  },
+  eu41: {
+    size: 41,
+  },
+  eu42: {
+    size: 42,
+  },
+  eu43: {
+    size: 43,
+  },
+  eu44: {
+    size: 44,
+  },
+  eu45: {
+    size: 45,
+  },
+  eu46: {
+    size: 46,
+  },
+};
+
+const Info = ({ allColors, product, productChild, setCard, setProductChild }: any) => {
+  const [selectedSize, setSelectedSize] = useState(productChild?.sizes[0]);
+  
   return (
     <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[15px]">
       <Title setCard={setCard} product={product} />
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Цвета</span>
         <div className="flex flex-wrap mt-[5px]">
-          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-white border" />
-          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-[#a78bfa] border" />
-          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-[#facc15] border" />
-          <div className="w-[50px] ml-[5px] my-[3px] rounded-[8px] h-[30px] bg-black border" />
+          {allColors?.map((elem: any, i: number) => {
+            console.log(elem)
+            return (
+              <div
+                onClick={() => setProductChild(elem?.productChild)}
+                className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] h-[30px] border ${
+                  i === 0 ? "border-[2px] border-slate-400" : ""
+                }`}
+              >
+                {elem?.colors?.map((color: any, j: number) => (
+                  <div
+                    style={{
+                      backgroundColor: color,
+                      borderTopLeftRadius: j === 0 ? "8px" : "",
+                      borderBottomLeftRadius: j === 0 ? "8px" : "",
+                      borderTopRightRadius:
+                        elem?.colors?.length - 1 === j ? "8px" : "",
+                      borderBottomRightRadius:
+                        elem?.colors?.length - 1 === j ? "8px" : "",
+                    }}
+                    className="w-full h-full"
+                  />
+                ))}
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Размеры</span>
         <div className="my-[7px] flex flex-wrap">
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            38
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            39
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            40
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            41
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            42
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            43
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            44
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            45
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            46
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            47
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            48
-          </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]">
-            49
-          </button>
-          <button className="border bg-[#BEA0E2] text-white my-[3px] ml-[5px] px-[17px] py-[3px] rounded-[10px]">
-            50
-          </button>
+          {productChild?.sizes.map((size: any) => (
+            <button
+              onClick={() => setSelectedSize(size)}
+              className={`border ${
+                selectedSize === size
+                  ? "bg-[#BEA0E2] text-white border-[2px]"
+                  : "hover:bg-slate-100  border-[2px]"
+              } ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]`}
+            >
+              {sizes[size].size}
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -191,7 +251,7 @@ const Title = ({ product, setCard }: any) => {
           {product?.title}
         </span>
         <div className="flex justify-start">
-          <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
+          {/* <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
             <div className="flex items-center">
               <AiFillStar color="#fbbf24" />
               <span className="text-[#79828e] text-[18px] font-medium ml-[5px]">
@@ -204,8 +264,8 @@ const Title = ({ product, setCard }: any) => {
                 53
               </span>
             </div>
-          </div>
-          <span className="font-medium text-[18px] ml-[25px] text-[#5B9F32]">
+          </div> */}
+          <span className="font-medium text-[18px] text-[#5B9F32]">
             Оригинал
           </span>
         </div>
@@ -231,8 +291,8 @@ const Reviews = () => {
   const { setIsOpenAuth } = useActions();
 
   const handleRating = (index: number) => {
-    console.log(index)
-  }
+    console.log(index);
+  };
 
   return (
     <div className="flex w-full shadow-jj rounded-[10px] bg-white sm:w-[650px] p-[15px] flex-col mt-[7px] sm:mt-[30px]">
