@@ -14,6 +14,7 @@ import useActions from "../hooks/useActions";
 import useOutside from "../hooks/useOutside";
 // modals
 import Auth from "../modals/Auth";
+import sizes from "../utils/helping/sizes";
 
 export default function Header() {
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
@@ -104,7 +105,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
 
   console.log(cart);
   return (
-    <div className="shadow-popup z-10 flex flex-col w-[420px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
+    <div className="shadow-popup z-10 flex flex-col w-[440px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
       <span className="text-[20px] mb-[7px] text-[#292929] font-medium">
         Корзина
       </span>
@@ -125,15 +126,49 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                 <div className="flex items-center">
                   <img
                     className="object-contain h-[90px] w-[90px]"
-                    src={card?.info?.productChilds[0]?.images[0]?.url}
+                    src={card?.info?.productChild?.images[0]?.url}
                   />
                   <div className="flex ml-[10px] flex-col">
                     <span className="text-[#292929] text-[18px] font-medium">
                       {card?.info?.title}
                     </span>
-                    <div>
-                      <span>size and </span>
-                      <span>color</span>
+                    <div className="flex items-center">
+                      <span className="mr-[3px]">Размер: </span>
+                      <span>{sizes[card?.info?.productChild?.size].size}</span>
+                      <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+                      <span className="mr-[3px]">
+                        Цвет
+                        {card?.info?.productChild?.colors.length > 1 && "(а)"}:
+                      </span>
+                      {card?.info?.productChild?.colors.map(
+                        (elem: any, i: number) => {
+                          return (
+                            <div
+                              className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] hover:border-[2px] h-[20px] border`}
+                            >
+                              {elem?.colors?.map((color: any, j: number) => (
+                                <div
+                                  style={{
+                                    backgroundColor: color,
+                                    borderTopLeftRadius: j === 0 ? "3px" : "",
+                                    borderBottomLeftRadius:
+                                      j === 0 ? "3px" : "",
+                                    borderTopRightRadius:
+                                      elem?.colors?.length - 1 === j
+                                        ? "3px"
+                                        : "",
+                                    borderBottomRightRadius:
+                                      elem?.colors?.length - 1 === j
+                                        ? "3px"
+                                        : "",
+                                  }}
+                                  className="w-full h-full"
+                                />
+                              ))}
+                            </div>
+                          );
+                        }
+                      )}
                     </div>
                     <div className="flex mr-[10px] items-center">
                       <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">

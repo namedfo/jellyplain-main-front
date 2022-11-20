@@ -16,6 +16,7 @@ import Container from "../../layouts/Container";
 import useActions from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Rating from "../../components/UI/Rating";
+import sizes from "../../utils/helping/sizes";
 
 const images = [
   {
@@ -46,8 +47,6 @@ export default function Product() {
 
   const [isLoading, setIsLoading] = useState<any>("idle");
 
-  const { setCard } = useActions();
-
   const router = useRouter();
 
   useEffect(() => {
@@ -57,7 +56,17 @@ export default function Product() {
         const res = await axios.get(
           `https://jellyplainv2.herokuapp.com/product/getOne?id=${1}`
         );
-        setProduct(res.data);
+        setProduct({
+          id: res.data.id,
+          price: res.data.price,
+          title: res.data.title,
+          type: res.data.type,
+          productChild: {
+            colors: res.data.productChilds[0].colors,
+            images: res.data.productChilds[0].images,
+            size: res.data.productChilds[0].sizes[0],
+          },
+        });
         setProductChild(res.data.productChilds[0]);
 
         setAllColors(() => {
@@ -109,7 +118,7 @@ export default function Product() {
                     />
                   )}
                 </div>
-                <div className="block sm:hidden relative">
+                <div className="block md:hidden relative">
                   <button
                     onClick={() => router.push("/")}
                     className="absolute rounded-[10px] p-[3px] hover:bg-[#8A63B91A] left-0 z-10 top-0"
@@ -132,8 +141,8 @@ export default function Product() {
               <Info
                 productChild={productChild}
                 allColors={allColors}
-                setCard={setCard}
                 product={product}
+                setProduct={setProduct}
                 setProductChild={setProductChild}
               />
               {/* <Reviews /> */}
@@ -146,61 +155,45 @@ export default function Product() {
   );
 }
 
-const sizes: any = {
-  eu36: {
-    size: 36,
-  },
-  eu37: {
-    size: 37,
-  },
-  eu375: {
-    size: 37.5,
-  },
-  eu38: {
-    size: 38,
-  },
-  eu39: {
-    size: 39,
-  },
-  eu40: {
-    size: 40,
-  },
-  eu41: {
-    size: 41,
-  },
-  eu42: {
-    size: 42,
-  },
-  eu43: {
-    size: 43,
-  },
-  eu44: {
-    size: 44,
-  },
-  eu45: {
-    size: 45,
-  },
-  eu46: {
-    size: 46,
-  },
-};
 
-const Info = ({ allColors, product, productChild, setCard, setProductChild }: any) => {
-  const [selectedSize, setSelectedSize] = useState(productChild?.sizes[0]);
-  
+
+const Info = ({
+  allColors,
+  product,
+  setProduct,
+  productChild,
+  setProductChild,
+}: any) => {
+  const onChangeProduct = (size: any) => {
+    setProduct((prev: any) => ({
+      ...prev,
+      productChild: {
+        ...prev?.productChild,
+        colors: productChild?.colors,
+        size,
+      },
+    }));
+  };
+
+  useEffect(() => {
+    onChangeProduct(productChild?.sizes[0]);
+  }, [productChild]);
+
   return (
     <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[15px]">
-      <Title setCard={setCard} product={product} />
+      <Title product={product} />
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Цвета</span>
         <div className="flex flex-wrap mt-[5px]">
           {allColors?.map((elem: any, i: number) => {
-            console.log(elem)
+            console.log(elem);
             return (
               <div
                 onClick={() => setProductChild(elem?.productChild)}
                 className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] h-[30px] border ${
-                  productChild.id === elem?.productChild.id ? "border-[2px] border-slate-400" : ""
+                  productChild.id === elem?.productChild.id
+                    ? "border-[2px] border-slate-400"
+                    : ""
                 }`}
               >
                 {elem?.colors?.map((color: any, j: number) => (
@@ -225,13 +218,13 @@ const Info = ({ allColors, product, productChild, setCard, setProductChild }: an
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Размеры</span>
         <div className="my-[7px] flex flex-wrap">
-          {productChild?.sizes.map((size: any) => (
+          {productChild?.sizes?.map((size: any) => (
             <button
-              onClick={() => setSelectedSize(size)}
+              onClick={() => onChangeProduct(size)}
               className={`border ${
-                selectedSize === size
-                  ? "bg-[#BEA0E2] text-white border-[2px]"
-                  : "hover:bg-slate-100  border-[2px]"
+                product?.productChild?.size === size
+                  ? "bg-[#3b82f6] text-white border-[1px]"
+                  : "hover:bg-slate-200  border-[2px]"
               } ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]`}
             >
               {sizes[size].size}
@@ -243,7 +236,11 @@ const Info = ({ allColors, product, productChild, setCard, setProductChild }: an
   );
 };
 
-const Title = ({ product, setCard }: any) => {
+const Title = ({ product }: any) => {
+  const { setCard } = useActions();
+
+  console.log(product);
+
   return (
     <div className="flex justify-between">
       <div className="flex flex-col">

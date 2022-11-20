@@ -72,43 +72,43 @@ const Size = () => {
 
       {isOpen && (
         <div className="my-[7px] flex flex-wrap justify-between">
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             38
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             39
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             40
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             41
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             42
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             43
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             44
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             45
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             46
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             47
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             48
           </button>
-          <button className="border hover:bg-[#F4EFEF] text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border hover:bg-slate-200 text-[#444444] my-[5px] px-[17px] py-[3px] rounded-[10px]">
             49
           </button>
-          <button className="border bg-[#BEA0E2] text-white my-[5px] px-[17px] py-[3px] rounded-[10px]">
+          <button className="border bg-[#3b82f6] text-white my-[5px] px-[17px] py-[3px] rounded-[10px]">
             50
           </button>
         </div>
