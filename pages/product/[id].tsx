@@ -262,7 +262,7 @@ const Title = ({ product }: any) => {
             </div>
           </div> */}
           <span className="font-medium text-[18px] text-[#5B9F32]">
-            {types[product.type]}
+            {types[product?.type]}
           </span>
         </div>
       </div>
