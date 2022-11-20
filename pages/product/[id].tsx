@@ -50,6 +50,9 @@ export default function Product() {
 
   const router = useRouter();
 
+  console.log(product)
+  console.log(productChild)
+
   useEffect(() => {
     (async () => {
       setIsLoading("loading");
@@ -57,6 +60,7 @@ export default function Product() {
         const res = await axios.get(
           `https://jellyplainv2.herokuapp.com/product/getOne?id=${1}`
         );
+        console.log(res.data)
         setProduct({
           id: res.data.id,
           price: res.data.price,
@@ -65,7 +69,7 @@ export default function Product() {
           productChild: {
             colors: res.data.productChilds[0].colors,
             images: res.data.productChilds[0].images,
-            size: res.data.productChilds[0].sizes[0],
+            size: res.data.productChilds[0].sizesSneakers[0],
           },
         });
         setProductChild(res.data.productChilds[0]);
@@ -175,7 +179,7 @@ const Info = ({
   };
 
   useEffect(() => {
-    onChangeProduct(productChild?.sizes[0]);
+    onChangeProduct(productChild?.sizesSneakers[0]);
   }, [productChild]);
 
   return (
@@ -218,7 +222,7 @@ const Info = ({
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Размеры</span>
         <div className="my-[7px] flex flex-wrap">
-          {productChild?.sizes?.map((size: any) => (
+          {productChild?.sizesSneakers?.map((size: any) => (
             <button
               key={size}
               onClick={() => onChangeProduct(size)}
