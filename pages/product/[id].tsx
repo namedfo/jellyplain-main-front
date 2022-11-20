@@ -65,13 +65,12 @@ export default function Product() {
           productChild: {
             colors: res.data.productChilds[0].colors,
             images: res.data.productChilds[0].images,
-            size: res.data.productChilds[0].sizesSneakers,
+            size: res.data.category === "sneakers" ? res.data.productChilds[0].sizesSneakers : res.data.productChilds[0].sizesClothes,
           },
         });
-        console.log(res.data.productChilds[0])
         setProductChild({
           ...res.data.productChilds[0],
-          size: res.data.productChilds[0].sizesSneakers
+          size: res.data.category === "sneakers" ? res.data.productChilds[0].sizesSneakers : res.data.productChilds[0].sizesClothes
         });
 
         setAllColors(() => {
