@@ -140,35 +140,35 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                         Цвет
                         {card?.info?.productChild?.colors.length > 1 && "(а)"}:
                       </span>
-                      {card?.info?.productChild?.colors.map(
-                        (elem: any, i: number) => {
-                          return (
+
+                      <div
+                        className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] hover:border-[2px] h-[20px] border`}
+                      >
+                        {card?.info?.productChild?.colors?.map(
+                          (color: any, j: number) => (
                             <div
-                              className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] hover:border-[2px] h-[20px] border`}
-                            >
-                              {elem?.colors?.map((color: any, j: number) => (
-                                <div
-                                  style={{
-                                    backgroundColor: color,
-                                    borderTopLeftRadius: j === 0 ? "3px" : "",
-                                    borderBottomLeftRadius:
-                                      j === 0 ? "3px" : "",
-                                    borderTopRightRadius:
-                                      elem?.colors?.length - 1 === j
-                                        ? "3px"
-                                        : "",
-                                    borderBottomRightRadius:
-                                      elem?.colors?.length - 1 === j
-                                        ? "3px"
-                                        : "",
-                                  }}
-                                  className="w-full h-full"
-                                />
-                              ))}
-                            </div>
-                          );
-                        }
-                      )}
+                              style={{
+                                backgroundColor: color.hex,
+                                borderTopLeftRadius: j === 0 ? "3px" : "",
+                                borderBottomLeftRadius: j === 0 ? "3px" : "",
+                                borderTopRightRadius:
+                                  card?.info?.productChild?.colors?.length -
+                                    1 ===
+                                  j
+                                    ? "3px"
+                                    : "",
+                                borderBottomRightRadius:
+                                  card?.info?.productChild?.colors?.length -
+                                    1 ===
+                                  j
+                                    ? "3px"
+                                    : "",
+                              }}
+                              className="w-full h-full"
+                            />
+                          )
+                        )}
+                      </div>
                     </div>
                     <div className="flex mr-[10px] items-center">
                       <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
