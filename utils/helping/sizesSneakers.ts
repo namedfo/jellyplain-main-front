@@ -1,4 +1,4 @@
-const sizes: any = {
+const sizesSneakers: any = {
   eu36: {
     size: 36,
   },
@@ -37,4 +37,4 @@ const sizes: any = {
   },
 };
 
-export default sizes;
+export default sizesSneakers;

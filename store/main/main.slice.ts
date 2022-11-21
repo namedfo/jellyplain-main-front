@@ -1,15 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type initialStateType = {
-    selectedCategory: string
+  selectedCategory: string;
 
-    isOpenAuth: boolean
+  isOpenAuth: boolean;
+
+  isOpenFiltred: boolean;
 };
 
 const initialState: initialStateType = {
-    selectedCategory: "all",
-    
-    isOpenAuth: false
+  selectedCategory: "all",
+
+  isOpenAuth: false,
+
+  isOpenFiltred: false,
 };
 
 export const mainSlice = createSlice({
@@ -17,13 +21,17 @@ export const mainSlice = createSlice({
   initialState,
   reducers: {
     setSelectedCategory: (state: initialStateType, action: any) => ({
-        ...state,
-        selectedCategory: action.payload
+      ...state,
+      selectedCategory: action.payload,
     }),
     setIsOpenAuth: (state: initialStateType, action: any) => ({
       ...state,
-      isOpenAuth: action.payload
-  })
+      isOpenAuth: action.payload,
+    }),
+    setIsOpenFiltred: (state: initialStateType, action: any) => ({
+      ...state,
+      isOpenFiltred: action.payload,
+    }),
   },
 });
 

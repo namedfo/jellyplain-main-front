@@ -22,25 +22,22 @@ export default function Card({ card }: any) {
   };
 
   return (
-    <div className="shadow-jj p-[15px] mt-[30px] 400:mx-[0] rounded-[10px] bg-white w-[270px] 400:w-[235px]">
-      <div className="w-full h-[170px] 400:h-[140px] flex items-center justify-center">
-        {card?.image !== "1" && (
-          <img
-            onClick={onHandleProduct}
-            alt="img"
-            src={card.productChilds[0]?.images[0]?.url}
-            className="cursor-pointer w-[235px] 400:w-[200px] 400:h-[140px] object-contain border rounded-[10px]"
-          />
-        )}
+    <div
+      onClick={onHandleProduct}
+      className="shadow-jj p-[15px] mt-[30px] 400:mx-[0] rounded-[10px] bg-white w-[270px] 400:w-[235px]"
+    >
+      <div className="flex items-center justify-center">
+        <img
+          alt="img"
+          src={card.productChilds[0]?.images[0]?.url}
+          className="cursor-pointer w-full h-[150px] object-contain border rounded-[10px]"
+        />
       </div>
       <div className="flex mt-[10px] flex-col">
-        <span
-          onClick={onHandleProduct}
-          className="text-[#414752] cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis text-[18px] font-medium"
-        >
+        <span className="text-[#414752] cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis text-[18px] font-medium">
           {card?.title}
         </span>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row items-end justify-between">
           {/* <div className="flex cursor-pointer py-[1px] px-[3px] rounded-lg hover:bg-[#8045C61A]">
             <div className="flex items-center">
               <AiFillStar color="#fbbf24" />
@@ -55,34 +52,15 @@ export default function Card({ card }: any) {
               </span>
             </div>
           </div> */}
-          <span className="font-medium text-[17px] text-[#5B9F32]">Оригинал</span>
-        </div>
-      </div>
-      <div className="flex flex-row mt-[5px] sm:mt-[10px] justify-between">
-        <div className="py-[2px] flex justify-start items-center">
-          <span className="text-[#FFA500] text-[20px] font-medium">
-            {card?.price} &#8381;
+          <span className="font-medium text-[17px] text-[#5B9F32]">
+            Оригинал
           </span>
+          <div className="bg-fuchsia-500 px-[6px] rounded-[8px]">
+            <span className="text-white leading-0 text-[20px] font-medium">
+              {card?.price} &#8381;
+            </span>
+          </div>
         </div>
-        <button
-          onClick={() => router.push(`/product/${card?.id}`)}
-          style={{
-            background:
-              "radial-gradient(158.93% 1439.29% at 71.89% 100%, #86368D 0%, rgba(134, 54, 141, 0) 100%)",
-          }}
-          className="rounded-[10px] px-[10px] py-[2px] font-medium text-[16px] text-white"
-        >
-          Подробнее
-        </button>
-        {/* <div className="flex  items-center">
-          <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
-            <AiOutlineMinus color="#8045c6" />
-          </button>
-          <span className="font-medium text-[18px] mx-[15px]">1</span>
-          <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
-            <AiOutlinePlus color="#8045c6" />
-          </button>
-        </div> */}
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import Container from "../layouts/Container";
 // hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import useActions from "../hooks/useActions";
-import sizes from "../utils/helping/sizes";
+import sizes from "../utils/helping/sizesSneakers";
 
 export default function Cart() {
   const { cart, totalPrice } = useTypedSelector((state) => state.cart);

@@ -7,11 +7,13 @@ import $api from "../config";
 // hooks
 import useActions from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import Filtred from "../modals/Filtred";
 
 export default function AuthWrapper({ children }: any) {
   const { isLoading } = useTypedSelector((state) => state.user);
+  const { isOpenFiltred } = useTypedSelector((state) => state.main)
 
-  const { setUser, setIsAuth, setIsLoading } = useActions();
+  const { setUser, setIsAuth, setIsLoading, setIsOpenFiltred } = useActions();
 
   useEffect(() => {
     (async () => {
@@ -44,7 +46,8 @@ export default function AuthWrapper({ children }: any) {
     return <LLoading />;
   }
   return (
-    <div className="h-full">
+    <div className="h-full relative">
+      {isOpenFiltred && <Filtred onClose={() => setIsOpenFiltred(false)} />}
       {children}
     </div>
   );

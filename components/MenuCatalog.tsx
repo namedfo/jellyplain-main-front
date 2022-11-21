@@ -10,11 +10,12 @@ import useActions from "../hooks/useActions";
 import useOutside from "../hooks/useOutside";
 // hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import Filtred from "../modals/Filtred";
 
 export default function MenuCatalog() {
   const { selectedCategory } = useTypedSelector((state) => state.main);
 
-  const { setSelectedCategory } = useActions();
+  const { setSelectedCategory, setIsOpenFiltred } = useActions();
 
   return (
     <div className="shadow-jj flex flex-col sm:text-[18px] text-[16px] font-medium py-[15px] p-[15px] w-full rounded-[10px] bg-white">
@@ -75,7 +76,7 @@ export default function MenuCatalog() {
             <IoSearchSharp size={20} />
             <span className="ml-[5px]">Поиск</span>
           </button>
-          <button className="py-[5px] flex items-center bg-[#8A63B91A] px-[15px] rounded-[10px]">
+          <button onClick={() => setIsOpenFiltred(true)} className="py-[5px] flex items-center bg-[#8A63B91A] px-[15px] rounded-[10px]">
             <AiFillFilter size={18} />
             Фильтрация
           </button>

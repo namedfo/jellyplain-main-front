@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import Container from "../layouts/Container";
 import MenuCatalog from "../components/MenuCatalog";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import LLoading from "../components/Loading";
 
 // const cards = [
 //   { id: 1, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
@@ -37,19 +38,25 @@ type Card = {
 
 export default function Home() {
   const [cards, setCards] = useState<any | []>([]);
+  const [loading, setLoading] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
-  const { selectedCategory } = useTypedSelector(state => state.main)
-
+  const { selectedCategory } = useTypedSelector((state) => state.main);
 
   useEffect(() => {
     (async () => {
       try {
+        setLoading("loading");
         const res = await axios.get(
-          `https://jellyplainv2.herokuapp.com/product/getAll${selectedCategory === "all" ? "" : `?category=${selectedCategory}`}`
+          `https://jellyplainv2.herokuapp.com/product/getAll${
+            selectedCategory === "all" ? "" : `?category=${selectedCategory}`
+          }`
         );
         setCards(res.data);
+        setLoading("success");
       } catch (error) {
-        console.log(error);
+        setLoading("error");
       }
     })();
   }, [selectedCategory]);
@@ -63,11 +70,14 @@ export default function Home() {
         </div>
         <div className="flex md:ml-[34px] w-full flex-col">
           <MenuCatalog />
-          <div className="flex justify-center 400:justify-start items-center gap-3 flex-wrap">
-            {cards?.map((card: any) => (
-              <Card key={card.id} card={card} />
-            ))}
-          </div>
+          {loading === "success" && (
+            <div className="flex justify-center 400:justify-start items-center gap-3 flex-wrap">
+              {cards?.map((card: any) => (
+                <Card key={card.id} card={card} />
+              ))}
+            </div>
+          )}
+          {loading === "loading" && <LLoading />}
         </div>
       </div>
     </Container>

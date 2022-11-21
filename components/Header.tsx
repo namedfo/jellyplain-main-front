@@ -14,7 +14,7 @@ import useActions from "../hooks/useActions";
 import useOutside from "../hooks/useOutside";
 // modals
 import Auth from "../modals/Auth";
-import sizes from "../utils/helping/sizes";
+import sizes from "../utils/helping/sizesSneakers";
 
 export default function Header() {
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
