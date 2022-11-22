@@ -9,26 +9,26 @@ import Container from "../layouts/Container";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import useActions from "../hooks/useActions";
 import sizes from "../utils/helping/sizesSneakers";
+import BtnToBuy from "../components/BtnToBuy";
 
 export default function Cart() {
   const { cart, totalPrice } = useTypedSelector((state) => state.cart);
-  const { isAuth } = useTypedSelector((state) => state.user);
-  const { setIsOpenAuth, removeCard } = useActions();
+  const { removeCard } = useActions();
 
-   
+  const newCart = Object.values(cart);
 
   return (
     <Container>
       <Header />
       <div className="h-full md:mt-[30px]">
-        {cart?.length > 0 ? (
+        {newCart?.length > 0 ? (
           <>
             <div className="overflow-y-auto rounded-[10px] bg-white shadow-jj">
               <span className="text-[20px] ml-[15px] mb-[7px] text-[#292929] font-medium">
                 Корзина
               </span>
               <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
-                {cart?.map((card: any) => (
+                {newCart?.map((card: any) => (
                   <Elem removeCard={removeCard} key={card.id} card={card} />
                 ))}
               </div>
@@ -38,18 +38,7 @@ export default function Cart() {
                   <span>{totalPrice} &#8381;</span>
                 </div>
               </div>
-              {isAuth ? (
-                <button className="bg-[#307fee] my-[15px] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
-                  Купить
-                </button>
-              ) : (
-                <button
-                  onClick={() => setIsOpenAuth(true)}
-                  className=" text-[#307fee] my-[15px] px-[6px] hover:underline font-medium text-[17px] w-full rounded-[10px]"
-                >
-                  Чтобы продолжить покупку, необходимо авторизоваться
-                </button>
-              )}
+              <BtnToBuy />
             </div>
             <div className="h-[75px]" />
           </>
@@ -67,9 +56,7 @@ export default function Cart() {
 
 const Elem = ({ removeCard, card }: any) => {
   return (
-    <div
-      className="flex px-[10px] justify-between py-[10px]"
-    >
+    <div className="flex px-[10px] justify-between py-[10px]">
       <div className="flex items-center">
         <img
           className="object-contain h-[70px] w-[70px]"
@@ -80,9 +67,17 @@ const Elem = ({ removeCard, card }: any) => {
             {card?.info?.title}
           </span>
           <div className="flex items-center">
-            <span className="mr-[3px]">Размер: </span>
-            <span>{sizes[card?.info?.productChild?.size].size}</span>
-            <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+            {(sizes[card?.info?.productChild?.size]?.size ||
+              card?.info?.productChild?.size) && (
+              <>
+                <span className="mr-[3px]">Размер: </span>
+                <span>
+                  {sizes[card?.info?.productChild?.size]?.size ||
+                    card?.info?.productChild?.size}
+                </span>
+                <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+              </>
+            )}
             <span className="mr-[3px]">
               Цвет
               {card?.info?.productChild?.colors.length > 1 && "(а)"}:
@@ -94,6 +89,7 @@ const Elem = ({ removeCard, card }: any) => {
               {card?.info?.productChild?.colors?.map(
                 (color: any, j: number) => (
                   <div
+                  key={color.id}
                     style={{
                       backgroundColor: color.hex,
                       borderTopLeftRadius: j === 0 ? "3px" : "",
@@ -130,7 +126,10 @@ const Elem = ({ removeCard, card }: any) => {
         <span className="text-[#FFA500] text-[18px] font-medium">
           {card?.totalPrice} &#8381;
         </span>
-        <button onClick={() => removeCard(card.id)} className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
+        <button
+          onClick={() => removeCard(card.id)}
+          className="font-medium hover:text-[#4896c0] text-[#6cb4db]"
+        >
           удалить
         </button>
       </div>

@@ -32,6 +32,7 @@ export const cartSlice = createSlice({
       const totalPrice = newObject[action.payload].totalPrice
 
       delete newObject[action.payload];
+      
 
       return {
         ...state,
@@ -40,8 +41,10 @@ export const cartSlice = createSlice({
       }
     },
     setCard: (state: initialStateType, action: any) => {
-      const id = `${action.payload.id}_${action.payload.productChild.size}_${action.payload.productChild.colors.map((color: any) => color.hex).join()}`;
-      
+      const id = `${action.payload.id}_${action?.payload?.productChild?.size}_${action?.payload?.productChild?.colors?.map((color: any) => color.hex).join()}`;
+      // console.log(id)
+      // console.log(action.payload)
+      // console.log({...state.cart})
       if (
         state?.cart[id] &&
         state?.cart[id]?.info?.productChild?.size ===

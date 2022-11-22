@@ -15,6 +15,7 @@ import useOutside from "../hooks/useOutside";
 // modals
 import Auth from "../modals/Auth";
 import sizes from "../utils/helping/sizesSneakers";
+import BtnToBuy from "./BtnToBuy";
 
 export default function Header() {
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
@@ -31,8 +32,7 @@ export default function Header() {
 
   const { ref } = useOutside(() => setCartIsShow(false));
 
-
-  const newCart = Object.values(cart)
+  const newCart = Object.values(cart);
   return (
     <div className="w-full px-[15px] hidden md:flex justify-between bg-white h-[60px] shadow-jj rounded-[10px]">
       <Auth isOpen={isOpenAuth} onClose={() => setIsOpenAuth(false)} />
@@ -107,7 +107,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
 
   const { removeCard } = useActions();
 
-  const newCart = Object.values(cart)
+  const newCart = Object.values(cart);
 
   return (
     <div className="shadow-popup z-10 flex flex-col w-[440px] border rounded-[10px] right-[20px] absolute bg-white p-[15px]">
@@ -138,9 +138,18 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                       {card?.info?.title}
                     </span>
                     <div className="flex items-center">
-                      <span className="mr-[3px]">Размер: </span>
-                      <span>{sizes[card?.info?.productChild?.size].size}</span>
-                      <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+                      {(sizes[card?.info?.productChild?.size]?.size ||
+                        card?.info?.productChild?.size) && (
+                        <>
+                          <span className="mr-[3px]">Размер: </span>
+                          <span>
+                            {sizes[card?.info?.productChild?.size]?.size ||
+                              card?.info?.productChild?.size}
+                          </span>
+                          <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+                        </>
+                      )}
+
                       <span className="mr-[3px]">
                         Цвет
                         {card?.info?.productChild?.colors.length > 1 && "(а)"}:
@@ -152,6 +161,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                         {card?.info?.productChild?.colors?.map(
                           (color: any, j: number) => (
                             <div
+                              key={color.id}
                               style={{
                                 backgroundColor: color.hex,
                                 borderTopLeftRadius: j === 0 ? "3px" : "",
@@ -192,7 +202,10 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                   <span className="text-[#FFA500] text-[18px] font-medium">
                     {card?.totalPrice} &#8381;
                   </span>
-                  <button onClick={() => removeCard(card?.id)} className="font-medium hover:text-[#4896c0] text-[#6cb4db]">
+                  <button
+                    onClick={() => removeCard(card?.id)}
+                    className="font-medium hover:text-[#4896c0] text-[#6cb4db]"
+                  >
                     удалить
                   </button>
                 </div>
@@ -200,25 +213,11 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
             ))}
           </div>
           <div>
-            <div className="flex text-[18px] text-[#212121] font-medium justify-between">
+            <div className="flex text-[#212121] font-medium justify-between">
               <span>Итог</span>
               <span>{totalPrice} &#8381;</span>
             </div>
-            {isAuth ? (
-              <button className="bg-[#307fee] text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]">
-                Купить
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  setCartIsShow(false);
-                  setIsOpenAuth(true);
-                }}
-                className=" text-[#307fee] hover:underline font-medium text-[17px] w-full rounded-[10px]"
-              >
-                Чтобы продолжить покупку, необходимо авторизоваться
-              </button>
-            )}
+            <BtnToBuy />
           </div>
         </>
       )}

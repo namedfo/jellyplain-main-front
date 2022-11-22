@@ -244,12 +244,12 @@ const Info = memo(({ product, setProduct }: any) => {
   }
 
 
-  console.log(newProduct)
+  // console.log(newProduct)
   
 
   return (
     <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[15px]">
-      <Title product={product} />
+      <Title product={newProduct} />
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Цвета</span>
         <div className="flex flex-wrap mt-[5px]">
