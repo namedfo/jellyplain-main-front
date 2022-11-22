@@ -5,6 +5,7 @@ import { AiOutlinePlus, AiOutlineMinus, AiFillStar } from "react-icons/ai";
 import { BiCommentDots } from "react-icons/bi";
 // hooks
 import useActions from "../hooks/useActions";
+import types from "../utils/helping/types";
 
 type CardProps = {
   title: string;
@@ -53,7 +54,7 @@ export default function Card({ card }: any) {
             </div>
           </div> */}
           <span className="font-medium text-[17px] text-[#5B9F32]">
-            Оригинал
+            {types[card?.type]}
           </span>
           <div className="bg-fuchsia-500 px-[6px] rounded-[8px]">
             <span className="text-white leading-0 text-[20px] font-medium">

@@ -1,17 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+//
+import { useRouter } from "next/router";
+//
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 // components
 import Header from "../components/Header";
 import Info from "../components/checkout/Info";
+import BtnToPaid from "../components/checkout/BtnToPaid";
 // layouts
 import Container from "../layouts/Container";
-import BtnToPaid from "../components/checkout/BtnToPaid";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+
 
 export default function Checkout() {
+
+  // const { isAuth } = useTypedSelector(state => state.user)
+  const isAuth = true
+
+  const router = useRouter()
+
+
+  useEffect(() => {
+    if (!isAuth) {
+      router.push("/")
+    }
+  }, [isAuth])
+
   return (
     <Container>
       <Header />
-      <div className="w-full flex justify-between sm:pt-[50px]">
+      {isAuth && (
+        <div className="w-full flex justify-between sm:pt-[50px]">
         <div className="flex w-full md:w-[750px] flex-col">
           <Info />
           <Products />
@@ -22,6 +41,7 @@ export default function Checkout() {
           </div>
         </div>
       </div>
+      )}
     </Container>
   );
 }
@@ -35,8 +55,8 @@ const Products = () => {
         onClick={() => setIsOpen((prev) => !prev)}
         className="flex cursor-pointer items-center"
       >
-        <span className="text-[20px] font-medium text-[#292929]">Товары</span>
-        <button className="hover:bg-[#8045C61A] ml-[20px] p-[3px] rounded-[10px]">
+        <span className="text-[16px] md:text-[20px] font-medium text-[#292929]">Товары</span>
+        <button className="hover:bg-[#8045C61A] md:ml-[20px] p-[3px] rounded-[10px]">
           {isOpen ? (
             <AiOutlineArrowUp color="#292928" size={26} />
           ) : (

@@ -22,15 +22,15 @@ export default function Address() {
           Назад
         </span>
       </button>
-      <div className="flex items-center justify-between">
+      <div className="flex w-full items-center">
         <div
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex cursor-pointer items-center"
+          className="flex w-full justify-between md:justify-start cursor-pointer items-center"
         >
-          <span className="text-[20px] font-medium text-[#292929]">
+          <span className="text-[16px] md:text-[20px] font-medium text-[#292929]">
             Адрес доставки
           </span>
-          <button className="hover:bg-[#8045C61A] ml-[20px] p-[3px] rounded-[10px]">
+          <button className="hover:bg-[#8045C61A] md:ml-[20px] p-[3px] rounded-[10px]">
             {isOpen ? (
               <AiOutlineArrowUp color="#292928" size={26} />
             ) : (
@@ -38,7 +38,6 @@ export default function Address() {
             )}
           </button>
         </div>
-        <span>Your address</span>
       </div>
       <div
         className={`${
