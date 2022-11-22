@@ -23,13 +23,13 @@ export default function MobileMenu() {
         <>
           <button
             // onClick={() => setCard(product)}
-            className="border-[#8a63b9] hover:text-white h-[42px] border shadow-md flex flex-col justify-center items-center hover:bg-[#8062a7] text-[#8a63b9] font-medium px-[15px] py-[4px] rounded-[15px]"
+            className="border-[#8a63b9] hover:text-white h-[42px] border flex flex-col justify-center items-center hover:bg-[#8062a7] text-[#8a63b9] font-medium px-[15px] py-[4px] rounded-[15px]"
           >
             <span className="leading-[26px] text-[16px]">В корзину</span>
           </button>
           <button
             onClick={() => router.push("/checkout")}
-            className="bg-[#8a63b9] border shadow-md flex flex-col items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[15px]"
+            className="bg-[#8a63b9] border flex flex-col items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[15px]"
           >
             <span className="leading-[17px] text-[17px]">Купить сейчас</span>
             <span className="leading-[15px] text-[14px]">6990 &#8381;</span>
