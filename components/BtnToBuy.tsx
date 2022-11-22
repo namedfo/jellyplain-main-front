@@ -19,14 +19,14 @@ export default function BtnToBuy() {
           ...productsOrder,
           {
             size: card?.info?.productChild?.size,
-            colors: card?.info?.productChild?.colors,
-            price: card?.info?.productChild?.price,
+            colors: card?.info?.productChild?.colors?.map((color: any) => color.hex),
+            price: card?.info?.price,
             product: { connect: { id: card?.info?.id } },
           },
         ];
       });
 
-      const res = $api.post("order/create", {
+      const res = await $api.post("order/create", {
         totalPrice: totalPrice,
         delivery: "pochtaru",
         status: "pending",

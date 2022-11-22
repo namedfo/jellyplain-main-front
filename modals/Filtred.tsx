@@ -1,5 +1,4 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import useActions from "../hooks/useActions";
 
 export default function Filtred({ onClose }: any) {
   return (
@@ -7,7 +6,7 @@ export default function Filtred({ onClose }: any) {
       <div className="flex flex-col">
         <Header onClose={onClose} />
       </div>
-      <button>Применить</button>
+      <button className="bg-indigo-500 hover:bg-indigo-700 text-[18px] font-medium text-white py-[4px] rounded-[10px]">Применить</button>
     </div>
   );
 }
