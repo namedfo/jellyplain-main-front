@@ -143,7 +143,7 @@ const Clothes = ({ selectedCategory, setSelectedCategory }: any) => {
         <AiOutlineArrowDown color={selectedCategory.category === "clothes" ? "white" : "#47464e"} size={22} />
       )}
       {isHover && (
-        <div className={`${selectedCategory.category === "clothes" ? "text-[#47464e]": ""}  absolute text-[17px] flex py-[7px] flex-col justify-center w-full right-0 top-[36px] shadow-popup  rounded-[10px] bg-white`}>
+        <div className={`${selectedCategory.category === "clothes" ? "text-[#47464e]": ""}  absolute text-[17px] flex py-[7px] flex-col justify-center z-10 w-full right-0 top-[36px] shadow-popup  rounded-[10px] bg-white`}>
           <span
             onClick={() =>
               setSelectedCategory({
@@ -239,7 +239,7 @@ const Sneakers = ({ selectedCategory, setSelectedCategory }: any) => {
         <AiOutlineArrowDown color={selectedCategory.category === "sneakers" ? "white" : "#47464e"} size={22} />
       )}
       {isHover && (
-        <div className={`${selectedCategory.category === "sneakers" ? "text-[#47464e]": ""}  absolute text-[17px] flex py-[7px] flex-col justify-center w-full right-0 top-[36px] shadow-popup  rounded-[10px] bg-white`}>
+        <div className={`${selectedCategory.category === "sneakers" ? "text-[#47464e]": ""} z-10  absolute text-[17px] flex py-[7px] flex-col justify-center w-full right-0 top-[36px] shadow-popup  rounded-[10px] bg-white`}>
           <span
             onClick={() =>
               setSelectedCategory({

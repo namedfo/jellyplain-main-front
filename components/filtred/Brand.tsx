@@ -8,7 +8,7 @@ export default function Brand() {
   return (
     <div className="flex flex-col mt-[-5px] py-[7px] cursor-pointer">
       <div onClick={onToggle} className="flex justify-between">
-        <span className="text-[#292928] font-medium text-[20px]">Бренд</span>
+        <span className="text-[#292928] font-medium text-[18px] sm:text-[20px]">Бренд</span>
         <button className="hover:bg-[#8045C61A] p-[3px] rounded-[10px]">
           {isOpen ? (
             <AiOutlineArrowUp color="#292928" size={26} />

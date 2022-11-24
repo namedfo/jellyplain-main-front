@@ -2,6 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type initialStateType = {
   selectedCategory: any;
+  minPrice: number
+  maxPrice: number
+  size: null | any
+  brand: null | any
+  colors: any
 
   isOpenAuth: boolean;
 
@@ -15,6 +20,11 @@ const initialState: initialStateType = {
     
     name: "Все"
   },
+  minPrice: 0,
+  maxPrice: 99999,
+  size: null,
+  brand: null,
+  colors: null,
 
   isOpenAuth: false,
 
@@ -37,6 +47,11 @@ export const mainSlice = createSlice({
       ...state,
       isOpenFiltred: action.payload,
     }),
+
+    setValue: (state: initialStateType, action: any) => ({
+      ...state,
+      [action.payload.type]: action.payload.value
+    })
   },
 });
 
