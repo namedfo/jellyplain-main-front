@@ -10,7 +10,9 @@ export default function Filtred({ onClose }: any) {
   const { selectedCategory } = useTypedSelector((state) => state.main);
 
   return (
-    <div className="w-full py-[15px] px-[20px] bg-white flex flex-col overflow-y-auto justify-between h-full absolute z-20">
+    <div style={{
+      zIndex: 99
+    }} className="w-full py-[15px] px-[20px] bg-white flex flex-col overflow-y-auto justify-between h-full absolute">
       <div className="flex flex-col">
         <Header onClose={onClose} />
         <div className="flex py-[10px] flex-col">
