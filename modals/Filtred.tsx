@@ -1,12 +1,26 @@
 import { AiOutlineArrowLeft } from "react-icons/ai";
+// components
+import Brand from "../components/filtred/Brand";
+import Price from "../components/filtred/Price";
+import Size from "../components/filtred/Size";
+import Color from "../components/filtred/Color";
+
 
 export default function Filtred({ onClose }: any) {
   return (
-    <div className="w-full py-[15px] px-[20px] bg-white flex flex-col justify-between h-full absolute z-10">
+    <div className="w-full py-[15px] px-[20px] bg-white flex flex-col overflow-y-auto justify-between h-full absolute z-20">
       <div className="flex flex-col">
         <Header onClose={onClose} />
+        <div className="flex py-[10px] flex-col">
+          <Price />
+          <Size />
+          <Brand />
+          <Color />
+        </div>
       </div>
-      <button className="bg-indigo-500 hover:bg-indigo-700 text-[18px] font-medium text-white py-[4px] rounded-[10px]">Применить</button>
+      <button className="bg-indigo-500 hover:bg-indigo-700 text-[18px] font-medium text-white py-[4px] rounded-[10px]">
+        Применить
+      </button>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // components
 import Card from "../components/Card";
-import Filtred from "../components/Filtred";
+import SidebarFiltred from "../components/SidebarFiltred";
 import Header from "../components/Header";
 // layouts
 import Container from "../layouts/Container";
@@ -66,7 +66,7 @@ export default function Home() {
       <Header />
       <div className="flex md:pt-[50px] justify-between">
         <div className="w-[270px] hidden md:block">
-          <Filtred />
+          <SidebarFiltred />
         </div>
         <div className="flex md:ml-[34px] w-full flex-col">
           <MenuCatalog />

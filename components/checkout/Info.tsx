@@ -1,9 +1,6 @@
 import { useState } from "react";
 //
-import {
-  AiOutlineArrowDown,
-  AiOutlineArrowUp,
-} from "react-icons/ai";
+import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 // components
 import Address from "./Address";
 
@@ -18,6 +15,7 @@ export default function Info() {
 
 const ShippingCost = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [shipping, setShipping] = useState("pochtaru");
 
   return (
     <div className="flex flex-col">
@@ -26,7 +24,7 @@ const ShippingCost = () => {
         className="flex w-full justify-between mt-[15px] cursor-pointer items-center"
       >
         <div className="flex w-full justify-between md:justify-start items-center">
-          <span className="text-[16px] sm:text-[20px] font-medium text-[#292929]">
+          <span className="text-[16px] sm:text-[18px] font-medium text-[#292929]">
             Способ доставки
           </span>
           <button className="hover:bg-[#8045C61A] md:ml-[20px] p-[3px] rounded-[10px]">
@@ -44,16 +42,22 @@ const ShippingCost = () => {
         } mt-[15px] flex-col sm:flex-row items-center justify-start`}
       >
         <button
+          onClick={() => setShipping("pochtaru")}
           type="button"
-          className="h-[40px]  font-medium px-4 md:mr-[20px] flex justify-center items-center  bg-gray-600 text-white w-full text-center rounded-lg"
+          className={`h-[40px] text-[16px]  font-medium px-4 md:mr-[20px] flex justify-center items-center ${
+            shipping === "pochtaru" ? "bg-gray-600 text-white" : "text-gray-600 border border-gray-600"
+          } w-full text-center rounded-lg`}
         >
           Почта России
         </button>
         <button
+          onClick={() => setShipping("pickup")}
           type="button"
-          className="h-[40px] mt-[15px] md:mt-0 font-medium md:ml-[20px] px-4 flex flex-col justify-center items-center border border-gray-600 text-gray-600 w-full  rounded-lg"
+          className={`h-[40px] mt-[15px] md:mt-0  text-[16px]  font-medium px-4 md:ml-[20px] flex flex-col  justify-center items-center ${
+            shipping === "pickup" ? "bg-gray-600 text-white" : "text-gray-600 border border-gray-600"
+          } w-full text-center rounded-lg`}
         >
-          <span className="leading-[16px] text-[18px]">Самовывоз</span>
+          <span className="leading-[16px] text-[16px]">Самовывоз</span>
           <span className="leading-[16px] text-[12px]">из Ростова-на-Дону</span>
         </button>
       </div>

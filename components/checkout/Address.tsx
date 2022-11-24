@@ -27,7 +27,7 @@ export default function Address() {
           onClick={() => setIsOpen((prev) => !prev)}
           className="flex w-full justify-between md:justify-start cursor-pointer items-center"
         >
-          <span className="text-[16px] md:text-[20px] font-medium text-[#292929]">
+          <span className="text-[16px] md:text-[18px] font-medium text-[#292929]">
             Адрес доставки
           </span>
           <button className="hover:bg-[#8045C61A] md:ml-[20px] p-[3px] rounded-[10px]">

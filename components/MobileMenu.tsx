@@ -96,7 +96,7 @@ export default function MobileMenu() {
         router.pathname === "/paidfor" ? "hidden" : "flex"
       } justify-around items-center ${
         router.pathname === "/product/[id]" ? "px-[10px]" : "px-[20px]"
-      } h-[60px] rounded-[10px] bg-white w-[95%] fixed bottom-[10px] left-[2.5%]`}
+      } h-[60px] rounded-[10px] bg-white z-[10] w-[95%] fixed bottom-[10px] left-[2.5%]`}
     >
       {getContent()}
     </div>
