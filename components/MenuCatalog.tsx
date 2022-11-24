@@ -1,4 +1,3 @@
-//
 import { useState } from "react";
 import {
   AiFillFilter,
@@ -6,11 +5,9 @@ import {
   AiOutlineArrowUp,
 } from "react-icons/ai";
 import { IoSearchSharp } from "react-icons/io5";
-import useActions from "../hooks/useActions";
-import useOutside from "../hooks/useOutside";
 // hooks
+import useActions from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import Filtred from "../modals/Filtred";
 
 export default function MenuCatalog() {
   const { selectedCategory } = useTypedSelector((state) => state.main);
@@ -21,9 +18,16 @@ export default function MenuCatalog() {
     <div className="shadow-jj flex flex-col sm:text-[18px] text-[16px] font-medium py-[15px] p-[15px] w-full rounded-[10px] bg-white">
       <div className="hidden md:flex text-[#47464e] flex-wrap justify-evenly w-full">
         <button
-          onClick={() => setSelectedCategory("all")}
+          onClick={() =>
+            setSelectedCategory({
+              category: "all",
+              subcategory: null,
+
+              name: "Все",
+            })
+          }
           className={`${
-            selectedCategory === "all"
+            selectedCategory.category === "all"
               ? "bg-[#8A63B9] text-white"
               : "hover:bg-[#8A63B91A]"
           } py-[5px] px-[15px] rounded-[10px]`}
@@ -35,9 +39,16 @@ export default function MenuCatalog() {
           setSelectedCategory={setSelectedCategory}
         />
         <button
-          onClick={() => setSelectedCategory("formnba")}
+          onClick={() =>
+            setSelectedCategory({
+              category: "formnba",
+              subcategory: null,
+
+              name: "Форма NBA",
+            })
+          }
           className={`${
-            selectedCategory === "formnba"
+            selectedCategory.category === "formnba"
               ? "bg-[#8A63B9] text-white"
               : "hover:bg-[#8A63B91A]"
           } py-[5px] px-[15px] rounded-[10px]`}
@@ -49,9 +60,16 @@ export default function MenuCatalog() {
           setSelectedCategory={setSelectedCategory}
         />
         <button
-          onClick={() => setSelectedCategory("basketballs")}
+          onClick={() =>
+            setSelectedCategory({
+              category: "basketballs",
+              subcategory: null,
+
+              name: "Баскетбольные мячи",
+            })
+          }
           className={`${
-            selectedCategory === "basketballs"
+            selectedCategory.category === "basketballs"
               ? "bg-[#8A63B9] text-white"
               : "hover:bg-[#8A63B91A]"
           } py-[5px] px-[15px] rounded-[10px]`}
@@ -59,9 +77,16 @@ export default function MenuCatalog() {
           Баскетбольные мячи
         </button>
         <button
-          onClick={() => setSelectedCategory("accessories")}
+          onClick={() =>
+            setSelectedCategory({
+              category: "accessories",
+              subcategory: null,
+
+              name: "Аксессуары",
+            })
+          }
           className={`${
-            selectedCategory === "accessories"
+            selectedCategory.category === "accessories"
               ? "bg-[#8A63B9] text-white"
               : "hover:bg-[#8A63B91A]"
           } flex items-center py-[5px] px-[15px] rounded-[10px]`}
@@ -76,7 +101,10 @@ export default function MenuCatalog() {
             <IoSearchSharp size={20} />
             <span className="ml-[5px]">Поиск</span>
           </button>
-          <button onClick={() => setIsOpenFiltred(true)} className="py-[5px] flex items-center bg-[#8A63B91A] px-[15px] rounded-[10px]">
+          <button
+            onClick={() => setIsOpenFiltred(true)}
+            className="py-[5px] flex items-center bg-[#8A63B91A] px-[15px] rounded-[10px]"
+          >
             <AiFillFilter size={18} />
             Фильтрация
           </button>
@@ -89,32 +117,98 @@ export default function MenuCatalog() {
 const Clothes = ({ selectedCategory, setSelectedCategory }: any) => {
   const [isHover, setIsHover] = useState(false);
 
-
   return (
     <button
-      onClick={() => setSelectedCategory("hoodies")}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className={` flex items-center relative py-[5px] px-[15px] rounded-[10px]`}
+      className={`${
+        selectedCategory.category === "clothes"
+          ? "bg-[#8A63B9] text-white"
+          : "hover:bg-[#8A63B91A]"
+      } py-[5px] flex items-center  px-[15px] relative rounded-[10px]`}
       // ${
       //   selectedCategory === "hoodies"
       //     ? "bg-[#8A63B9] text-white"
       //     : "hover:bg-[#8A63B91A]"
       // }
     >
-      <span className="mr-[5px]">Одежда</span>
+      <span className="mr-[5px]">
+        {selectedCategory.category === "clothes"
+          ? selectedCategory.name
+          : "Одежда"}
+      </span>
       {isHover ? (
-        <AiOutlineArrowUp color="#47464e" size={22} />
+        <AiOutlineArrowUp color={selectedCategory.category === "clothes" ? "white" : "#47464e"} size={22} />
       ) : (
-        <AiOutlineArrowDown color="#47464e" size={22} />
+        <AiOutlineArrowDown color={selectedCategory.category === "clothes" ? "white" : "#47464e"} size={22} />
       )}
       {isHover && (
-        <div className="absolute flex text-[17px] py-[7px] flex-col w-full right-0 top-[36px] shadow-popup rounded-[10px] bg-white">
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Одежда</span>
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Шорты</span>
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Майки</span>
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Куртки</span>
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Толстовки</span>
+        <div className={`${selectedCategory.category === "clothes" ? "text-[#47464e]": ""}  absolute text-[17px] flex py-[7px] flex-col justify-center w-full right-0 top-[36px] shadow-popup  rounded-[10px] bg-white`}>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "clothes",
+                subcategory: null,
+
+                name: "Одежда",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Одежда
+          </span>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "clothes",
+                subcategory: "shorts",
+
+                name: "Шорты",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Шорты
+          </span>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "clothes",
+                subcategory: "shirts",
+
+                name: "Майки",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Майки
+          </span>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "clothes",
+                subcategory: "jackets",
+
+                name: "Куртки",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Куртки
+          </span>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "clothes",
+                subcategory: "hoodies",
+
+                name: "Толстовки",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Толстовки
+          </span>
         </div>
       )}
     </button>
@@ -126,26 +220,65 @@ const Sneakers = ({ selectedCategory, setSelectedCategory }: any) => {
 
   return (
     <button
-      onClick={() => setSelectedCategory("sneakers")}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       className={`${
-        selectedCategory === "sneakers"
+        selectedCategory.category === "sneakers"
           ? "bg-[#8A63B9] text-white"
           : "hover:bg-[#8A63B91A]"
-      } flex items-center relative py-[5px] px-[15px] rounded-[10px]`}
+      } py-[5px] flex items-center  px-[15px] relative rounded-[10px]`}
     >
-      <span className="mr-[5px]">Кроссовки</span>
+      <span className="mr-[5px]">
+        {selectedCategory.category === "sneakers"
+          ? selectedCategory.name
+          : "Кроссовки"}
+      </span>
       {isHover ? (
-        <AiOutlineArrowUp color="#47464e" size={22} />
+        <AiOutlineArrowUp color={selectedCategory.category === "sneakers" ? "white" : "#47464e"} size={22} />
       ) : (
-        <AiOutlineArrowDown color="#47464e" size={22} />
+        <AiOutlineArrowDown color={selectedCategory.category === "sneakers" ? "white" : "#47464e"} size={22} />
       )}
       {isHover && (
-        <div className="absolute text-[17px] flex py-[7px] flex-col justify-center w-full right-0 top-[36px] shadow-popup  rounded-[10px] bg-white">
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Кроссовки</span>
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Повседневные</span>
-          <span className="hover:bg-[#8A63B91A] py-[5px]">Баскетбольные</span>
+        <div className={`${selectedCategory.category === "sneakers" ? "text-[#47464e]": ""}  absolute text-[17px] flex py-[7px] flex-col justify-center w-full right-0 top-[36px] shadow-popup  rounded-[10px] bg-white`}>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "sneakers",
+                subcategory: null,
+
+                name: "Кроссовки",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Кроссовки
+          </span>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "sneakers",
+                subcategory: "everyday",
+
+                name: "Повседневные",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Повседневные
+          </span>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "sneakers",
+                subcategory: "basketball",
+
+                name: "Баскетбольные",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Баскетбольные
+          </span>
         </div>
       )}
     </button>

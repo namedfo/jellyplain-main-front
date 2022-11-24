@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type initialStateType = {
-  selectedCategory: string;
+  selectedCategory: any;
 
   isOpenAuth: boolean;
 
@@ -9,7 +9,12 @@ type initialStateType = {
 };
 
 const initialState: initialStateType = {
-  selectedCategory: "all",
+  selectedCategory: {
+    category: "all",
+    subcategory: null,
+    
+    name: "Все"
+  },
 
   isOpenAuth: false,
 
