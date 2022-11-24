@@ -23,6 +23,15 @@ export default function Size() {
           <span className="leading-[0px] text-slate-700 mt-[15px]">обувь</span>
           <div className="my-[7px] flex flex-wrap justify-start">
             <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
+              36
+            </button>
+            <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
+              37
+            </button>
+            <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
+              37.5
+            </button>
+            <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
               38
             </button>
             <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
@@ -48,18 +57,6 @@ export default function Size() {
             </button>
             <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
               46
-            </button>
-            <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
-              47
-            </button>
-            <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
-              48
-            </button>
-            <button className="border hover:bg-slate-200 text-[#444444] my-[5px] mx-[5px] px-[17px] py-[3px] rounded-[10px]">
-              49
-            </button>
-            <button className="border bg-[#3b82f6] text-white my-[5px] px-[17px] mx-[5px] py-[3px] rounded-[10px]">
-              50
             </button>
           </div>
           <span className="leading-[0px] text-slate-700 mt-[10px]">одежда</span>
