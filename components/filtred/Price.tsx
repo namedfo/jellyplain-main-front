@@ -9,7 +9,7 @@ export default function Price() {
   const onToggle = () => setIsOpen((prev) => !prev);
 
   return (
-    <div className="flex flex-col mt-[-5px] py-[7px] cursor-pointer">
+    <div className="flex flex-col mt-[15px] cursor-pointer">
       <div onClick={onToggle} className="flex justify-between">
         <span className="text-[#292928] font-medium text-[18px] sm:text-[20px]">Цена</span>
         <button className="hover:bg-[#8045C61A] p-[3px] rounded-[10px]">

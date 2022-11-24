@@ -24,7 +24,7 @@ export default function Filtred({ onClose }: any) {
               Категория
               <select
                 id="animals"
-                className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                className="block w-full py-[4px] px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                 name="animals"
               >
                 <option value="">Все</option>
@@ -58,8 +58,7 @@ export default function Filtred({ onClose }: any) {
               </label>
             )}
           </div>
-
-          <div className="h-[15px]"></div>
+          {/* <div className="h-[15px]"></div> */}
           <Price />
           <Size />
           <Brand />
