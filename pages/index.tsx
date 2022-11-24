@@ -78,7 +78,11 @@ export default function Home() {
               ))}
             </div>
           )}
-          {loading === "loading" && <LLoading />}
+          {loading === "loading" && (
+            <div className="flex items-center justify-center h-[400px]">
+              <LLoading />
+              </div>
+          )}
         </div>
       </div>
     </Container>
