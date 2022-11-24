@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 export default function Price() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const onToggle = () => setIsOpen((prev) => !prev);
 
