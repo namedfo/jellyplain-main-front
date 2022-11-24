@@ -43,6 +43,7 @@ export default function Home() {
   >("idle");
 
   const { selectedCategory } = useTypedSelector((state) => state.main);
+  console.log(selectedCategory);
 
   useEffect(() => {
     (async () => {
