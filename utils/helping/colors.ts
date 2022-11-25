@@ -1,4 +1,4 @@
-const colors = {
+const colors: any = {
     beige: {
         name: "бежевый",
         color: "#f5f5dc"
