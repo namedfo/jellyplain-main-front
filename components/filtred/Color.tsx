@@ -54,7 +54,7 @@ const ElemColor = ({ color }: any) => {
         className={`w-[50px] mx-[5px] my-[5px] rounded-[8px] h-[30px] border`}
       />
      {isHover && (
-       <span className="absolute left-[40px] rounded-[5px] font-medium border shadow-popup bottom-[30px] py-[3px] px-[5px] bg-[white]">
+       <span className="absolute left-[10px] rounded-[5px] font-medium border shadow-popup bottom-[30px] py-[3px] px-[5px] bg-[white]">
        {color.name}
      </span>
      )}
