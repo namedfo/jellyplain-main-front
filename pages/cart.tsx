@@ -25,7 +25,7 @@ const getSize = (type: string, size: any) => {
 };
 export default function Cart() {
   const { cart, totalPrice } = useTypedSelector((state) => state.cart);
-  const { removeCard } = useActions();
+  const { removeCard, minus, plus } = useActions();
 
   const newCart = Object.values(cart);
 
@@ -41,7 +41,13 @@ export default function Cart() {
               </span>
               <div className="flex flex-col px-[10px] overflow-y-auto divide-y">
                 {newCart?.map((card: any) => (
-                  <Elem removeCard={removeCard} key={card.id} card={card} />
+                  <Elem
+                    minus={minus}
+                    plus={plus}
+                    removeCard={removeCard}
+                    key={card.id}
+                    card={card}
+                  />
                 ))}
               </div>
               <div className="px-[15px] mt-[10px]">
@@ -66,7 +72,7 @@ export default function Cart() {
   );
 }
 
-const Elem = ({ removeCard, card }: any) => {
+const Elem = ({ minus, plus, removeCard, card }: any) => {
   return (
     <div className="flex px-[10px] justify-between py-[10px]">
       <div className="flex items-center">
@@ -102,13 +108,13 @@ const Elem = ({ removeCard, card }: any) => {
             ></div>
           </div>
           <div className="flex mr-[10px] items-center">
-            <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+            <button onClick={() => minus(card?.id)} className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
               <AiOutlineMinus color="#8045c6" />
             </button>
             <span className="font-medium text-[18px] mx-[10px]">
               {card?.count}
             </span>
-            <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+            <button onClick={() => plus(card?.id)} className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
               <AiOutlinePlus color="#8045c6" />
             </button>
           </div>

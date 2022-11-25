@@ -117,7 +117,7 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
   const { cart, totalPrice } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
 
-  const { removeCard } = useActions();
+  const { removeCard, minus, plus } = useActions();
 
   const newCart = Object.values(cart);
 
@@ -135,70 +135,72 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
       ) : (
         <>
           <div className="flex flex-col max-h-[350px] overflow-y-auto divide-y">
-            {newCart?.map((card: any) => (
-              <div
-                key={card?.id}
-                className="flex px-[10px] justify-between py-[10px]"
-              >
-                <div className="flex items-center">
-                  <img
-                    className="object-contain h-[90px] w-[90px]"
-                    src={card?.info?.productChild?.images[0]?.url}
-                  />
-                  <div className="flex ml-[10px] flex-col">
-                    <span className="text-[#292929] text-[18px] font-medium">
-                      {card?.info?.title}
-                    </span>
-                    <div className="flex items-center">
-                      {card?.info?.productChild?.size && (
-                        <>
-                          <span className="mr-[3px]">Размер: </span>
-                          <span>
-                            {getSize(
-                              card?.info?.category,
-                              card?.info?.productChild?.size
-                            )}
-                          </span>
-                          <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
-                        </>
-                      )}
-
-                      <span className="mr-[3px]">Цвет:</span>
-
-                      <div
-                        style={{
-                          backgroundColor: colors[card?.info?.productChild?.color]?.color
-                        }}
-                        className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] h-[20px] border`}
-                      >
+            {newCart?.map((card: any, i: number) => {
+              return (
+                <div
+                  key={`${card?.id}_${i}`}
+                  className="flex px-[10px] justify-between py-[10px]"
+                >
+                  <div className="flex items-center">
+                    <img
+                      className="object-contain h-[90px] w-[90px]"
+                      src={card?.info?.productChild?.images[0]?.url}
+                    />
+                    <div className="flex ml-[10px] flex-col">
+                      <span className="text-[#292929] text-[18px] font-medium">
+                        {card?.info?.title}
+                      </span>
+                      <div className="flex items-center">
+                        {card?.info?.productChild?.size && (
+                          <>
+                            <span className="mr-[3px]">Размер: </span>
+                            <span>
+                              {getSize(
+                                card?.info?.category,
+                                card?.info?.productChild?.size
+                              )}
+                            </span>
+                            <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
+                          </>
+                        )}
+  
+                        <span className="mr-[3px]">Цвет:</span>
+  
+                        <div
+                          style={{
+                            backgroundColor: colors[card?.info?.productChild?.color]?.color
+                          }}
+                          className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] h-[20px] border`}
+                        >
+                        </div>
+                      </div>
+                      <div className="flex mr-[10px] items-center">
+                        <button onClick={() => minus(card?.id)} className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+                          <AiOutlineMinus color="#8045c6" />
+                        </button>
+                        <span className="font-medium text-[18px] mx-[10px]">
+                          {card?.count}
+                        </span>
+                        <button onClick={() => plus(card?.id)} className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+                          <AiOutlinePlus color="#8045c6" />
+                        </button>
                       </div>
                     </div>
-                    <div className="flex mr-[10px] items-center">
-                      <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
-                        <AiOutlineMinus color="#8045c6" />
-                      </button>
-                      <span className="font-medium text-[18px] mx-[10px]">
-                        {card?.count}
-                      </span>
-                      <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
-                        <AiOutlinePlus color="#8045c6" />
-                      </button>
-                    </div>
+                  </div>
+                  <div className="flex w-[95px] justify-between items-end flex-col">
+                    <span className="text-[#FFA500] text-[18px] font-medium">
+                      {card?.totalPrice} &#8381;
+                    </span>
+                    <button
+                      onClick={() => removeCard(card?.id)}
+                      className="font-medium hover:text-[#4896c0] text-[#6cb4db]"
+                    >
+                      удалить
+                    </button>
                   </div>
                 </div>
-                <div className="flex w-[95px] justify-between items-end flex-col">
-                  <span className="text-[#FFA500] text-[18px] font-medium">
-                    {card?.totalPrice} &#8381;
-                  </span>
-                  <button
-                    onClick={() => removeCard(card?.id)}
-                    className="font-medium hover:text-[#4896c0] text-[#6cb4db]"
-                  >
-                    удалить
-                  </button>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           <div>
             <div className="flex text-[#212121] font-medium justify-between">

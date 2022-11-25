@@ -12,7 +12,7 @@ export default function MobileMenu() {
   const { cart, product } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
 
-  const { setIsOpenAuth, setCard } = useActions();
+  const { setIsOpenAuth, plus, minus, setCard } = useActions();
 
   const router = useRouter();
 
@@ -44,7 +44,10 @@ export default function MobileMenu() {
             </>
           ) : (
             <>
-              <button onClick={() => router.push("/cart")} className="flex flex-col font-medium px-[15px] py-[4px] rounded-[10px] h-[42px] bg-[#8062a7] items-center">
+              <button
+                onClick={() => router.push("/cart")}
+                className="flex flex-col font-medium px-[15px] py-[4px] rounded-[10px] h-[42px] bg-[#8062a7] items-center"
+              >
                 <span className="leading-[16px] text-white text-[16px]">
                   В корзине
                 </span>
@@ -53,13 +56,19 @@ export default function MobileMenu() {
                 </span>
               </button>
               <div className="flex mr-[10px] items-center">
-                <button className="p-[5px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+                <button
+                  onClick={() => minus(productCartId)}
+                  className="p-[5px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]"
+                >
                   <AiOutlineMinus size={20} color="#8045c6" />
                 </button>
                 <span className="font-medium text-[22px] mx-[10px]">
                   {cart[productCartId]?.count}
                 </span>
-                <button className="p-[5px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+                <button
+                  onClick={() => plus(productCartId)}
+                  className="p-[5px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]"
+                >
                   <AiOutlinePlus size={20} color="#8045c6" />
                 </button>
               </div>

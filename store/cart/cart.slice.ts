@@ -28,11 +28,13 @@ export const cartSlice = createSlice({
       ...state,
       product: action.payload
     }),
-    plus: (state: initialStateType, action: any) => {
-
-    },
+    plus: (state: initialStateType, action: any) => void(state.cart[action?.payload].count = state?.cart[action?.payload]?.count + 1),
     minus: (state: initialStateType, action: any) => {
-
+      if (state.cart[action.payload].count === 1) {
+        delete state.cart[action.payload];
+        return 
+      }
+      state.cart[action.payload].count = state.cart[action.payload].count - 1
     },
     removeCard: (state: initialStateType, action: any) => {
       const newObject = { ...state.cart }
