@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import $api from "../config";
 import useActions from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -9,6 +10,8 @@ export default function BtnToBuy() {
   const { setCartIsShow, setIsOpenAuth } = useActions();
 
   const newCart = Object.values(cart); 
+
+  const router = useRouter()
   
   const onCreateOrder = async () => {
     try {
@@ -33,7 +36,7 @@ export default function BtnToBuy() {
         productsOrder: productsOrder,
       });
 
-      console.log(res);
+      router.push(`/checkout/${res.data.id}`)
     } catch (error) {}
   };
 
