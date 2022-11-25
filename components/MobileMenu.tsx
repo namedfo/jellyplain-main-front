@@ -34,12 +34,12 @@ export default function MobileMenu() {
               </button>
               <button
                 onClick={() => router.push("/checkout")}
-                className="bg-[#8a63b9] border flex flex-col  h-[42px] items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
+                className="bg-[#8a63b9] border flex flex-col h-[42px] items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[10px]"
               >
                 <span className="leading-[17px] text-[17px]">
                   Купить сейчас
                 </span>
-                <span className="leading-[15px] text-[14px]">6990 &#8381;</span>
+                <span className="leading-[17px] text-[14px]">6990 &#8381;</span>
               </button>
             </>
           ) : (
