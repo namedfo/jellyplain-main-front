@@ -16,6 +16,8 @@ import useOutside from "../hooks/useOutside";
 import Auth from "../modals/Auth";
 import sizes from "../utils/helping/sizesSneakers";
 import BtnToBuy from "./BtnToBuy";
+import colors from "../utils/helping/colors";
+import sizesSneakers from "../utils/helping/sizesSneakers";
 
 export default function Header() {
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
@@ -101,6 +103,16 @@ export default function Header() {
   );
 }
 
+const getSize = (type: string, size: any) => {
+  switch (type) {
+    case "sneakers":
+      return sizesSneakers[size]?.size || null;
+    case "clothes":
+      return size || null;
+    default:
+      return "";
+  }
+};
 const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
   const { cart, totalPrice } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
@@ -138,51 +150,27 @@ const PopupCart = ({ setIsOpenAuth, setCartIsShow }: any) => {
                       {card?.info?.title}
                     </span>
                     <div className="flex items-center">
-                      {(sizes[card?.info?.productChild?.size]?.size ||
-                        card?.info?.productChild?.size) && (
+                      {card?.info?.productChild?.size && (
                         <>
                           <span className="mr-[3px]">Размер: </span>
                           <span>
-                            {sizes[card?.info?.productChild?.size]?.size ||
-                              card?.info?.productChild?.size}
+                            {getSize(
+                              card?.info?.category,
+                              card?.info?.productChild?.size
+                            )}
                           </span>
                           <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
                         </>
                       )}
 
-                      <span className="mr-[3px]">
-                        Цвет
-                        {card?.info?.productChild?.colors.length > 1 && "(а)"}:
-                      </span>
+                      <span className="mr-[3px]">Цвет:</span>
 
                       <div
+                        style={{
+                          backgroundColor: colors[card?.info?.productChild?.color]?.color
+                        }}
                         className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] h-[20px] border`}
                       >
-                        {card?.info?.productChild?.colors?.map(
-                          (color: any, j: number) => (
-                            <div
-                              key={color.id}
-                              style={{
-                                backgroundColor: color.hex,
-                                borderTopLeftRadius: j === 0 ? "3px" : "",
-                                borderBottomLeftRadius: j === 0 ? "3px" : "",
-                                borderTopRightRadius:
-                                  card?.info?.productChild?.colors?.length -
-                                    1 ===
-                                  j
-                                    ? "3px"
-                                    : "",
-                                borderBottomRightRadius:
-                                  card?.info?.productChild?.colors?.length -
-                                    1 ===
-                                  j
-                                    ? "3px"
-                                    : "",
-                              }}
-                              className="w-full h-full"
-                            />
-                          )
-                        )}
                       </div>
                     </div>
                     <div className="flex mr-[10px] items-center">

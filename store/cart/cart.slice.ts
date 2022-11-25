@@ -41,21 +41,37 @@ export const cartSlice = createSlice({
       }
     },
     setCard: (state: initialStateType, action: any) => {
-      const id = `${action.payload.id}_${action?.payload?.productChild?.size}_${action?.payload?.productChild?.colors?.map((color: any) => color.hex).join()}`;
-      // console.log(id)
-      // console.log(action.payload)
-      // console.log({...state.cart})
+      const newProduct = {
+        id: action?.payload?.id,
+        title: action?.payload?.title,
+        price: action?.payload?.price,
+        type: action?.payload?.type,
+        brand: action?.payload?.brand,
+        category: action?.payload?.category,
+        subcategory: action?.payload?.subcategory,
+        productChild: {
+          id: action?.payload?.selectedProductChild?.id,
+          color: action?.payload?.selectedProductChild?.color,
+          size: action?.payload?.selectedProductChild?.size,
+
+          sizes: action?.payload?.selectedProductChild?.sizes,
+          images: action?.payload?.selectedProductChild?.images,
+        }
+      }
+      const id = `${newProduct?.id}_${newProduct?.productChild?.size}_${newProduct?.productChild?.color}`;
+
+
       if (
         state?.cart[id] &&
         state?.cart[id]?.info?.productChild?.size ===
-          action?.payload?.productChild?.size
+        newProduct?.productChild?.size
       ) {
         const newCart = { ...state.cart };
 
         newCart[id] = {
           ...newCart[id],
           count: newCart[id].count + 1,
-          totalPrice: newCart[id].totalPrice + action.payload.price,
+          totalPrice: newCart[id].totalPrice + newProduct?.price,
         };
 
         
@@ -68,16 +84,16 @@ export const cartSlice = createSlice({
       }
       return {
         ...state,
-        totalPrice: Object.values(state.cart).reduce((prev: number, next: any) => prev + next.totalPrice, 0) + action.payload.price,
+        totalPrice: Object.values(state.cart).reduce((prev: number, next: any) => prev + next.totalPrice, 0) + newProduct?.price,
         cart: {
           ...state.cart,
           [id]: {
             id,
             info: {
-              ...action.payload,
+              ...newProduct,
             },
             count: 1,
-            totalPrice: action.payload.price,
+            totalPrice: newProduct?.price,
           },
         },
       };
