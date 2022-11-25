@@ -67,7 +67,7 @@ const getSizes = (
 
 export default function Product() {
   const [productLocal, setProductLocal] = useState<any>(undefined);
-  
+
   const { setProduct } = useActions();
 
   const onHandleChangeProduct = (obj: any) => {
@@ -220,12 +220,12 @@ const Info = memo(({ productLocal, onHandleChangeProduct }: any) => {
               style={{
                 backgroundColor: colors[productChild?.color]?.color,
               }}
-              className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] ${
+              className={`w-[55px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] ${
                 productChild?.color ===
                 productLocal?.selectedProductChild?.color
                   ? "border-[2px] border-slate-300"
                   : ""
-              } h-[30px] border`}
+              } h-[35px] border`}
             />
           ))}
         </div>
