@@ -8,8 +8,8 @@ export default function BtnToBuy() {
 
   const { setCartIsShow, setIsOpenAuth } = useActions();
 
-  const newCart = Object.values(cart);
-  console.log(newCart);
+  const newCart = Object.values(cart); 
+  
   const onCreateOrder = async () => {
     try {
       let productsOrder: any = [];
@@ -19,7 +19,7 @@ export default function BtnToBuy() {
           ...productsOrder,
           {
             size: card?.info?.productChild?.size,
-            colors: card?.info?.productChild?.colors?.map((color: any) => color.hex),
+            color: card?.info?.productChild?.color,
             price: card?.info?.price,
             product: { connect: { id: card?.info?.id } },
           },
