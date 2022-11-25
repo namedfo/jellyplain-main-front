@@ -5,7 +5,7 @@ type initialStateType = {
   totalPrice: number;
   cartIsShow: boolean;
 
-  product: any
+  product: any;
 };
 
 const initialState: initialStateType = {
@@ -26,29 +26,50 @@ export const cartSlice = createSlice({
     }),
     setProduct: (state: initialStateType, action: any) => ({
       ...state,
-      product: action.payload
+      product: action.payload,
     }),
-    plus: (state: initialStateType, action: any) => void(state.cart[action?.payload].count = state?.cart[action?.payload]?.count + 1),
+    plus: (state: initialStateType, action: any) => {
+      if (state.cart[action?.payload]) {
+        state.cart[action?.payload].count =
+          state?.cart[action?.payload]?.count + 1;
+        state.cart[action?.payload].totalPrice =
+          state.cart[action?.payload]?.totalPrice +
+          state.cart[action?.payload]?.info?.price;
+
+        state.totalPrice =
+          state.cart[action?.payload]?.info?.price + state.totalPrice;
+      }
+    },
     minus: (state: initialStateType, action: any) => {
       if (state.cart[action.payload].count === 1) {
+        state.totalPrice =
+          state.totalPrice - state.cart[action.payload].totalPrice;
         delete state.cart[action.payload];
-        return 
+        return;
       }
-      state.cart[action.payload].count = state.cart[action.payload].count - 1
+      if (state.cart[action?.payload]) {
+        state.cart[action?.payload].count =
+          state?.cart[action?.payload]?.count - 1;
+        state.cart[action?.payload].totalPrice =
+          state.cart[action?.payload]?.totalPrice -
+          state.cart[action?.payload]?.info?.price;
+
+        state.totalPrice =
+          state.totalPrice - state.cart[action?.payload]?.info?.price;
+      }
     },
     removeCard: (state: initialStateType, action: any) => {
-      const newObject = { ...state.cart }
+      const newObject = { ...state.cart };
 
-      const totalPrice = newObject[action.payload].totalPrice
+      const totalPrice = newObject[action.payload].totalPrice;
 
       delete newObject[action.payload];
-      
 
       return {
         ...state,
         totalPrice: state.totalPrice - totalPrice,
-        cart: newObject
-      }
+        cart: newObject,
+      };
     },
     setCard: (state: initialStateType, action: any) => {
       const newProduct = {
@@ -66,15 +87,14 @@ export const cartSlice = createSlice({
 
           sizes: action?.payload?.selectedProductChild?.sizes,
           images: action?.payload?.selectedProductChild?.images,
-        }
-      }
+        },
+      };
       const id = `${newProduct?.id}_${newProduct?.productChild?.size}_${newProduct?.productChild?.color}`;
-
 
       if (
         state?.cart[id] &&
         state?.cart[id]?.info?.productChild?.size ===
-        newProduct?.productChild?.size
+          newProduct?.productChild?.size
       ) {
         const newCart = { ...state.cart };
 
@@ -84,17 +104,22 @@ export const cartSlice = createSlice({
           totalPrice: newCart[id].totalPrice + newProduct?.price,
         };
 
-        
-
         return {
           ...state,
-          totalPrice: Object.values(newCart).reduce((prev: number, next: any) => prev + next.totalPrice, 0),
+          totalPrice: Object.values(newCart).reduce(
+            (prev: number, next: any) => prev + next.totalPrice,
+            0
+          ),
           cart: newCart,
         };
       }
       return {
         ...state,
-        totalPrice: Object.values(state.cart).reduce((prev: number, next: any) => prev + next.totalPrice, 0) + newProduct?.price,
+        totalPrice:
+          Object.values(state.cart).reduce(
+            (prev: number, next: any) => prev + next.totalPrice,
+            0
+          ) + newProduct?.price,
         cart: {
           ...state.cart,
           [id]: {

@@ -28,7 +28,7 @@ export default function Cart() {
   const { removeCard, minus, plus } = useActions();
 
   const newCart = Object.values(cart);
-
+  console.log(newCart)
   return (
     <Container>
       <Header />
