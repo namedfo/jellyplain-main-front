@@ -4,16 +4,17 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 // components
 import Address from "./Address";
 
-export default function Info() {
+export default function Info({ order }: any) {
   return (
     <div className="shadow-jj flex flex-col text-[18px] rounded-[10px] bg-white px-[20px] py-[15px]">
       <Address />
-      <ShippingCost />
+      <ShippingCost delivery={order?.delivery} />
     </div>
   );
 }
 
-const ShippingCost = () => {
+const ShippingCost = ({ delivery }: any) => {
+  console.log(delivery)
   const [isOpen, setIsOpen] = useState(false);
   const [shipping, setShipping] = useState("pochtaru");
 

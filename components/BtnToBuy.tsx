@@ -23,6 +23,7 @@ export default function BtnToBuy() {
           {
             size: card?.info?.productChild?.size,
             color: card?.info?.productChild?.color,
+            count: card?.count,
             price: card?.info?.price,
             product: { connect: { id: card?.info?.id } },
           },
@@ -37,6 +38,7 @@ export default function BtnToBuy() {
       });
 
       router.push(`/checkout/${res.data.id}`)
+      setCartIsShow(false)
     } catch (error) {}
   };
 
