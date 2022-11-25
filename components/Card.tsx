@@ -57,7 +57,7 @@ export default function Card({ card }: any) {
             {types[card?.type]}
           </span>
           <div className="bg-fuchsia-500 px-[6px] rounded-[8px]">
-            <span className="text-white leading-0 text-[20px] font-medium">
+            <span className="text-white leading-0 text-[19px] font-medium">
               {card?.price} &#8381;
             </span>
           </div>
