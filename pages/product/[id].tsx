@@ -18,6 +18,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Rating from "../../components/UI/Rating";
 import sizesSneakers from "../../utils/helping/sizesSneakers";
 import types from "../../utils/helping/types";
+import colors from "../../utils/helping/colors";
 
 const images = [
   {
@@ -56,27 +57,16 @@ export default function Product() {
             router.query.id
           )}`
         );
-        setProduct(() => {
-          let colors: any = [];
-          res?.data?.productChilds?.forEach((elem: any) => {
-            colors = [
-              ...colors,
-              {
-                colors: elem.colors.map((color: any) => color.hex),
-                productChild: elem,
-              },
-            ];
-          });
-
-          return {
-            id: res.data.id,
-            category: res.data.category,
-            price: res.data.price,
-            title: res.data.title,
-            type: res.data.type,
-            productChild: res.data.productChilds[0],
-            allColors: colors,
-          };
+        setProduct({
+          id: res?.data?.id,
+          title: res?.data?.title,
+          type: res?.data?.type,
+          brand: res?.data?.brand,
+          category: res?.data?.category,
+          subcategory: res?.data?.subcategory,
+          price: res?.data?.price,
+          selectedProductChild: res?.data?.productChilds[0],
+          productChilds: res?.data?.productChilds,
         });
 
         setIsLoading("success");
@@ -106,10 +96,12 @@ export default function Product() {
             <div>
               <div className="shadow-jj w-full sm:w-[600px] flex justify-center rounded-[10px] bg-white p-[15px]">
                 <div className="hidden md:flex">
-                  {product?.productChild?.images && (
+                  {product?.selectedProductChild?.images && (
                     <ImageGallery
                       autoPlay={true}
-                      items={getImgFormat(product?.productChild?.images)}
+                      items={getImgFormat(
+                        product?.selectedProductChild?.images
+                      )}
                     />
                   )}
                 </div>
@@ -120,13 +112,15 @@ export default function Product() {
                   >
                     <AiOutlineArrowLeft size={26} color="#86368d" />
                   </button>
-                  {product?.productChild?.images && (
+                  {product?.selectedProductChild?.images && (
                     <ImageGallery
                       showThumbnails={false}
                       showPlayButton={false}
                       showBullets={true}
                       autoPlay={true}
-                      items={getImgFormat(product?.productChild?.images)}
+                      items={getImgFormat(
+                        product?.selectedProductChild?.images
+                      )}
                     />
                   )}
                 </div>
@@ -179,122 +173,99 @@ const getSize = (type: string, size: any) => {
 };
 
 const Info = memo(({ product, setProduct }: any) => {
-  const [selectedColor, setSelectedColor] = useState(product?.allColors[0]);
-  
-  const sizes = getSizes(
-    product?.category,
-    selectedColor?.productChild?.sizesSneakers,
-    selectedColor?.productChild?.sizesClothes
-  )
+  // const [selectedColor, setSelectedColor] = useState(product?.allColors[0]);
+  console.log(product);
+  // const sizes = getSizes(
+  //   product?.category,
+  //   selectedColor?.productChild?.sizesSneakers,
+  //   selectedColor?.productChild?.sizesClothes
+  // )
 
+  // const [selectedSize, setSelectedSize] = useState(sizes?.sizes[0]);
 
-  const [selectedSize, setSelectedSize] = useState(sizes?.sizes[0]);
+  // const [newProduct, setNewProduct] = useState<any>({
+  //   ...product,
+  //   productChild: {
+  //     ...product?.productChild,
+  //     size: selectedSize
+  //   }
+  // })
 
-  const [newProduct, setNewProduct] = useState<any>({
-    ...product,
-    productChild: {
-      ...product?.productChild,
-      size: selectedSize
-    }
-  })
+  // const onChangeSizes = (size: any) => {
+  //   setSelectedSize(size)
+  //   setProduct((prev: any) => ({
+  //     ...prev,
+  //     productChild: {
+  //       ...prev?.productChild,
+  //       size: size
+  //     }
+  //   }))
+  //   setNewProduct((prev: any) => ({
+  //     ...prev,
+  //     productChild: {
+  //       ...prev?.productChild,
+  //       size: size
+  //     }
+  //   }))
+  // }
 
+  // const onChangeColor = (obj: any) => {
+  //   const sizes = getSizes(
+  //     product?.category,
+  //     obj?.productChild?.sizesSneakers,
+  //     obj?.productChild?.sizesClothes
+  //   )
+  //   setSelectedSize(sizes?.sizes[0])
+  //   setProduct((prev: any) => ({
+  //     ...prev,
+  //     productChild: {
+  //       ...obj?.productChild,
+  //       size: sizes.sizes[0]
+  //     }
+  //   }))
+  //   setNewProduct((prev: any) => ({
+  //     ...prev,
+  //     productChild: {
+  //       ...obj?.productChild,
+  //       size: sizes.sizes[0]
+  //     }
+  //   }))
+  //   setSelectedColor(obj)
 
-  const onChangeSizes = (size: any) => {
-    setSelectedSize(size)
-    setProduct((prev: any) => ({
-      ...prev,
-      productChild: {
-        ...prev?.productChild,
-        size: size
-      }
-    }))
-    setNewProduct((prev: any) => ({
-      ...prev,
-      productChild: {
-        ...prev?.productChild,
-        size: size
-      }
-    }))
-  }
-
-
-  const onChangeColor = (obj: any) => {
-    const sizes = getSizes(
-      product?.category,
-      obj?.productChild?.sizesSneakers,
-      obj?.productChild?.sizesClothes
-    )
-    setSelectedSize(sizes?.sizes[0])
-    setProduct((prev: any) => ({
-      ...prev,
-      productChild: {
-        ...obj?.productChild,
-        size: sizes.sizes[0]
-      }
-    }))
-    setNewProduct((prev: any) => ({
-      ...prev,
-      productChild: {
-        ...obj?.productChild,
-        size: sizes.sizes[0]
-      }
-    }))
-    setSelectedColor(obj)
-    
-  }
-
+  // }
 
   // console.log(newProduct)
-  
 
   return (
     <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[15px]">
-      <Title product={newProduct} />
+      <Title product={product} />
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Цвета</span>
         <div className="flex flex-wrap mt-[5px]">
-          {product?.allColors?.map((elem: any, i: number) => {
-            return (
-              <div
-                key={elem?.productChild.id}
-                onClick={() =>
-                  onChangeColor({
-                    colors: elem?.colors,
-                    productChild: elem.productChild,
-                  })
-                }
-                className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] h-[30px] border 
-                ${
-                  selectedColor?.productChild?.id === elem?.productChild.id
-                    ? "border-[2px] border-slate-400"
-                    : ""
-                }
-                `}
-              >
-                {elem?.colors?.map((color: any, j: number) => (
-                  <div
-                    key={color}
-                    style={{
-                      backgroundColor: color,
-                      borderTopLeftRadius: j === 0 ? "8px" : "",
-                      borderBottomLeftRadius: j === 0 ? "8px" : "",
-                      borderTopRightRadius:
-                        elem?.colors?.length - 1 === j ? "8px" : "",
-                      borderBottomRightRadius:
-                        elem?.colors?.length - 1 === j ? "8px" : "",
-                    }}
-                    className="w-full h-full"
-                  />
-                ))}
-              </div>
-            );
-          })}
+          {product?.productChilds?.map((productChild: any) => (
+            <div
+              onClick={() =>
+                setProduct((prev: any) => ({
+                  ...prev,
+                  selectedProductChild: productChild,
+                }))
+              }
+              style={{
+                backgroundColor: colors[productChild?.color]?.color,
+              }}
+              className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] ${
+                productChild?.color === product?.selectedProductChild?.color
+                  ? "border-[2px] border-slate-300"
+                  : ""
+              } h-[30px] border`}
+            />
+          ))}
         </div>
       </div>
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Размеры</span>
         <div className="my-[7px] flex flex-wrap">
-          {sizes?.sizes?.map((size: any) => (
+          {/* {sizes?.sizes?.map((size: any) => (
             <button
               key={size}
               onClick={() => onChangeSizes(size)}
@@ -306,12 +277,12 @@ const Info = memo(({ product, setProduct }: any) => {
             >
               {getSize(sizes?.type, size)}
             </button>
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
   );
-})
+});
 
 const Title = ({ product }: any) => {
   const { setCard } = useActions();
