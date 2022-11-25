@@ -65,9 +65,15 @@ const getSizes = (
   };
 };
 
-
 export default function Product() {
-  const [product, setProduct] = useState<any>(undefined);
+  const [productLocal, setProductLocal] = useState<any>(undefined);
+  
+  const { setProduct } = useActions();
+
+  const onHandleChangeProduct = (obj: any) => {
+    setProductLocal(obj);
+    setProduct(obj);
+  };
 
   const [isLoading, setIsLoading] = useState<any>("idle");
 
@@ -87,7 +93,7 @@ export default function Product() {
           res?.data?.productChilds[0]?.sizesSneakers,
           res?.data?.productChilds[0]?.sizesClothes
         );
-        setProduct({
+        onHandleChangeProduct({
           id: res?.data?.id,
           title: res?.data?.title,
           type: res?.data?.type,
@@ -141,11 +147,11 @@ export default function Product() {
             <div>
               <div className="shadow-jj w-full sm:w-[600px] flex justify-center rounded-[10px] bg-white p-[15px]">
                 <div className="hidden md:flex">
-                  {product?.selectedProductChild?.images && (
+                  {productLocal?.selectedProductChild?.images && (
                     <ImageGallery
                       autoPlay={true}
                       items={getImgFormat(
-                        product?.selectedProductChild?.images
+                        productLocal?.selectedProductChild?.images
                       )}
                     />
                   )}
@@ -157,14 +163,14 @@ export default function Product() {
                   >
                     <AiOutlineArrowLeft size={26} color="#86368d" />
                   </button>
-                  {product?.selectedProductChild?.images && (
+                  {productLocal?.selectedProductChild?.images && (
                     <ImageGallery
                       showThumbnails={false}
                       showPlayButton={false}
                       showBullets={true}
                       autoPlay={true}
                       items={getImgFormat(
-                        product?.selectedProductChild?.images
+                        productLocal?.selectedProductChild?.images
                       )}
                     />
                   )}
@@ -172,7 +178,10 @@ export default function Product() {
               </div>
             </div>
             <div className="flex flex-col">
-              <Info product={product} setProduct={setProduct} />
+              <Info
+                productLocal={productLocal}
+                onHandleChangeProduct={onHandleChangeProduct}
+              />
               {/* <Reviews /> */}
             </div>
             <div className="block sm:hidden mt-[75px]" />
@@ -182,7 +191,6 @@ export default function Product() {
     </Container>
   );
 }
-
 
 const getSize = (type: string, size: any) => {
   switch (type) {
@@ -194,29 +202,27 @@ const getSize = (type: string, size: any) => {
       return "";
   }
 };
-const Info = memo(({ product, setProduct }: any) => {
-  console.log(product);
-  
-
+const Info = memo(({ productLocal, onHandleChangeProduct }: any) => {
   return (
     <div className="shadow-jj mt-[7px] sm:mt-0 flex w-full flex-col rounded-[10px] sm:w-[650px] bg-white py-[15px] px-[15px]">
-      <Title product={product} />
+      <Title product={productLocal} />
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Цвета</span>
         <div className="flex flex-wrap mt-[5px]">
-          {product?.productChilds?.map((productChild: any) => (
+          {productLocal?.productChilds?.map((productChild: any) => (
             <div
               onClick={() =>
-                setProduct((prev: any) => ({
-                  ...prev,
+                onHandleChangeProduct({
+                  ...productLocal,
                   selectedProductChild: productChild,
-                }))
+                })
               }
               style={{
                 backgroundColor: colors[productChild?.color]?.color,
               }}
               className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[10px] hover:border-[2px] ${
-                productChild?.color === product?.selectedProductChild?.color
+                productChild?.color ===
+                productLocal?.selectedProductChild?.color
                   ? "border-[2px] border-slate-300"
                   : ""
               } h-[30px] border`}
@@ -227,25 +233,25 @@ const Info = memo(({ product, setProduct }: any) => {
       <div className="mt-[10px]">
         <span className="text-[#775C5C] font-medium text-[18px]">Размеры</span>
         <div className="my-[7px] flex flex-wrap">
-          {product?.selectedProductChild?.sizes.map((size: any) => (
+          {productLocal?.selectedProductChild?.sizes.map((size: any) => (
             <button
               key={size}
               onClick={() => {
-                setProduct((prev: any) => ({
-                  ...prev,
+                onHandleChangeProduct({
+                  ...productLocal,
                   selectedProductChild: {
-                    ...prev?.selectedProductChild,
-                    size
+                    ...productLocal?.selectedProductChild,
+                    size,
                   },
-                }))
+                });
               }}
               className={`border ${
-                product?.selectedProductChild?.size === size
+                productLocal?.selectedProductChild?.size === size
                   ? "bg-[#3b82f6] text-white border-[1px]"
                   : "hover:bg-slate-200  border-[2px]"
               } ml-[5px] my-[3px] px-[17px] py-[3px] rounded-[10px]`}
             >
-              {getSize(product?.category, size) || ""}
+              {getSize(productLocal?.category, size) || ""}
             </button>
           ))}
         </div>

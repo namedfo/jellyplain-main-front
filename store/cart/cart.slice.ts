@@ -4,12 +4,16 @@ type initialStateType = {
   cart: any;
   totalPrice: number;
   cartIsShow: boolean;
+
+  product: any
 };
 
 const initialState: initialStateType = {
   cart: {},
   totalPrice: 0,
   cartIsShow: false,
+
+  product: null,
 };
 
 export const cartSlice = createSlice({
@@ -19,6 +23,10 @@ export const cartSlice = createSlice({
     setCartIsShow: (state: initialStateType, action: any) => ({
       ...state,
       cartIsShow: action.payload,
+    }),
+    setProduct: (state: initialStateType, action: any) => ({
+      ...state,
+      product: action.payload
     }),
     plus: (state: initialStateType, action: any) => {
 

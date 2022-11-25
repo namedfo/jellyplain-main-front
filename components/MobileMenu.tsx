@@ -6,34 +6,65 @@ import { FaUserAlt, FaShoppingBasket } from "react-icons/fa";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import useActions from "../hooks/useActions";
 import BtnToPaid from "./checkout/BtnToPaid";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 export default function MobileMenu() {
-  const { cart } = useTypedSelector((state) => state.cart);
+  const { cart, product } = useTypedSelector((state) => state.cart);
   const { isAuth } = useTypedSelector((state) => state.user);
 
   const { setIsOpenAuth, setCard } = useActions();
 
   const router = useRouter();
 
-  const newCart = Object.values(cart)
+  const newCart = Object.values(cart);
+
+  const productCartId = `${product?.id}_${product?.selectedProductChild?.size}_${product?.selectedProductChild?.color}`;
 
   const getContent = () => {
     if (router.pathname === "/product/[id]") {
       return (
         <>
-          <button
-            // onClick={() => setCard(product)}
-            className="border-[#8a63b9] hover:text-white h-[42px] border flex flex-col justify-center items-center hover:bg-[#8062a7] text-[#8a63b9] font-medium px-[15px] py-[4px] rounded-[15px]"
-          >
-            <span className="leading-[26px] text-[16px]">В корзину</span>
-          </button>
-          <button
-            onClick={() => router.push("/checkout")}
-            className="bg-[#8a63b9] border flex flex-col items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[15px]"
-          >
-            <span className="leading-[17px] text-[17px]">Купить сейчас</span>
-            <span className="leading-[15px] text-[14px]">6990 &#8381;</span>
-          </button>
+          {!cart[productCartId] ? (
+            <>
+              <button
+                onClick={() => setCard(product)}
+                className="border-[#8a63b9] hover:text-white h-[42px] border flex flex-col justify-center items-center hover:bg-[#8062a7] text-[#8a63b9] font-medium px-[15px] py-[4px] rounded-[15px]"
+              >
+                <span className="leading-[26px] text-[16px]">В корзину</span>
+              </button>
+              <button
+                onClick={() => router.push("/checkout")}
+                className="bg-[#8a63b9] border flex flex-col items-center hover:bg-[#8062a7] text-white font-medium px-[15px] py-[4px] rounded-[15px]"
+              >
+                <span className="leading-[17px] text-[17px]">
+                  Купить сейчас
+                </span>
+                <span className="leading-[15px] text-[14px]">6990 &#8381;</span>
+              </button>
+            </>
+          ) : (
+            <>
+              <button onClick={() => router.push("/cart")} className="flex flex-col font-medium px-[15px] py-[4px] rounded-[15px] h-[42px] bg-[#8062a7] items-center">
+                <span className="leading-[16px] text-white text-[16px]">
+                  В корзине
+                </span>
+                <span className="leading-[16px] text-cyan-200 text-[14px]">
+                  Перейти
+                </span>
+              </button>
+              <div className="flex mr-[10px] items-center">
+                <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+                  <AiOutlineMinus color="#8045c6" />
+                </button>
+                <span className="font-medium text-[18px] mx-[10px]">
+                  {cart[productCartId]?.count}
+                </span>
+                <button className="p-[4px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
+                  <AiOutlinePlus color="#8045c6" />
+                </button>
+              </div>
+            </>
+          )}
         </>
       );
     } else if (router.pathname === "/checkout") {
