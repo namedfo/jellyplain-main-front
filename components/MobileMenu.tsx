@@ -39,7 +39,7 @@ export default function MobileMenu() {
                 <span className="leading-[17px] text-[17px]">
                   Купить сейчас
                 </span>
-                <span className="leading-[17px] text-[14px]">6990 &#8381;</span>
+                <span className="leading-[12px] text-[14px]">6990 &#8381;</span>
               </button>
             </>
           ) : (
