@@ -54,13 +54,13 @@ export default function MobileMenu() {
               </button>
               <div className="flex mr-[10px] items-center">
                 <button className="p-[5px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
-                  <AiOutlineMinus size={18} color="#8045c6" />
+                  <AiOutlineMinus size={20} color="#8045c6" />
                 </button>
-                <span className="font-medium text-[20px] mx-[10px]">
+                <span className="font-medium text-[22px] mx-[10px]">
                   {cart[productCartId]?.count}
                 </span>
                 <button className="p-[5px] hover:bg-[#8045C64D] bg-[#8045C633] rounded-[5px]">
-                  <AiOutlinePlus size={18} color="#8045c6" />
+                  <AiOutlinePlus size={20} color="#8045c6" />
                 </button>
               </div>
             </>
