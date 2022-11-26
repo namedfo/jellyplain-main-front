@@ -45,7 +45,7 @@ export default function BtnToBuy() {
 
   return (
     <>
-      {!isAuth ? (
+      {isAuth ? (
         <button
           onClick={onCreateOrder}
           className="bg-indigo-500 hover:bg-indigo-700 text-white font-medium text-[18px] w-full py-[5px] rounded-[10px]"
