@@ -88,7 +88,6 @@ const Total = ({ totalPrice, count }: any) => {
   );
 };
 
-
 const getSize = (type: string, size: any) => {
   switch (type) {
     case "sneakers":
@@ -102,8 +101,10 @@ const getSize = (type: string, size: any) => {
 const Products = ({ products }: any) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const router = useRouter();
+
   return (
-    <div className="shadow-jj flex-col py-[15px] hidden md:flex px-[20px] mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
+    <div className="shadow-jj flex-col py-[15px] flex px-[20px] mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
       <div
         onClick={() => setIsOpen((prev) => !prev)}
         className="flex cursor-pointer items-center"
@@ -111,34 +112,38 @@ const Products = ({ products }: any) => {
         <span className="text-[16px] md:text-[18px] font-medium text-[#292929]">
           Товары
         </span>
-        <button className="hover:bg-[#8045C61A] md:ml-[20px] p-[3px] rounded-[10px]">
+        {/* <button className="hover:bg-[#8045C61A] md:ml-[20px] p-[3px] rounded-[10px]">
           {isOpen ? (
             <AiOutlineArrowUp color="#292928" size={26} />
           ) : (
             <AiOutlineArrowDown color="#292928" size={26} />
           )}
-        </button>
+        </button> */}
       </div>
-      <div className="flex pt-[20px] flex-col">
-        {products?.map((product: any) => (
-          <div className="flex items-center justify-between">
+      <div className="flex pt-[10px] flex-col">
+        {products?.map((product: any, i: number) => (
+          <div style={{
+            marginTop: i !== 0 ? "20px" : ""
+          }} className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center">
               <img
-                className="cursor-pointer w-[100px] h-[80px] object-contain border rounded-[10px]"
+                className="cursor-pointer w-[80px] h-[60px] object-contain border rounded-[10px]"
                 src={product?.images[0]}
                 alt="photo"
               />
-              <div className="flex flex-col">
-                <span>{product?.product?.title}</span>
-                <div className="flex items-center">
+              <div className="flex pl-[15px] flex-col">
+                <span
+                  onClick={() => router.push(`/product/${product?.productId}`)}
+                  className="font-medium cursor-pointer text-[16px] sm:text-[20px]"
+                >
+                  {product?.product?.title}
+                </span>
+                <div className="flex text-[18px] items-center">
                   {product?.size && (
                     <>
                       <span className="mr-[3px]">Размер: </span>
                       <span>
-                        {getSize(
-                          product?.product?.category,
-                          product?.size
-                        )}
+                        {getSize(product?.product?.category, product?.size)}
                       </span>
                       <div className="rounded-full h-[5px] mx-[10px] w-[5px] bg-slate-700" />
                     </>
@@ -148,12 +153,27 @@ const Products = ({ products }: any) => {
 
                   <div
                     style={{
-                      backgroundColor:
-                        colors[product?.color]?.color,
+                      backgroundColor: colors[product?.color]?.color,
                     }}
                     className={`w-[50px] cursor-pointer flex ml-[5px] my-[3px] rounded-[5px] h-[20px] border`}
                   ></div>
                 </div>
+              </div>
+            </div>
+            <div className="flex mt-[5px] sm:mt-0 w-full sm:w-[140px] justify-between sm:justify-start sm:flex-col">
+              <div className="flex w-[33%] sm:w-full justify-center sm:justify-between">
+                <span className="leading-[17px]">цена:</span>
+                <span className="ml-[3px] leading-[17px]">{product?.price} &#8381;</span>
+              </div>
+              <div className="flex w-[33%] sm:w-full  justify-centersm:justify-between">
+                <span className="leading-[17px]">кол-во:</span>
+                <span className="ml-[3px] leading-[17px]">{product?.count}</span>
+              </div>
+              <div className="flex w-[33%] sm:w-full justify-center sm:justify-between">
+                <span className="leading-[17px]">итог:</span>
+                <span className="ml-[3px] leading-[17px]">
+                  {product?.price * product?.count} &#8381;
+                </span>
               </div>
             </div>
           </div>
