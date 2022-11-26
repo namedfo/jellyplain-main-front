@@ -10,9 +10,12 @@ export default function Filtred({ onClose }: any) {
   const { selectedCategory } = useTypedSelector((state) => state.main);
 
   return (
-    <div style={{
-      zIndex: 99
-    }} className="w-full py-[15px] px-[20px] bg-white flex flex-col overflow-y-auto justify-between h-full absolute">
+    <div
+      style={{
+        zIndex: 99,
+      }}
+      className="w-full py-[15px] px-[20px] bg-white flex flex-col overflow-y-auto justify-between h-full absolute"
+    >
       <div className="flex flex-col">
         <Header onClose={onClose} />
         <div className="flex py-[10px] flex-col">
@@ -47,13 +50,12 @@ export default function Filtred({ onClose }: any) {
                   className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                   name="animals"
                 >
-                  <option value="">Все</option>
-                  <option value="dog">Dog</option>
-                  <option value="cat">Cat</option>
-                  <option value="hamster">Hamster</option>
-                  <option value="parrot">Parrot</option>
-                  <option value="spider">Spider</option>
-                  <option value="goldfish">Goldfish</option>
+                  <option value={undefined}>Все</option>
+                  <option value="sneakers">Кроссовки</option>
+                  <option value="uniform">Форма NBA</option>
+                  <option value="clothes">Одежда</option>
+                  <option value="basketballs">Баскетбольные мячи</option>
+                  <option value="accessories">Аксессуары</option>
                 </select>
               </label>
             )}
