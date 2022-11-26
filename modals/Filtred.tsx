@@ -65,9 +65,9 @@ export default function Filtred({ onClose }: any) {
           <Color />
         </div>
       </div>
-      <button className="bg-indigo-500 hover:bg-indigo-700 text-[18px] font-medium text-white py-[4px] rounded-[10px]">
+      {/* <button className="bg-indigo-500 hover:bg-indigo-700 text-[18px] font-medium text-white py-[4px] rounded-[10px]">
         Применить
-      </button>
+      </button> */}
     </div>
   );
 }

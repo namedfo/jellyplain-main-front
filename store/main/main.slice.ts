@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type initialStateType = {
   selectedCategory: any;
-  minPrice: number
-  maxPrice: number
-  size: null | any
-  brand: null | any
-  colors: any
+  minPrice: number;
+  maxPrice: number;
+  size: null | any;
+  brands: null | any;
+  colors: any;
 
   isOpenAuth: boolean;
 
@@ -17,13 +17,18 @@ const initialState: initialStateType = {
   selectedCategory: {
     category: undefined,
     subcategory: undefined,
-    
-    name: "Все"
+
+    name: "Все",
   },
   minPrice: 0,
   maxPrice: 99999,
   size: null,
-  brand: null,
+  brands: {
+    nike: false,
+    adidas: false,
+    underarmour: false,
+    thenorthface: false,
+  },
   colors: null,
 
   isOpenAuth: false,
@@ -50,8 +55,11 @@ export const mainSlice = createSlice({
 
     setValue: (state: initialStateType, action: any) => ({
       ...state,
-      [action.payload.type]: action.payload.value
-    })
+      brands: {
+        ...state.brands,
+        [action.payload.type]: action.payload.value,
+      },
+    }),
   },
 });
 

@@ -43,17 +43,33 @@ export default function Home() {
     "idle" | "loading" | "success" | "error"
   >("idle");
 
-  const { selectedCategory } = useTypedSelector((state) => state.main);
+  const { selectedCategory, minPrice, maxPrice, brands, colors } =
+    useTypedSelector((state) => state.main);
 
   const router = useRouter();
-  console.log(selectedCategory)
+  console.log(selectedCategory);
+
+  let newBrands: any = [];
+
+  for (const [key, value] of Object.entries(brands)) {
+    if (value) {
+      newBrands = [...newBrands, key];
+    }
+  }
 
   useEffect(() => {
     (async () => {
       try {
         setLoading("loading");
-        const res = await axios.get(
-          `https://jellyplainv2.herokuapp.com/product/getAll?category=${selectedCategory.category}&subcategory=${selectedCategory.subcategory}`
+        const res = await axios.post(
+          `https://jellyplainv2.herokuapp.com/product/getAll`,
+          {
+            category: selectedCategory.category,
+            subcategory: selectedCategory.subcategory,
+            minPrice,
+            maxPrice,
+            brands: newBrands.length > 0 ? newBrands : undefined,
+          }
         );
         setCards(res.data);
         setLoading("success");
@@ -61,7 +77,7 @@ export default function Home() {
         setLoading("error");
       }
     })();
-  }, [selectedCategory]);
+  }, [selectedCategory, brands, minPrice, maxPrice]);
 
   return (
     <Container>
