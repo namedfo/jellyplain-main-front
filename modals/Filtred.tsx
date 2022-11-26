@@ -22,33 +22,32 @@ export default function Filtred({ onClose }: any) {
           <div className="flex items-center justify-between">
             <label
               className="text-[#292928] font-medium text-[18px] sm:text-[20px]"
-              htmlFor="animals"
+              htmlFor="category"
             >
               Категория
               <select
-                id="animals"
+                id="category"
                 className="block w-full py-[4px] px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                name="animals"
+                name="category"
               >
-                <option value="">Все</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
-                <option value="parrot">Parrot</option>
-                <option value="spider">Spider</option>
-                <option value="goldfish">Goldfish</option>
+                <option value={undefined}>Все</option>
+                <option value="sneakers">Кроссовки</option>
+                <option value="uniform">Форма NBA</option>
+                <option value="clothes">Одежда</option>
+                <option value="basketballs">Баскетбольные мячи</option>
+                <option value="accessories">Аксессуары</option>
               </select>
             </label>
             {selectedCategory.subcategory && (
               <label
                 className="text-[#292928] font-medium text-[18px] sm:text-[20px]"
-                htmlFor="animals"
+                htmlFor="subcategory"
               >
                 Подкатегория
                 <select
-                  id="animals"
+                  id="subcategory"
                   className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  name="animals"
+                  name="subcategory"
                 >
                   <option value={undefined}>Все</option>
                   <option value="sneakers">Кроссовки</option>
