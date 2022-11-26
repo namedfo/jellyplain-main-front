@@ -20,14 +20,14 @@ export default function MenuCatalog() {
         <button
           onClick={() =>
             setSelectedCategory({
-              category: "all",
-              subcategory: null,
+              category: undefined,
+              subcategory: undefined,
 
               name: "Все",
             })
           }
           className={`${
-            selectedCategory.category === "all"
+            selectedCategory.category === undefined
               ? "bg-[#8A63B9] text-white"
               : "hover:bg-[#8A63B91A]"
           } py-[5px] px-[15px] rounded-[10px]`}
@@ -42,7 +42,7 @@ export default function MenuCatalog() {
           onClick={() =>
             setSelectedCategory({
               category: "formnba",
-              subcategory: null,
+              subcategory: undefined,
 
               name: "Форма NBA",
             })
@@ -63,7 +63,7 @@ export default function MenuCatalog() {
           onClick={() =>
             setSelectedCategory({
               category: "basketballs",
-              subcategory: null,
+              subcategory: undefined,
 
               name: "Баскетбольные мячи",
             })
@@ -80,7 +80,7 @@ export default function MenuCatalog() {
           onClick={() =>
             setSelectedCategory({
               category: "accessories",
-              subcategory: null,
+              subcategory: undefined,
 
               name: "Аксессуары",
             })
@@ -148,7 +148,7 @@ const Clothes = ({ selectedCategory, setSelectedCategory }: any) => {
             onClick={() =>
               setSelectedCategory({
                 category: "clothes",
-                subcategory: null,
+                subcategory: undefined,
 
                 name: "Одежда",
               })
@@ -169,6 +169,19 @@ const Clothes = ({ selectedCategory, setSelectedCategory }: any) => {
             className="hover:bg-[#8A63B91A] py-[5px]"
           >
             Шорты
+          </span>
+          <span
+            onClick={() =>
+              setSelectedCategory({
+                category: "clothes",
+                subcategory: "pants",
+
+                name: "Штаны",
+              })
+            }
+            className="hover:bg-[#8A63B91A] py-[5px]"
+          >
+            Штаны
           </span>
           <span
             onClick={() =>
@@ -244,7 +257,7 @@ const Sneakers = ({ selectedCategory, setSelectedCategory }: any) => {
             onClick={() =>
               setSelectedCategory({
                 category: "sneakers",
-                subcategory: null,
+                subcategory: undefined,
 
                 name: "Кроссовки",
               })

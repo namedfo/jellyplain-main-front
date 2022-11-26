@@ -15,8 +15,8 @@ type initialStateType = {
 
 const initialState: initialStateType = {
   selectedCategory: {
-    category: "all",
-    subcategory: null,
+    category: undefined,
+    subcategory: undefined,
     
     name: "Все"
   },

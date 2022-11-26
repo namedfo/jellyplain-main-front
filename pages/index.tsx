@@ -45,14 +45,15 @@ export default function Home() {
 
   const { selectedCategory } = useTypedSelector((state) => state.main);
 
-  const router = useRouter()
+  const router = useRouter();
+  console.log(selectedCategory)
 
   useEffect(() => {
     (async () => {
       try {
         setLoading("loading");
         const res = await axios.get(
-          `https://jellyplainv2.herokuapp.com/product/getAll`
+          `https://jellyplainv2.herokuapp.com/product/getAll?category=${selectedCategory.category}&subcategory=${selectedCategory.subcategory}`
         );
         setCards(res.data);
         setLoading("success");
@@ -68,7 +69,11 @@ export default function Home() {
       <div className="flex md:pt-[50px] justify-between">
         <div className="w-[270px] items-center hidden flex-col md:flex">
           <SidebarFiltred />
-          <a href="https://vk.com/jelly21" target="_blank" className="flex my-[10px] items-center">
+          <a
+            href="https://vk.com/jelly21"
+            target="_blank"
+            className="flex my-[10px] items-center"
+          >
             <div className="bg-[#0077ff] p-[4px] rounded-[6px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

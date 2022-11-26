@@ -23,7 +23,7 @@ export default function BtnToBuy() {
           {
             size: card?.info?.productChild?.size,
             color: card?.info?.productChild?.color,
-            images: card?.info?.productChild?.images,
+            images: card?.info?.productChild?.images.map((image: any) => image.url),
             count: card?.count,
             price: card?.info?.price,
             product: { connect: { id: card?.info?.id } },
