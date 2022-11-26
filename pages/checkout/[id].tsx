@@ -99,14 +99,13 @@ const getSize = (type: string, size: any) => {
   }
 };
 const Products = ({ products }: any) => {
-  const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
 
   return (
     <div className="shadow-jj flex-col py-[15px] flex px-[20px] mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
       <div
-        onClick={() => setIsOpen((prev) => !prev)}
+        // onClick={() => setIsOpen((prev) => !prev)}
         className="flex cursor-pointer items-center"
       >
         <span className="text-[16px] md:text-[18px] font-medium text-[#292929]">
