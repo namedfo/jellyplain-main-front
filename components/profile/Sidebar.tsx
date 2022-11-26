@@ -6,7 +6,6 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 export default function Sidebar({ onHandleChangeMenu, menuActive }: any) {
   const { user } = useTypedSelector((state) => state.user);
 
-  console.log(user)
 
   const { setUser, setIsAuth } = useActions();
 
