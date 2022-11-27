@@ -105,6 +105,12 @@ export default function Home() {
               По всем вопросам
             </span>
           </a>
+
+          <a target="_blank" href="https://vk.com/rpoopr2005">
+            <span className="font-[500] hover:underline cursor-pointer text-amber-700">
+              {`<`}Разработчик{` />`}
+            </span>
+          </a>
         </div>
         <div className="flex md:ml-[34px] w-full flex-col">
           <MenuCatalog />
@@ -115,12 +121,21 @@ export default function Home() {
                   <Card key={card.id} card={card} />
                 ))}
               </div>
-              <div className="mt-[15px] mb-[80px] md:mb-0 flex justify-center">
+              <div className="mt-[15px] mb-[80px] md:mb-0 flex flex-col items-center">
                 <div className="shadow-jj w-[270px] flex justify-center sm:w-auto rounded-[10px] bg-white py-[10px] px-[20px]">
-                    <button className="font-medium text-purple-500 hover:text-purple-800">
-                      Добавить еще
-                    </button>
+                  <button className="font-medium text-purple-500 hover:text-purple-800">
+                    Добавить еще
+                  </button>
                 </div>
+                <a
+                  className="flex md:hidden"
+                  target="_blank"
+                  href="https://vk.com/rpoopr2005"
+                >
+                  <span className="font-[500] mt-[70px] hover:underline cursor-pointer text-amber-700">
+                    {`<`}Разработчик{` />`}
+                  </span>
+                </a>
               </div>
             </div>
           )}
