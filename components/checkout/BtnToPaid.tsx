@@ -8,26 +8,26 @@ export default function BtnToPaid() {
     const res = await axios.post(
       "https://api.yookassa.ru/v3/payments",
       {
-        amount: {
-          value: "100.00",
-          currency: "RUB",
+        "amount": {
+          "value": "100.00",
+          "currency": "RUB",
         },
-        capture: true,
-        confirmation: {
-          type: "redirect",
-          return_url: "https://jellyplain-main.vercel.app",
+        "capture": true,
+        "confirmation": {
+          "type": "redirect",
+          "return_url": "https://jellyplain-main.vercel.app",
         },
-        description: "Заказ №1",
+        "description": "Заказ №1",
       },
       {
-        headers: {
+        "headers": {
           "Idempotence-Key": 32,
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "https://api.yookassa.ru",
         },
-        auth: {
-          username: "959763",
-          password: "test_QBY07j0SMDgiGT-JMxF_0UZgNbFRtBFL53rwWs7ZhzQ",
+        "auth": {
+          "username": "959763",
+          "password": "test_QBY07j0SMDgiGT-JMxF_0UZgNbFRtBFL53rwWs7ZhzQ",
         },
       }
     );
