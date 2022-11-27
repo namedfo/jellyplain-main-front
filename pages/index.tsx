@@ -132,7 +132,7 @@ export default function Home() {
                   target="_blank"
                   href="https://vk.com/rpoopr2005"
                 >
-                  <span className="font-[500] mt-[70px] hover:underline cursor-pointer text-amber-700">
+                  <span className="font-[500] mt-[200px] hover:underline cursor-pointer text-amber-700">
                     {`<`}Разработчик{` />`}
                   </span>
                 </a>
