@@ -11,15 +11,16 @@ import BtnToPaid from "../../components/checkout/BtnToPaid";
 import Container from "../../layouts/Container";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import $api from "../../config";
-import { count } from "console";
 import colors from "../../utils/helping/colors";
 import sizesSneakers from "../../utils/helping/sizesSneakers";
+import useActions from "../../hooks/useActions";
 
 export default function Checkout() {
-  const [order, setOrder] = useState<any>(undefined);
+  const [orderLocal, setOrderLocal] = useState<any>(null);
 
   // const { isAuth } = useTypedSelector(state => state.user)
   const isAuth = true;
+  const { setOrder } = useActions()
 
   const router = useRouter();
 
@@ -32,8 +33,8 @@ export default function Checkout() {
     (async () => {
       try {
         const res = await $api.get(`order/getOne?id=${router.query?.id}`);
-        console.log(res);
-        setOrder(res.data);
+        setOrderLocal(res.data);
+        setOrder(res.data)
       } catch (error) {}
     })();
   }, [isAuth]);
@@ -44,14 +45,14 @@ export default function Checkout() {
       {isAuth && (
         <div className="w-full flex justify-between md:pt-[50px]">
           <div className="flex w-full md:w-[750px] flex-col">
-            <Info order={order} />
-            <Products products={order?.productsOrder} />
+            <Info order={orderLocal} />
+            <Products products={orderLocal?.productsOrder} />
           </div>
           <div className="hidden md:flex">
             <div>
               <Total
-                totalPrice={order?.totalPrice}
-                count={order?.productsOrder?.reduce(
+                totalPrice={orderLocal?.totalPrice}
+                count={orderLocal?.productsOrder?.reduce(
                   (prev: number, next: any) => prev + next.count,
                   0
                 )}
@@ -162,16 +163,16 @@ const Products = ({ products }: any) => {
             <div className="flex mt-[5px] sm:mt-0 w-full sm:w-[140px] justify-between sm:justify-start sm:flex-col">
               <div className="flex w-[33%] sm:w-full justify-center sm:justify-between">
                 <span className="leading-[17px]">цена:</span>
-                <span className="ml-[3px] leading-[17px]">{product?.price} &#8381;</span>
+                <span className="ml-[3px] leading-[17px]">{product?.price}</span>
               </div>
-              <div className="flex w-[33%] sm:w-full  justify-centersm:justify-between">
+              <div className="flex w-[33%] sm:w-full justify-center sm:justify-between">
                 <span className="leading-[17px]">кол-во:</span>
                 <span className="ml-[3px] leading-[17px]">{product?.count}</span>
               </div>
               <div className="flex w-[33%] sm:w-full justify-center sm:justify-between">
                 <span className="leading-[17px]">итог:</span>
                 <span className="ml-[3px] leading-[17px]">
-                  {product?.price * product?.count} &#8381;
+                  {product?.price * product?.count}
                 </span>
               </div>
             </div>

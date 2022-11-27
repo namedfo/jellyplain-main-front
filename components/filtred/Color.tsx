@@ -8,7 +8,6 @@ export default function Color() {
   const onToggle = () => setIsOpen((prev) => !prev);
 
   const newColors = Object.values(colors);
-  console.log(newColors);
   return (
     <div className="flex flex-col mt-[-5px] py-[7px] cursor-pointer">
       <div onClick={onToggle} className="flex justify-between">

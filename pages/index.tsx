@@ -46,9 +46,6 @@ export default function Home() {
   const { selectedCategory, minPrice, maxPrice, brands, colors } =
     useTypedSelector((state) => state.main);
 
-  const router = useRouter();
-  console.log(selectedCategory);
-
   let newBrands: any = [];
 
   for (const [key, value] of Object.entries(brands)) {

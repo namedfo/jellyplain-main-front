@@ -8,6 +8,8 @@ type initialStateType = {
   brands: null | any;
   colors: any;
 
+  order: any
+
   isOpenAuth: boolean;
 
   isOpenFiltred: boolean;
@@ -30,6 +32,8 @@ const initialState: initialStateType = {
     thenorthface: false,
   },
   colors: null,
+
+  order: null,
 
   isOpenAuth: false,
 
@@ -60,6 +64,11 @@ export const mainSlice = createSlice({
         [action.payload.type]: action.payload.value,
       },
     }),
+
+    setOrder: (state: initialStateType, action: any) => ({
+      ...state,
+      order: action.payload
+    })
   },
 });
 
