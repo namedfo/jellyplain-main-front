@@ -46,6 +46,24 @@ export default function Checkout() {
         <div className="w-full flex justify-between md:pt-[50px]">
           <div className="flex w-full md:w-[750px] flex-col">
             <Info order={orderLocal} />
+            <div  className="shadow-jj text-[#292929] font-medium flex-col py-[15px] flex md:hidden px-[20px] mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
+              <div className="flex justify-between">
+                <span>
+                  Товары
+                </span>
+                <span>
+                  {orderLocal?.totalPrice} &#8381;
+                </span>
+              </div>
+              <div className="flex mt-[5px] justify-between">
+              <span>
+                  Доставка
+                </span>
+                <span>
+                  850 &#8381;
+                </span>
+              </div>
+            </div>
             <Products products={orderLocal?.productsOrder} />
           </div>
           <div className="hidden md:flex">
@@ -104,7 +122,7 @@ const Products = ({ products }: any) => {
   const router = useRouter();
 
   return (
-    <div className="shadow-jj flex-col py-[15px] flex px-[20px] mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
+    <div className="shadow-jj flex-col py-[15px] flex px-[20px] mb-[80px] md:mb-0 mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
       <div
         // onClick={() => setIsOpen((prev) => !prev)}
         className="flex cursor-pointer items-center"

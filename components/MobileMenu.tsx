@@ -81,7 +81,7 @@ export default function MobileMenu() {
       return (
         <>
           <span className="font-medium text-slate-900 text-[20px]">
-            {order?.totalPrice} &#8381;
+            {order?.totalPrice + 850} &#8381;
           </span>
           <BtnToPaid />
         </>
