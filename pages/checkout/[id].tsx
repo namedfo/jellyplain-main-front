@@ -22,6 +22,9 @@ export default function Checkout() {
   const isAuth = true;
   const { setOrder } = useActions()
 
+
+  console.log(orderLocal)
+
   const router = useRouter();
 
   useEffect(() => {
