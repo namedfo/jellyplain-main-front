@@ -36,6 +36,12 @@ export default function Checkout() {
     (async () => {
       try {
         const res = await $api.get(`order/getOne?id=${router.query?.id}`);
+
+        if (res?.data?.order?.yookassaId) {
+          router.push(`/order/${res?.data?.order?.yookassaId}`)
+          return;
+        }
+
         setOrderLocal(res.data);
         setOrder(res.data)
       } catch (error) {}
