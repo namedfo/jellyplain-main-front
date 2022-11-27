@@ -109,10 +109,19 @@ export default function Home() {
         <div className="flex md:ml-[34px] w-full flex-col">
           <MenuCatalog />
           {loading === "success" && (
-            <div className="flex justify-center 400:justify-start items-center gap-3 flex-wrap">
-              {cards?.map((card: any) => (
-                <Card key={card.id} card={card} />
-              ))}
+            <div>
+              <div className="flex justify-center 400:justify-start items-center gap-3 flex-wrap">
+                {cards?.map((card: any) => (
+                  <Card key={card.id} card={card} />
+                ))}
+              </div>
+              <div className="mt-[15px] mb-[80px] md:mb-0 flex justify-center">
+                <div className="shadow-jj w-[270px] flex justify-center sm:w-auto rounded-[10px] bg-white py-[10px] px-[20px]">
+                    <button className="font-medium text-purple-500 hover:text-purple-800">
+                      Добавить еще
+                    </button>
+                </div>
+              </div>
             </div>
           )}
           {loading === "loading" && (
