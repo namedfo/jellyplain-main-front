@@ -10,12 +10,12 @@ export default function BtnToPaid() {
 
   const onHandleBuy = async () => {
     const res = await $api.post("/order/buy", {
-      price: order?.totalPrice + 850,
       order: {
         id: order?.id
       }
 
     });
+    console.log(res?.data)
     router.push(res?.data?.confirmation?.confirmation_url)
   };
 
