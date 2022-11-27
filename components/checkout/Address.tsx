@@ -41,7 +41,7 @@ export default function Address() {
       </div>
       <div
         className={`${
-          isOpen ? "flex" : "hidden"
+          isOpen ? "flex flex-col sm:flex-row" : "hidden"
         } pt-[10px] items-center justify-between`}
       >
         <div className=" relative ">
@@ -57,7 +57,7 @@ export default function Address() {
             placeholder="Фамилия"
           />
         </div>
-        <div className="mx-[15px] relative ">
+        <div className="sm:mx-[15px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Имя
             <span className="text-red-500 required-dot">*</span>
@@ -86,7 +86,7 @@ export default function Address() {
       </div>
       <div
         className={`${
-          isOpen ? "flex" : "hidden"
+          isOpen ? "flex flex-col sm:flex-row" : "hidden"
         } pt-[10px] items-center justify-between`}
       >
         <div className=" relative ">
@@ -102,7 +102,7 @@ export default function Address() {
             placeholder="Страна"
           />
         </div>
-        <div className="mx-[15px] relative ">
+        <div className="sm:mx-[15px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Область
             <span className="text-red-500 required-dot">*</span>
@@ -131,7 +131,7 @@ export default function Address() {
       </div>
       <div
         className={`${
-          isOpen ? "flex" : "hidden"
+          isOpen ? "flex flex-col sm:flex-row" : "hidden"
         } pt-[10px] items-center justify-between`}
       >
         <div className=" relative ">
@@ -147,7 +147,7 @@ export default function Address() {
             placeholder="Улица"
           />
         </div>
-        <div className="mx-[15px] relative ">
+        <div className="sm:mx-[15px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Дом
             <span className="text-red-500 required-dot">*</span>
@@ -176,7 +176,7 @@ export default function Address() {
       </div>
       <div
         className={`${
-          isOpen ? "flex" : "hidden"
+          isOpen ? "flex flex-col sm:flex-row" : "hidden"
         } pt-[10px] items-center justify-start`}
       >
         <div className="w-[200px] relative ">
@@ -192,7 +192,7 @@ export default function Address() {
             placeholder="Индекс"
           />
         </div>
-        <div className="mx-[15px] w-[200px] relative ">
+        <div className="sm:mx-[15px] w-full sm:w-[200px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Телефон
           </label>
