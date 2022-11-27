@@ -71,7 +71,7 @@ const OrderItem = () => {
   const [isShowDetail, setIsShowDetail] = useState(false);
 
   return (
-    <div className="flex relative mx-[4px] my-[5px] w-full 400:w-auto flex-wrap justify-between pt-[20px]">
+    <div className="flex relative sm:mx-[4px] my-[5px] w-full 400:w-auto flex-wrap justify-between pt-[20px]">
       <OrderDetail
         isOpen={isShowDetail}
         onClose={() => setIsShowDetail(false)}
