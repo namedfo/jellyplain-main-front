@@ -141,6 +141,11 @@ export default function AddressUser() {
           />
         </div>
       </div>
+      <div className="flex pt-[20px] justify-center">
+        <button className="font-[500] hover:bg-pink-100 border border-pink-400 rounded-[10px] px-[17px] py-[4px] text-pink-600">
+          Сохранить
+        </button>
+      </div>
     </div>
   );
 }

@@ -77,23 +77,12 @@ const OrderItem = () => {
         onClose={() => setIsShowDetail(false)}
       />
       <div className="py-[5px] sm:py-[10px] w-full flex flex-col px-[10px] sm:px-[15px] rounded-[10px] border">
-        {/* <div className="flex text-[7px] sm:text-[12px] justify-between">
-            <div className="flex text-gray-400 items-center">
-              <span>Оплачено</span>
-              <BsArrowRightShort size={22} />
-            </div>
-            <div className="flex text-red-600 items-center">
-              <span>Ожидает подтверждения</span>
-              <BsArrowRightShort size={22} />
-            </div>
-            <div className="flex text-gray-400 items-center">
-              <span>Подтвержденно</span>
-              <BsArrowRightShort size={22} />
-            </div>
-            <div className="flex text-gray-400 items-center">
-              <span>В пути</span>
-            </div>
-          </div> */}
+        <div className="flex justify-center text-[16px]">
+          <div className="flex items-center">
+            <span className="text-slate-700 font-[500] mr-[10px]">статус:</span>
+            <span className="text-red-600">ожидает подтверждения</span>
+          </div>
+        </div>
         <div className="flex flex-col text-[16px] sm:flex-row my-[3px] sm:items-center justify-between">
           <span className="mr-[25px]">Заказ создан: 21.01.2022</span>
           <div className="flex items-center">
@@ -121,12 +110,12 @@ const OrderItem = () => {
                 Скрыть
               </button>
             ) : ( */}
-              <button
-                onClick={() => setIsShowDetail(true)}
-                className="text-indigo-500 hover:text-indigo-800"
-              >
-                Подробная информация
-              </button>
+            <button
+              onClick={() => setIsShowDetail(true)}
+              className="text-indigo-500 hover:text-indigo-800"
+            >
+              Подробная информация
+            </button>
             {/* )} */}
           </div>
           {/* {isShow && (
