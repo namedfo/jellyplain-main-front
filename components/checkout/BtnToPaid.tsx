@@ -15,7 +15,7 @@ export default function BtnToPaid() {
         capture: true,
         confirmation: {
           type: "redirect",
-          return_url: "https://jellyplain-main.vercel.app/order/20",
+          return_url: "https://jellyplain-main.vercel.app",
         },
         description: "Заказ №1",
       },
