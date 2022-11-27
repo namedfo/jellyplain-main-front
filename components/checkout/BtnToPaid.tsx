@@ -1,37 +1,22 @@
 import axios from "axios";
+import { useRouter } from "next/router";
+import $api from "../../config";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export default function BtnToPaid() {
   const { order } = useTypedSelector((state: any) => state.main);
+  
+  const router = useRouter()
 
   const onHandleBuy = async () => {
-    const res = await axios.post(
-      "https://api.yookassa.ru/v3/payments",
-      {
-        "amount": {
-          "value": "100.00",
-          "currency": "RUB",
-        },
-        "capture": true,
-        "confirmation": {
-          "type": "redirect",
-          "return_url": "https://jellyplain-main.vercel.app",
-        },
-        "description": "Заказ №1",
-      },
-      {
-        "headers": {
-          "Idempotence-Key": 32,
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "https://api.yookassa.ru",
-        },
-        "auth": {
-          "username": "959763",
-          "password": "test_QBY07j0SMDgiGT-JMxF_0UZgNbFRtBFL53rwWs7ZhzQ",
-        },
+    const res = await $api.post("/order/buy", {
+      price: order?.totalPrice + 850,
+      order: {
+        id: order?.id
       }
-    );
-    console.log(res);
+
+    });
+    router.push(res?.data?.confirmation?.confirmation_url)
   };
 
   return (

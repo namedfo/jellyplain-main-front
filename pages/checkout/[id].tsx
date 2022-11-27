@@ -140,7 +140,9 @@ const Products = ({ products }: any) => {
       </div>
       <div className="flex pt-[10px] flex-col">
         {products?.map((product: any, i: number) => (
-          <div style={{
+          <div 
+          key={product.id}
+          style={{
             marginTop: i !== 0 ? "20px" : ""
           }} className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center">
