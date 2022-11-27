@@ -25,7 +25,7 @@ export default function OrderDetail({ isOpen, onClose }: any) {
   return (
     <Modal isOpen={isOpen} style={customStyles} onRequestClose={onClose}>
       <div className="flex flex-col">
-        <div className="flex text-[7px] sm:text-[12px] justify-between">
+        <div className="flex text-[14px] justify-between">
           <div className="flex text-gray-400 items-center">
             <span>Оплачено</span>
             <BsArrowRightShort size={22} />

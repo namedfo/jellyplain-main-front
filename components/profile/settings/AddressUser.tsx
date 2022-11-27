@@ -3,7 +3,7 @@ import Address from "../../checkout/Address";
 export default function AddressUser() {
   return (
     <div>
-      <div className={`flex pt-[10px] items-center justify-start`}>
+      <div className={`flex flex-col sm:flex-row pt-[10px] items-center justify-start`}>
         <div className=" relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Фамилия
@@ -17,7 +17,7 @@ export default function AddressUser() {
             placeholder="Фамилия"
           />
         </div>
-        <div className="mx-[15px] relative ">
+        <div className="sm:mx-[15px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Имя
             <span className="text-red-500 required-dot">*</span>
@@ -44,7 +44,7 @@ export default function AddressUser() {
           />
         </div>
       </div>
-      <div className={`flex pt-[10px] items-center justify-start`}>
+      <div className={`flex flex-col sm:flex-row pt-[10px] items-center justify-start`}>
         <div className=" relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Страна
@@ -58,7 +58,7 @@ export default function AddressUser() {
             placeholder="Страна"
           />
         </div>
-        <div className="mx-[15px] relative ">
+        <div className="sm:mx-[15px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Область
             <span className="text-red-500 required-dot">*</span>
@@ -85,7 +85,7 @@ export default function AddressUser() {
           />
         </div>
       </div>
-      <div className={`flex pt-[10px] items-center justify-start`}>
+      <div className={`flex flex-col sm:flex-row pt-[10px] items-center justify-start`}>
         <div className=" relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Улица
@@ -99,7 +99,7 @@ export default function AddressUser() {
             placeholder="Улица"
           />
         </div>
-        <div className="mx-[15px] relative ">
+        <div className="sm:mx-[15px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Дом
             <span className="text-red-500 required-dot">*</span>
@@ -127,7 +127,7 @@ export default function AddressUser() {
         </div>
       </div>
       <div className={`flex pt-[10px] items-center justify-start`}>
-        <div className="w-[200px] relative ">
+        <div className="w-full sm:w-[200px] relative ">
           <label htmlFor="required-email" className="text-gray-700">
             Почтовый индекс
             <span className="text-red-500 required-dot">*</span>
@@ -142,7 +142,7 @@ export default function AddressUser() {
         </div>
       </div>
       <div className="flex pt-[20px] justify-center">
-        <button className="font-[500] hover:bg-pink-100 border border-pink-400 rounded-[10px] px-[17px] py-[4px] text-pink-600">
+        <button className="font-[500] w-full sm:w-auto hover:bg-pink-100 border border-pink-400 rounded-[10px] px-[17px] py-[4px] text-pink-600">
           Сохранить
         </button>
       </div>

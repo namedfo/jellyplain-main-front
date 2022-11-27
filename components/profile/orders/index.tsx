@@ -79,8 +79,7 @@ const OrderItem = () => {
       <div className="py-[5px] sm:py-[10px] w-full flex flex-col px-[10px] sm:px-[15px] rounded-[10px] border">
         <div className="flex justify-center text-[16px]">
           <div className="flex items-center">
-            <span className="text-slate-700 font-[500] mr-[10px]">статус:</span>
-            <span className="text-red-600">ожидает подтверждения</span>
+            <span className="text-red-600">Ожидает подтверждения</span>
           </div>
         </div>
         <div className="flex flex-col text-[16px] sm:flex-row my-[3px] sm:items-center justify-between">
