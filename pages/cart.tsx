@@ -120,7 +120,7 @@ const Elem = ({ minus, plus, removeCard, card }: any) => {
           </div>
         </div>
       </div>
-      <div className="flex w-[95px] justify-between items-end flex-col">
+      <div className="flex w-[105px] justify-between items-end flex-col">
         <span className="text-[#FFA500] text-[18px] font-medium">
           {card?.totalPrice} &#8381;
         </span>
