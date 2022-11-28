@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -16,6 +17,15 @@ export default function Order() {
   useEffect(() => {
     (async () => {
       const res = await $api.get(`order/getOne?id=${router.query?.id}`);
+      if (res.data.status === "pending" ) {
+        const response = await axios.get('https://api.yookassa.ru/v3/payments/2b170a0f-000f-5000-8000-11ed6416c782', {
+          auth: {
+            username: "959763",
+            password: "test_QBY07j0SMDgiGT-JMxF_0UZgNbFRtBFL53rwWs7ZhzQ"
+          }
+        })
+        console.log(response)
+      }
       console.log(res.data)
     })()
   }, [])
