@@ -16,7 +16,7 @@ export default function BtnToPaid() {
 
     });
     console.log(res?.data)
-    // router.push(res?.data?.confirmation?.confirmation_url)
+    router.push(res?.data)
   };
 
   return (
