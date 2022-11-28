@@ -1,8 +1,25 @@
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 import Header from "../../components/Header";
+import $api from "../../config";
+import useActions from "../../hooks/useActions";
 import Container from "../../layouts/Container";
 
 export default function Order() {
+  const [orderLocal, setOrderLoca] = useState()
+
+  const { setOrder } = useActions()
+
+  const router = useRouter()
+
+  useEffect(() => {
+    (async () => {
+      const res = await $api.get(`order/getOne?id=${router.query?.id}`);
+      console.log(res.data)
+    })()
+  }, [])
+
   return (
     <Container>
       <Header />

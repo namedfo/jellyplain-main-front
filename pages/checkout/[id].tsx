@@ -37,7 +37,7 @@ export default function Checkout() {
       try {
         const res = await $api.get(`order/getOne?id=${router.query?.id}`);
 
-        if (res?.data?.yookassaId) {
+        if (res?.data?.yookassa) {
           router.push(`/order/${res?.data?.id}`)
           return
         }
