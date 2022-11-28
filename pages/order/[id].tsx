@@ -16,7 +16,7 @@ export default function Order() {
 
   useEffect(() => {
     (async () => {
-      const res = await $api.get(`order/getOne?id=${router.query?.id}&checkStatus=true`);
+      const res = await $api.get(`order/getOne?id=${router.query?.id}`);
       
       console.log(res.data)
     })()
