@@ -98,7 +98,7 @@ export default function Order() {
               ))}
             </div>
           </div>
-          {(orderLocal?.order?.status === 'pending' && orderLocal?.confirmation_url) ? (
+          {(orderLocal?.order?.status === 'pending' && !orderLocal?.confirmation_url) ? (
             <div>
               <button
               onClick={() => router.push(orderLocal?.confirmation_url)}
