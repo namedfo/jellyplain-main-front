@@ -20,17 +20,15 @@ export default function Order() {
   const onHandleBuy = async () => {
     const res = await $api.post("/order/buy", {
       order: {
-        id: orderLocal?.order?.id
-      }
-
+        id: orderLocal?.order?.id,
+      },
     });
-    router.push(res?.data)
+    router.push(res?.data);
   };
 
   useEffect(() => {
     (async () => {
       const res = await $api.get(`order/getOne?id=${router.query?.id}`);
-
 
       setOrderLocal(res.data);
       setOrder(res.data.order);
@@ -38,7 +36,7 @@ export default function Order() {
   }, []);
 
   const date = dayjs(orderLocal?.createdAt).format("DD.MM.YYYY HH:mm");
-  console.log(orderLocal)
+  console.log(orderLocal);
   return (
     <Container>
       <Header />
@@ -110,8 +108,8 @@ export default function Order() {
           </div>
           {orderLocal?.order?.status === "pending" ? (
             <>
-              {(!orderLocal?.confirmation_url &&
-              !orderLocal?.order?.yookassa?.yookassaId) ? (
+              {!orderLocal?.confirmation_url &&
+              !orderLocal?.order?.yookassa?.yookassaId ? (
                 <>
                   <div>
                     <button
@@ -124,14 +122,18 @@ export default function Order() {
                 </>
               ) : (
                 <>
-                  <div>
-                    <button
-                      onClick={() => router.push(orderLocal?.confirmation_url)}
-                      className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
-                    >
-                      Оплатить
-                    </button>
-                  </div>
+                  {orderLocal?.confirmation_url && (
+                    <div>
+                      <button
+                        onClick={() =>
+                          router.push(orderLocal?.confirmation_url)
+                        }
+                        className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
+                      >
+                        Оплатить
+                      </button>
+                    </div>
+                  )}
                 </>
               )}
             </>
