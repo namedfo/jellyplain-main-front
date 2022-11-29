@@ -37,13 +37,13 @@ export default function Checkout() {
       try {
         const res = await $api.get(`order/getOne?id=${router.query?.id}`);
 
-        if (res?.data?.yookassa) {
-          router.push(`/order/${res?.data?.id}`)
+        if (res?.data?.order?.yookassa) {
+          router.push(`/order/${res?.data?.order?.id}`)
           return
         }
 
-        setOrderLocal(res.data);
-        setOrder(res.data)
+        setOrderLocal(res.data?.order);
+        setOrder(res.data?.order)
       } catch (error) {}
     })();
   }, [isAuth]);

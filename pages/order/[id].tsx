@@ -21,9 +21,8 @@ export default function Order() {
     (async () => {
       const res = await $api.get(`order/getOne?id=${router.query?.id}`);
 
-      const order = res?.data?.order ? res?.data?.order : res?.data
-      setOrderLocal(order);
-      setOrder(order);
+      setOrderLocal(res.data);
+      setOrder(res.data.order);
     })();
   }, []);
 
@@ -59,7 +58,7 @@ export default function Order() {
             </div>
             <div className="flex items-center">
               <span className="block mr-[5px] sm:hidden">Номер заказа:</span>
-              <span>№{orderLocal?.id}</span>
+              <span>№{orderLocal?.order?.id}</span>
             </div>
           </div>
           <div className="flex text-[14px] sm:text-[16px] border mt-[20px] px-[15px] py-[10px] rounded-[10px]  w-full flex-col">
@@ -78,7 +77,7 @@ export default function Order() {
             </span>
             <div className="flex">
               {/* <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]"></div> */}
-              {orderLocal?.productsOrder?.map((productOrder: any) => (
+              {orderLocal?.order?.productsOrder?.map((productOrder: any) => (
                 <div
                   key={productOrder.id}
                   onClick={() => router.push(`/product/${productOrder?.id}`)}
@@ -99,7 +98,17 @@ export default function Order() {
               ))}
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row w-full mt-[20px] justify-between">
+          {(orderLocal?.order?.status === 'pending' && orderLocal?.confirmation_url) ? (
+            <div>
+              <button
+              onClick={() => router.push(orderLocal?.confirmation_url)}
+              className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
+            >
+              Оплатить
+            </button>
+            </div>
+          ) : (
+            <div className="flex flex-col sm:flex-row w-full mt-[20px] justify-between">
             <button
               onClick={() => router.push("/")}
               className="w-full sm:w-[40%] hover:underline text-fuchsia-600 hover:text-fuchsia-700"
@@ -113,6 +122,7 @@ export default function Order() {
               В личный кабинет
             </button>
           </div>
+          )}
         </div>
       </div>
     </Container>
