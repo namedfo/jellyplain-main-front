@@ -39,7 +39,6 @@ export default function Order() {
   console.log(orderLocal);
   return (
     <Container>
-      <Header />
       <div className="h-full flex items-center justify-center">
         <div className="shadow-jj flex flex-col rounded-[10px] p-[20px] bg-white">
           <div className="flex text-[8px] sm:text-[14px] justify-between">
