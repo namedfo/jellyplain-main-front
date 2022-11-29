@@ -17,9 +17,20 @@ export default function Order() {
 
   const router = useRouter();
 
+  const onHandleBuy = async () => {
+    const res = await $api.post("/order/buy", {
+      order: {
+        id: orderLocal?.order?.id
+      }
+
+    });
+    router.push(res?.data)
+  };
+
   useEffect(() => {
     (async () => {
       const res = await $api.get(`order/getOne?id=${router.query?.id}`);
+
 
       setOrderLocal(res.data);
       setOrder(res.data.order);
@@ -27,8 +38,7 @@ export default function Order() {
   }, []);
 
   const date = dayjs(orderLocal?.createdAt).format("DD.MM.YYYY HH:mm");
-
-  console.log(orderLocal);
+  console.log(orderLocal)
   return (
     <Container>
       <Header />
@@ -98,30 +108,48 @@ export default function Order() {
               ))}
             </div>
           </div>
-          {(orderLocal?.order?.status === 'pending' && orderLocal?.confirmation_url) ? (
-            <div>
-              <button
-              onClick={() => router.push(orderLocal?.confirmation_url)}
-              className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
-            >
-              Оплатить
-            </button>
-            </div>
+          {orderLocal?.order?.status === "pending" ? (
+            <>
+              {(!orderLocal?.confirmation_url &&
+              !orderLocal?.order?.yookassa?.yookassaId) ? (
+                <>
+                  <div>
+                    <button
+                      onClick={onHandleBuy}
+                      className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
+                    >
+                      Оплатить
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <button
+                      onClick={() => router.push(orderLocal?.confirmation_url)}
+                      className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
+                    >
+                      Оплатить
+                    </button>
+                  </div>
+                </>
+              )}
+            </>
           ) : (
             <div className="flex flex-col sm:flex-row w-full mt-[20px] justify-between">
-            <button
-              onClick={() => router.push("/")}
-              className="w-full sm:w-[40%] hover:underline text-fuchsia-600 hover:text-fuchsia-700"
-            >
-              На главную страницу
-            </button>
-            <button
-              onClick={() => router.push("/profile")}
-              className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
-            >
-              В личный кабинет
-            </button>
-          </div>
+              <button
+                onClick={() => router.push("/")}
+                className="w-full sm:w-[40%] hover:underline text-fuchsia-600 hover:text-fuchsia-700"
+              >
+                На главную страницу
+              </button>
+              <button
+                onClick={() => router.push("/profile")}
+                className="w-full sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
+              >
+                В личный кабинет
+              </button>
+            </div>
           )}
         </div>
       </div>
