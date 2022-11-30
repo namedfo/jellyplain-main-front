@@ -94,4 +94,5 @@ export default function OrderItem() {
           </div>
         </div>
       </div>
+    )
 }
