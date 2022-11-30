@@ -9,7 +9,7 @@ import InProcess from "./InProcess";
 export default function Orders() {
   const { user } = useTypedSelector(state => state.user)
 
-  const inProcessOrders = user?.orders?.filter((order: any) => order.status !== "complected")
+  const inProcessOrders = user?.orders?.filter((order: any) => order.status === "complected")
   console.log(inProcessOrders)
   const complectedOrders = user?.orders?.map()
 
