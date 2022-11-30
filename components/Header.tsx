@@ -100,7 +100,7 @@ export default function Header() {
           className="hover:bg-[#86368D1A] rounded-md p-[6px] ml-[20px]"
         >
           {isAuth ? (
-            <img className="h-[26px] w-[26px] object-cover rounded-full border" src={user?.avatar_url} alt="LOGO" />
+            <img className="h-[28px] w-[28px] object-cover rounded-full border" src={user?.avatar_url} alt="LOGO" />
           ) : (
             <FaRegUser color="#58355a" size={26} />
           )}
