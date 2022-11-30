@@ -142,9 +142,10 @@ const TELEGRAM = (props: any) => {
         data-telegram-login="jellyplain_bot"
         data-size="small"
         data-radius="10"
-        data-onauth="onTelegramAuth(user)"
+        data-onauth={(user: any) => onTelegramAuth(user)}
         data-request-access="write"
       ></script>
+      div
     </div>
   );
 };
