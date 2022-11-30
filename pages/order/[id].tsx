@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 import dayjs from "dayjs";
 import "dayjs/locale/ru";
-import Header from "../../components/Header";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { FreeMode, Pagination } from "swiper";
 import $api from "../../config";
 import useActions from "../../hooks/useActions";
 import Container from "../../layouts/Container";
 dayjs.locale("ru");
-
 export default function Order() {
   const [orderLocal, setOrderLocal] = useState<any>();
 
@@ -78,29 +79,22 @@ export default function Order() {
               <span>Ожидает подтвержения</span>
             </div>
           </div>
-          <div className="bg-neutral-100 my-[5px] rounded-[5px] pb-[8px] px-[5px]">
+          <div className="bg-neutral-100 my-[5px] mt-[15px] rounded-[5px] pb-[8px] px-[5px]">
             <span className="text-[14px] text-slate-900 leading-[5px]">
               Товары
             </span>
-            <div className="flex">
-              {/* <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]"></div> */}
+            {/* <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]"></div> */}
+            <div className="max-w-[100px]">
               {orderLocal?.order?.productsOrder?.map((productOrder: any) => (
                 <div
-                  key={productOrder.id}
                   onClick={() => router.push(`/product/${productOrder?.id}`)}
-                  className="relative"
+                  className="relative w-[70px]"
                 >
                   <img
                     className="h-[70px] rounded-[10px] border object-cover w-[70px]"
                     src={productOrder.images[0]}
                     alt="image"
                   />
-                  <div className="flex w-full justify-around items-start text-[14px] rounded-[5px] top-0 left-0 absolute">
-                    <span className="font-medium">36</span>
-                    <div>
-                      <div className="px-[15px] rounded-[3px] bg-black py-[5px]" />
-                    </div>
-                  </div>
                 </div>
               ))}
             </div>
