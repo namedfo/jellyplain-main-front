@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 //
 import Modal from "react-modal";
+import TelegramLoginButton from 'react-telegram-login';
 
 const customStyles: any = {
   overlay: {
@@ -23,11 +24,15 @@ const customStyles: any = {
 Modal.setAppElement("#__next");
 
 export default function Auth({ isOpen, onClose }: any) {
+  const handleTelegramResponse = (res) => {
+    console.log(res)
+  }
   return (
     <Modal isOpen={isOpen} style={customStyles} onRequestClose={onClose}>
       <div className="flex w-full flex-col">
         <VK />
         <GOOGLE />
+        <TelegramLoginButton dataOnauth={handleTelegramResponse} botName="jellyplain_bot" />
       </div>
     </Modal>
   );
