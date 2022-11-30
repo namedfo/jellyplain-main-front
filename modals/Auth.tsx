@@ -1,6 +1,4 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import Script from "next/script";
 //
 import Modal from "react-modal";
 
@@ -30,30 +28,10 @@ export default function Auth({ isOpen, onClose }: any) {
       <div className="flex w-full flex-col">
         <VK />
         <GOOGLE />
-        <TELEGRAM />
       </div>
     </Modal>
   );
 }
-
-const TELEGRAM = () => {
-  const data = (res: any) => console.log(res);
-
-  return (
-    <>
-      <script
-        async
-        src="https://telegram.org/js/telegram-widget.js?21"
-        data-telegram-login="jellyplain_bot"
-        data-size="small"
-        data-radius="10"
-        data-onauth="data(user)"
-        data-request-access="write"
-      ></script>
-    </>
-  );
-};
-
 const VK = () => {
   const router = useRouter();
 
