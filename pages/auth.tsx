@@ -9,17 +9,20 @@ export default function Auth() {
     if (router?.query?.token) {
       setIsLoading(false)
       localStorage.setItem("jjwt", router?.query?.token as string);
-      router.reload();
+      
+      if (!localStorage.getItem("jjwt")) {
+        router.reload();
+      }
     }
-  }, [router?.query?.token]);
+  }, []);
 
   return (
     <div className="flex h-full items-center justify-center">
       {isLoading ? (
         <span className="text-indigo-700 font-medium">Авторизация, пожалуйста подождите...</span>
       ) : (
-        <div className="flex shadow-jj bg-white rounded-[10px] p-[10px] flex-col">
-          <span>Вы успешно авторизовались</span>
+        <div className="flex shadow-jj w-auto sm:w-[450px] bg-white rounded-[10px] p-[20px] flex-col">
+          <span className="text-center font-medium text-[24px]">Вы успешно авторизовались</span>
           <div className="flex flex-col sm:flex-row w-full mt-[20px] justify-between">
             <button
               onClick={() => router.push("/")}
