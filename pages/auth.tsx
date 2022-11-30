@@ -7,7 +7,8 @@ export default function Auth() {
   useEffect(() => {
     if (router?.query?.token) {
       localStorage.setItem("jjwt", router?.query?.token as string);
-      router.push("/", "/", { shallow: true });
+      router.reload();
+      router.push('/')
     }
   }, [router?.query?.token]);
 
