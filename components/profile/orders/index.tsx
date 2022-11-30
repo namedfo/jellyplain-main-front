@@ -10,25 +10,24 @@ export default function Orders() {
   const { user } = useTypedSelector(state => state.user)
 
   const inProcessOrders = user?.orders?.filter((order: any) => order.status !== "complected")
-  console.log(inProcessOrders)
-  // const complectedOrders = user?.orders?.map()
+  const complectedOrders = user?.orders?.filter((order: any) => order.status === "complected")
 
   const [activeTab, setActiveTab] = useState({
     name: "active",
-    component: <InProcess />,
+    component: <InProcess inProcessOrders={inProcessOrders} />,
   });
 
   const onHandleChangeTab = (tab: string) => {
     if (tab === "active") {
       setActiveTab({
         name: "active",
-        component: <InProcess />,
+        component: <InProcess inProcessOrders={inProcessOrders} />,
       });
     }
     if (tab === "complected") {
       setActiveTab({
         name: "complected",
-        component: <Complected />,
+        component: <Complected complectedOrders={complectedOrders} />,
       });
     }
   };

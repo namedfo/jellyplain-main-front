@@ -1,5 +1,11 @@
-export default function InProcess() {
+import OrderItem from "./OrderItem";
+
+export default function InProcess({ inProcessOrders }: any) {
   return (
-    <div className="flex flex-wrap justify-center md:justify-start items-center"></div>
+    <div className="flex flex-wrap justify-center md:justify-start items-center">
+        {inProcessOrders?.map((order: any) => (
+            <OrderItem key={order.id} />
+        ))}
+    </div>
   );
 }
