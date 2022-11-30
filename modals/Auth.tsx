@@ -50,7 +50,7 @@ const VK = () => {
       }}
       onClick={() =>
         router.push(
-          "https://https://jellyplainv2.herokuapp.com/auth/login/vkontakte"
+          "https://jellyplainv2.herokuapp.com/auth/login/vkontakte"
         )
       }
     >
@@ -88,7 +88,7 @@ const GOOGLE = () => {
       className="border hover:bg-[#86368D1A]"
       onClick={() =>
         router.push(
-          "https://oauth.vk.com/authorize?client_id=51473574&display=page&redirect_uri=https://jellyplain-main.vercel.app/redirect&scope=friends&response_type=code&v=5.131&state=123456"
+          "https://jellyplainv2.herokuapp.com/auth/login/google"
         )
       }
     >
