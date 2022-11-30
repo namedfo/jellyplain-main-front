@@ -21,7 +21,7 @@ import sizesSneakers from "../utils/helping/sizesSneakers";
 
 export default function Header() {
   const { cartIsShow, cart } = useTypedSelector((state) => state.cart);
-  const { isAuth } = useTypedSelector((state) => state.user);
+  const { isAuth, user } = useTypedSelector((state) => state.user);
   const { isOpenAuth } = useTypedSelector((state) => state.main);
 
   const { setCartIsShow, setIsOpenAuth } = useActions();
@@ -94,9 +94,16 @@ export default function Header() {
             }
             return router.push("/profile");
           }}
+          style={{
+            backgroundColor: location.pathname === '/profile' ? "#E7E9EB" : "",
+          }}
           className="hover:bg-[#86368D1A] rounded-md p-[6px] ml-[20px]"
         >
-          <FaRegUser color="#58355a" size={26} />
+          {isAuth ? (
+            <img className="h-[26px] w-[26px] object-cover rounded-full border" src={user?.avatar_url} alt="LOGO" />
+          ) : (
+            <FaRegUser color="#58355a" size={26} />
+          )}
         </button>
       </div>
     </div>
