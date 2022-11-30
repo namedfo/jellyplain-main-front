@@ -10,8 +10,8 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 export default function MobileMenu() {
   const { cart, product } = useTypedSelector((state) => state.cart);
-  const { order } = useTypedSelector((state) => state.main)
-  const { isAuth } = useTypedSelector((state) => state.user);
+  const { order } = useTypedSelector((state) => state.main);
+  const { isAuth, user } = useTypedSelector((state) => state.user);
 
   const { setIsOpenAuth, plus, minus, setCard } = useActions();
 
@@ -119,12 +119,23 @@ export default function MobileMenu() {
               }
               return router.push("/profile");
             }}
+            style={{
+              backgroundColor: router.pathname === '/profile' ? "#E7E9EB" : "",
+            }}
             className="hover:bg-[#8045C61A] rounded-[10px] p-[5px]"
           >
-            <FaUserAlt
-              color={router.pathname === "/profile" ? "#86368D" : "#DBD9D9"}
-              size={28}
-            />
+            {isAuth ? (
+              <img
+                className="h-[28px] w-[28px] object-cover rounded-full border"
+                src={user?.avatar_url}
+                alt="LOGO"
+              />
+            ) : (
+              <FaUserAlt
+                color={router.pathname === "/profile" ? "#86368D" : "#DBD9D9"}
+                size={28}
+              />
+            )}
           </button>
         </>
       );
