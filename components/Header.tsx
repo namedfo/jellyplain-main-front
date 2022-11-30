@@ -95,7 +95,7 @@ export default function Header() {
             return router.push("/profile");
           }}
           style={{
-            backgroundColor: location.pathname === '/profile' ? "#E7E9EB" : "",
+            backgroundColor: router.pathname === '/profile' ? "#E7E9EB" : "",
           }}
           className="hover:bg-[#86368D1A] rounded-md p-[6px] ml-[20px]"
         >
