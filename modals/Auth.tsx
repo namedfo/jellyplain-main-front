@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 //
 import Modal from "react-modal";
 
-
 const customStyles: any = {
   overlay: {
     background: "rgba(35, 35, 35, 0.2)",
@@ -24,7 +23,6 @@ const customStyles: any = {
 Modal.setAppElement("#__next");
 
 export default function Auth({ isOpen, onClose }: any) {
-
   return (
     <Modal isOpen={isOpen} style={customStyles} onRequestClose={onClose}>
       <div className="flex w-full flex-col">
@@ -122,7 +120,6 @@ const GOOGLE = () => {
 };
 
 const TELEGRAM = (props: any) => {
-
   const {
     botName,
     buttonSize,
@@ -135,26 +132,19 @@ const TELEGRAM = (props: any) => {
     widgetVersion,
   } = props;
 
-  const data = (res: any) => console.log(res)
+  const onTelegramAuth = (res: any) => console.log(res);
 
-  const script = document.createElement("script");
-  script.src = "https://telegram.org/js/telegram-widget.js?21";
-
-  script.setAttribute("data-telegram-login", "jellyplain_bot");
-  script.setAttribute("data-size", "small");
-  if (cornerRadius !== undefined) {
-    script.setAttribute("data-radius", "5");
-  }
-  script.setAttribute("data-request-access", 'write');
-  // script.setAttribute("data-userpic", usePic);
-  script.setAttribute("data-lang", "ru");
-  if (dataAuthUrl !== undefined) {
-    // script.setAttribute("data-auth-url", dataAuthUrl);
-  } else {
-    script.setAttribute("data-onauth", "data(user)");
-  }
-  script.async = true;
-  // instance.appendChild(script);
-  document.getElementById('telegram')?.appendChild(script);
-  return <div id="telegram"></div>;
+  return (
+    <div>
+      <script
+        async
+        src="https://telegram.org/js/telegram-widget.js?21"
+        data-telegram-login="jellyplain_bot"
+        data-size="small"
+        data-radius="10"
+        data-onauth="onTelegramAuth(user)"
+        data-request-access="write"
+      ></script>
+    </div>
+  );
 };
