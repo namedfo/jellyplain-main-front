@@ -7,7 +7,7 @@ export default function Auth() {
     useEffect(() => {
         if (router?.query?.token) {
             localStorage.setItem("jjwt", router?.query?.token as string)
-            router.push('/')
+            router.push('/', undefined, { shallow: true })
 
         }
     }, [router?.query?.token])
