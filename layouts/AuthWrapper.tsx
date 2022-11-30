@@ -29,6 +29,8 @@ export default function AuthWrapper({ children }: any) {
           first_name: res.data.first_name,
           last_name: res.data.last_name,
           avatar_url: res.data.avatar_url,
+          address: res.data.address,
+          orders: res.data.orders
         };
 
         localStorage.setItem("userjj", JSON.stringify(user));
