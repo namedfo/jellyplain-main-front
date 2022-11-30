@@ -151,7 +151,7 @@ const TELEGRAM = (props: any) => {
   if (dataAuthUrl !== undefined) {
     // script.setAttribute("data-auth-url", dataAuthUrl);
   } else {
-    script.setAttribute("data-onauth", "TelegramLoginWidget.data(user)");
+    script.setAttribute("data-onauth", "data(user)");
   }
   script.async = true;
   // instance.appendChild(script);
