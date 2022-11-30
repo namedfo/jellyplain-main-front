@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Script from "next/script";
 //
 import Modal from "react-modal";
 
@@ -60,7 +61,33 @@ const TELEGRAM = () => {
     };
   }, []);
 
-  return <button id="telegg"></button>;
+  return (
+    <>
+      <Script
+        async
+        src="https://telegram.org/js/telegram-widget.js?21"
+        data-telegram-login="jellyplain_bot"
+        data-size="small"
+        data-radius="10"
+        data-onauth="onTelegramAuth(user)"
+        data-request-access="write"
+      ></Script>
+      <Script type="text/javascript">
+        {`function onTelegramAuth(user: any) {
+           alert(
+            "Logged in as " +
+              user.first_name +
+              " " +
+              user.last_name +
+              " (" +
+              user.id +
+              (user.username ? ", @" + user.username : "") +
+              ")"
+          )
+        }`}
+      </Script>
+    </>
+  );
 };
 
 const VK = () => {
