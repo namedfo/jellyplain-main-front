@@ -41,7 +41,7 @@ const TELEGRAM = () => {
 
   return (
     <>
-      <Script
+      <script
         async
         src="https://telegram.org/js/telegram-widget.js?21"
         data-telegram-login="jellyplain_bot"
@@ -49,7 +49,7 @@ const TELEGRAM = () => {
         data-radius="10"
         data-onauth="data(user)"
         data-request-access="write"
-      ></Script>
+      ></script>
     </>
   );
 };
