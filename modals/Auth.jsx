@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 //
 import Modal from "react-modal";
 
-const customStyles: any = {
+const customStyles = {
   overlay: {
     background: "rgba(35, 35, 35, 0.2)",
   },
@@ -22,13 +22,16 @@ const customStyles: any = {
 
 Modal.setAppElement("#__next");
 
-export default function Auth({ isOpen, onClose }: any) {
+export default function Auth({ isOpen, onClose }) {
+
+  const date = (res) => console.log(res)
+
   return (
     <Modal isOpen={isOpen} style={customStyles} onRequestClose={onClose}>
       <div className="flex w-full flex-col">
         <VK />
         <GOOGLE />
-        <TELEGRAM />
+        <TelegramLoginButton botName="jellyplain_bot" dataOnAuth={date} />
       </div>
     </Modal>
   );
@@ -119,33 +122,36 @@ const GOOGLE = () => {
   );
 };
 
-const TELEGRAM = (props: any) => {
-  const {
-    botName,
-    buttonSize,
-    cornerRadius,
-    requestAccess,
-    usePic,
-    dataOnauth,
-    dataAuthUrl,
-    lang,
-    widgetVersion,
-  } = props;
+// const TELEGRAM = (props: any) => {
+//   const {
+//     botName,
+//     buttonSize,
+//     cornerRadius,
+//     requestAccess,
+//     usePic,
+//     dataOnauth,
+//     dataAuthUrl,
+//     lang,
+//     widgetVersion,
+//   } = props;
 
-  const onTelegramAuth = (res: any) => console.log(res);
+//   if (typeof window !== 'undefined') {
+//     window.telegram = {
+//       dataOnauth: (user) => dataOnauth(user),
+//     };
+//   }
 
-  return (
-    <div>
-      <script
-        async
-        src="https://telegram.org/js/telegram-widget.js?21"
-        data-telegram-login="jellyplain_bot"
-        data-size="small"
-        data-radius="10"
-        data-onauth={(user: any) => onTelegramAuth(user)}
-        data-request-access="write"
-      ></script>
-      div
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <script
+//         async
+//         src="https://telegram.org/js/telegram-widget.js?21"
+//         data-telegram-login="jellyplain_bot"
+//         data-size="small"
+//         data-radius="10"
+//         data-onauth="onTelegramAuth(user)"
+//         data-request-access="write"
+//       ></script>
+//     </div>
+//   );
+// };
