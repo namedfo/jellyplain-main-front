@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 //
 import Modal from "react-modal";
-import TelegramLoginButton from 'react-telegram-login';
+
 
 const customStyles: any = {
   overlay: {
@@ -24,15 +24,13 @@ const customStyles: any = {
 Modal.setAppElement("#__next");
 
 export default function Auth({ isOpen, onClose }: any) {
-  const handleTelegramResponse = (res) => {
-    console.log(res)
-  }
+
   return (
     <Modal isOpen={isOpen} style={customStyles} onRequestClose={onClose}>
       <div className="flex w-full flex-col">
         <VK />
         <GOOGLE />
-        <TelegramLoginButton dataOnauth={handleTelegramResponse} botName="jellyplain_bot" />
+        <TELEGRAM />
       </div>
     </Modal>
   );
@@ -54,9 +52,7 @@ const VK = () => {
         fontStyle: "700",
       }}
       onClick={() =>
-        router.push(
-          "https://jellyplainv2.herokuapp.com/auth/login/vkontakte"
-        )
+        router.push("https://jellyplainv2.herokuapp.com/auth/login/vkontakte")
       }
     >
       <svg
@@ -92,9 +88,7 @@ const GOOGLE = () => {
       }}
       className="border hover:bg-[#86368D1A]"
       onClick={() =>
-        router.push(
-          "https://jellyplainv2.herokuapp.com/auth/login/google"
-        )
+        router.push("https://jellyplainv2.herokuapp.com/auth/login/google")
       }
     >
       <svg
@@ -125,4 +119,40 @@ const GOOGLE = () => {
       </span>
     </button>
   );
+};
+
+const TELEGRAM = (props: any) => {
+
+  const {
+    botName,
+    buttonSize,
+    cornerRadius,
+    requestAccess,
+    usePic,
+    dataOnauth,
+    dataAuthUrl,
+    lang,
+    widgetVersion,
+  } = props;
+
+  const script = document.createElement("script");
+  script.src = "https://telegram.org/js/telegram-widget.js?21";
+
+  script.setAttribute("data-telegram-login", "jellyplain_bot");
+  script.setAttribute("data-size", "small");
+  if (cornerRadius !== undefined) {
+    script.setAttribute("data-radius", "5");
+  }
+  script.setAttribute("data-request-access", 'write');
+  // script.setAttribute("data-userpic", usePic);
+  script.setAttribute("data-lang", "ru");
+  if (dataAuthUrl !== undefined) {
+    // script.setAttribute("data-auth-url", dataAuthUrl);
+  } else {
+    script.setAttribute("data-onauth", "TelegramLoginWidget.dataOnauth(user)");
+  }
+  script.async = true;
+  // instance.appendChild(script);
+  document.getElementById('telegram')?.appendChild(script);
+  return <div id="telegram"></div>;
 };
