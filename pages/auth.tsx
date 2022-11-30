@@ -1,18 +1,15 @@
-import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Auth() {
-    const router = useRouter()
+  const router = useRouter();
 
-    useEffect(() => {
-        if (router?.query?.token) {
-            localStorage.setItem("jjwt", router?.query?.token as string)
-            router.push('/', undefined, { shallow: true })
+  useEffect(() => {
+    if (router?.query?.token) {
+      localStorage.setItem("jjwt", router?.query?.token as string);
+      router.push("/", "/", { shallow: true });
+    }
+  }, [router?.query?.token]);
 
-        }
-    }, [router?.query?.token])
-    
-    return (
-        <div></div>
-    )
+  return <div></div>;
 }
