@@ -7,7 +7,7 @@ export default function OrderItem({ order }: any) {
     const date = dayjs(order?.createdAt).format("DD.MM.YYYY HH:mm");
 
     return (
-      <div className="flex relative sm:mx-[2px] my-[5px] w-full 400:w-auto flex-wrap justify-between pt-[20px]">
+      <div className="flex relative sm:mx-[2px] my-[1px] w-full 400:w-auto flex-wrap justify-between pt-[20px]">
         {/* <OrderDetail
           isOpen={isShowDetail}
           onClose={() => setIsShowDetail(false)}
