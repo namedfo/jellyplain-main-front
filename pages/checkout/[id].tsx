@@ -20,10 +20,8 @@ export default function Checkout() {
 
   // const { isAuth } = useTypedSelector(state => state.user)
   const isAuth = true;
+  const { shipping } = useTypedSelector((state:any) => state.main)
   const { setOrder } = useActions()
-
-
-  console.log(orderLocal)
 
   const router = useRouter();
 
@@ -48,6 +46,8 @@ export default function Checkout() {
     })();
   }, [isAuth]);
 
+  console.log(shipping)
+
   return (
     <Container>
       <Header />
@@ -69,7 +69,7 @@ export default function Checkout() {
                   Доставка
                 </span>
                 <span>
-                  850 &#8381;
+                  {shipping === 'pochtaru' ? "850" : "0"} &#8381;
                 </span>
               </div>
             </div>
@@ -83,6 +83,7 @@ export default function Checkout() {
                   (prev: number, next: any) => prev + next.count,
                   0
                 )}
+                shipping={shipping}
               />
             </div>
           </div>
@@ -92,7 +93,7 @@ export default function Checkout() {
   );
 }
 
-const Total = ({ totalPrice, count }: any) => {
+const Total = ({ totalPrice, count, shipping }: any) => {
   return (
     <div className="shadow-jj rounded-[10px] w-[420px] bg-white py-[15px] px-[20px]">
       <div className="payment-form"></div>
@@ -105,11 +106,11 @@ const Total = ({ totalPrice, count }: any) => {
       </div>
       <div className="flex text-[17px] items-center justify-between">
         <span>Стоимость доставки</span>
-        <span>850 &#8381;</span>
+        <span>{shipping === 'pochtaru' ? "850" : "0"} &#8381;</span>
       </div>
       <div className="flex mt-[20px] text-[#212121] font-medium justify-between">
         <span>Итог</span>
-        <span>{totalPrice + 850} &#8381;</span>
+        <span>{totalPrice + (shipping === 'pochtaru' ? 850 : 0)} &#8381;</span>
       </div>
       <BtnToPaid />
     </div>

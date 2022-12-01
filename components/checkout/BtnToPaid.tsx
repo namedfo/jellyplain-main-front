@@ -15,7 +15,6 @@ export default function BtnToPaid() {
       }
 
     });
-    console.log(res?.data)
     router.push(res?.data)
   };
 

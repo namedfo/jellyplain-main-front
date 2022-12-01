@@ -1,22 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import useActions from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 // components
 import Address from "./Address";
 
 export default function Info({ order }: any) {
+  const { setShipping } = useActions()
+
+  useEffect(() => {
+    if (order?.delivery) {
+      setShipping(String(order?.delivery))
+    }
+  }, [])
+
+
   return (
     <div className="shadow-jj flex flex-col text-[18px] rounded-[10px] bg-white px-[20px] py-[15px]">
       <Address />
-      <ShippingCost delivery={order?.delivery} />
+      <ShippingCost />
     </div>
   );
 }
 
-const ShippingCost = ({ delivery }: any) => {
-  console.log(delivery)
+const ShippingCost = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [shipping, setShipping] = useState("pochtaru");
+
+  const { shipping } = useTypedSelector((state => state.main))
+  const { setShipping } = useActions()
+
 
   return (
     <div className="flex flex-col">

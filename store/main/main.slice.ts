@@ -13,6 +13,8 @@ type initialStateType = {
   isOpenAuth: boolean;
 
   isOpenFiltred: boolean;
+
+  shipping: string,
 };
 
 const initialState: initialStateType = {
@@ -38,12 +40,18 @@ const initialState: initialStateType = {
   isOpenAuth: false,
 
   isOpenFiltred: false,
+
+  shipping: "pochtaru",
 };
 
 export const mainSlice = createSlice({
   name: "main",
   initialState,
   reducers: {
+    setShipping: (state: any, action: any) => ({
+      ...state,
+      shipping: action.payload
+    }),
     setSelectedCategory: (state: initialStateType, action: any) => ({
       ...state,
       selectedCategory: action.payload,
