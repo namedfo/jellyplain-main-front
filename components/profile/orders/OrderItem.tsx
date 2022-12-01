@@ -1,7 +1,10 @@
+import dayjs from "dayjs";
 import { useState } from "react";
 
-export default function OrderItem() {
+export default function OrderItem({ order }: any) {
     const [isShowDetail, setIsShowDetail] = useState(false);
+
+    const date = dayjs(order?.createdAt).format("DD.MM.YYYY HH:mm");
 
     return (
       <div className="flex relative sm:mx-[4px] my-[5px] w-full 400:w-auto flex-wrap justify-between pt-[20px]">
@@ -16,10 +19,10 @@ export default function OrderItem() {
             </div>
           </div>
           <div className="flex flex-col text-[16px] sm:flex-row my-[3px] sm:items-center justify-between">
-            <span className="mr-[25px]">Заказ создан: 21.01.2022</span>
+            <span className="mr-[25px]">Заказ создан: {date}</span>
             <div className="flex items-center">
               <span className="block mr-[5px] sm:hidden">Номер заказа:</span>
-              <span>№2929</span>
+              <span>№{order?.id}</span>
             </div>
           </div>
           <div>

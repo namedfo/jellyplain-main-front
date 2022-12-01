@@ -57,7 +57,7 @@ const BlockOrder = ({ orderLocal }: any) => {
     router.push(res?.data);
   };
 
-  const date = dayjs(orderLocal?.createdAt).format("DD.MM.YYYY HH:mm");
+  const date = dayjs(orderLocal?.order?.createdAt).format("DD.MM.YYYY HH:mm");
 
   return (
     <div className="shadow-jj flex flex-col rounded-[10px] p-[20px] bg-white">
