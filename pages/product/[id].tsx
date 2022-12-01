@@ -256,6 +256,8 @@ const Info = memo(({ productLocal, onHandleChangeProduct }: any) => {
           ))}
         </div>
       </div>
+
+      <Description />
     </div>
   );
 });
@@ -300,6 +302,44 @@ const Title = ({ product }: any) => {
           <span>В корзину</span>
         </button>
       </div>
+    </div>
+  );
+};
+
+const Description = () => {
+  return (
+    <div className="flex mt-[25px] flex-col">
+      <span className="text-[#292929] font-medium text-[20px]">Описание</span>
+      <p className="text-slate-900 text-[16px]">
+        Доставка 2-3 недели до России (выбираю самый быстрый вариант) и 2-5 дней
+        до вас.
+      </p>
+      <p className="text-slate-900 my-[4px] text-[16px]">
+        Отправляю до вас Почтой России, по срокам также как и СДЭК. Забирать в
+        вашем почтовом отделении
+      </p>
+      <p className="text-slate-900 text-[16px]">
+        Трек код присылаю для отслеживания, когда партия будет у меня. Потом до
+        вас отправляю
+      </p>
+      <p className="text-slate-900 my-[7px] text-[16px]">
+        Оплата при оформлении заказа
+      </p>
+      <p className="text-slate-900 text-[16px]">
+        В качестве доказательств того, что товар придёт, в группе у меня есть
+        фото отправленных заказов, чеки покупателей, отзывы
+      </p>
+
+      <p className="text-slate-900 mt-[10px] text-[16px]">
+        Также есть блок с гарантиями{" "}
+        <a
+          className="text-indigo-500 hover:underline"
+          target="_blank"
+          href="https://vk.com/topic-164089922_48829602"
+        >
+          гарантия
+        </a>
+      </p>
     </div>
   );
 };
