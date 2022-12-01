@@ -6,6 +6,10 @@ export default function InProcess({ inProcessOrders }: any) {
         {inProcessOrders?.map((order: any) => (
             <OrderItem order={order} key={order.id} />
         ))}
+        <OrderItem />
+        <OrderItem />
+        <OrderItem />
+        <OrderItem />
     </div>
   );
 }
