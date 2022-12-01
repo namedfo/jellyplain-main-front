@@ -27,12 +27,15 @@ export default function Card({ card }: any) {
       onClick={onHandleProduct}
       className="shadow-jj p-[15px] mt-[30px] 400:mx-[0] rounded-[10px] bg-white w-[270px] 400:w-[235px]"
     >
-      <div className="flex items-center justify-center">
+      <div className="flex relative items-center justify-center">
         <img
           alt="img"
           src={card.productChilds[0]?.images[0]?.url}
           className="cursor-pointer w-full h-[150px] object-contain border rounded-[10px]"
         />
+        {/* <div className="absolute bg-red-500 font-medium text-white rounded-[8px] px-[7px] right-[5px] top-[5px]">
+          50%
+        </div> */}
       </div>
       <div className="flex mt-[10px] flex-col">
         <span className="text-[#414752] cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis text-[18px] font-medium">

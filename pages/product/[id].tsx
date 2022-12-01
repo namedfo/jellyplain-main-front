@@ -19,6 +19,7 @@ import Rating from "../../components/UI/Rating";
 import sizesSneakers from "../../utils/helping/sizesSneakers";
 import types from "../../utils/helping/types";
 import colors from "../../utils/helping/colors";
+import Developer from "../../components/Developer";
 
 const images = [
   {
@@ -183,6 +184,9 @@ export default function Product() {
                 onHandleChangeProduct={onHandleChangeProduct}
               />
               {/* <Reviews /> */}
+              <div className="flex justify-center mt-[15px]">
+              <Developer />
+              </div>
             </div>
             <div className="block sm:hidden mt-[75px]" />
           </div>

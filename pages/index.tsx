@@ -11,6 +11,7 @@ import MenuCatalog from "../components/MenuCatalog";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import LLoading from "../components/Loading";
 import { useRouter } from "next/router";
+import Developer from "../components/Developer";
 
 // const cards = [
 //   { id: 1, title: "Nike Kyrie 9", price: "6 490", image: MOCKUP },
@@ -106,11 +107,7 @@ export default function Home() {
             </span>
           </a>
 
-          <a target="_blank" href="https://vk.com/rpoopr2005">
-            <span className="font-[500] hover:underline cursor-pointer text-amber-700">
-              {`<`}Разработчик{` />`}
-            </span>
-          </a>
+          <Developer />
         </div>
         <div className="flex md:ml-[34px] w-full flex-col">
           <MenuCatalog />
