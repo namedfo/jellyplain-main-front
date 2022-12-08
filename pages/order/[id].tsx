@@ -10,9 +10,12 @@ import { FreeMode, Pagination } from "swiper";
 import $api from "../../config";
 import useActions from "../../hooks/useActions";
 import Container from "../../layouts/Container";
+//
 dayjs.locale("ru");
+
 export default function Order() {
   const [orderLocal, setOrderLocal] = useState<any>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { setOrder } = useActions();
 
@@ -20,25 +23,43 @@ export default function Order() {
 
   useEffect(() => {
     (async () => {
-      const res = await $api.get(`order/getOne?id=${router.query?.id}`);
+      try {
+        setIsLoading(true);
+        const res = await $api.get(`order/getOne?id=${router.query?.id}`);
 
-      setOrderLocal(res.data);
-      setOrder(res.data.order);
+        setOrderLocal(res.data);
+        setOrder(res.data.order);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+      }
     })();
   }, []);
 
   return (
     <Container>
       <div className="h-full flex items-center justify-center">
+        {isLoading && (
+          <span className="text-[#333333] font-[600] text-[16px]">
+            Загрузка...
+          </span>
+        )}
         {orderLocal?.order ? (
           <BlockOrder orderLocal={orderLocal} />
         ) : (
-          <div className="flex w-full items-center flex-col">
-            <p className="font-medium text-slate-800 text-[30px]">Ничего не найдено</p>
-            <button onClick={() => router.push("/")} className=" sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white">
-              На главную страницу
-            </button>
-          </div>
+          !isLoading && (
+            <div className="flex w-full items-center flex-col">
+              <p className="font-medium text-slate-800 text-[30px]">
+                Ничего не найдено
+              </p>
+              <button
+                onClick={() => router.push("/")}
+                className=" sm:w-[40%] mt-[10px] sm:mt-0 py-[4px] rounded-[10px] bg-fuchsia-600 hover:bg-fuchsia-700 text-white"
+              >
+                На главную страницу
+              </button>
+            </div>
+          )
         )}
       </div>
     </Container>
