@@ -10,7 +10,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 export default function MobileMenu() {
   const { cart, product } = useTypedSelector((state) => state.cart);
-  const { order } = useTypedSelector((state) => state.main);
+  const { order, shipping } = useTypedSelector((state) => state.main);
   const { isAuth, user } = useTypedSelector((state) => state.user);
 
   const { setIsOpenAuth, plus, minus, setCard } = useActions();
@@ -81,7 +81,7 @@ export default function MobileMenu() {
       return (
         <>
           <span className="font-medium text-slate-900 text-[20px]">
-            {order?.totalPrice + 850} &#8381;
+            {order?.totalPrice + (shipping === "pochtaru" ? 850 : 0)} &#8381;
           </span>
           <BtnToPaid />
         </>

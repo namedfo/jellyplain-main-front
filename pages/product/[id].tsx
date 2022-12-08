@@ -85,7 +85,7 @@ export default function Product() {
       setIsLoading("loading");
       try {
         const res = await axios.get(
-          `https://jellyplain-back.onrender.com/product/getOne?id=${Number(
+          `http://localhost:3333/product/getOne?id=${Number(
             router.query.id
           )}`
         );
@@ -215,6 +215,7 @@ const Info = memo(({ productLocal, onHandleChangeProduct }: any) => {
         <div className="flex flex-wrap mt-[5px]">
           {productLocal?.productChilds?.map((productChild: any) => (
             <div
+              key={productChild.id}
               onClick={() =>
                 onHandleChangeProduct({
                   ...productLocal,

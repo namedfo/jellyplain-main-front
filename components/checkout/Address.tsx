@@ -8,33 +8,45 @@ import {
   AiOutlineArrowUp,
   AiOutlineArrowLeft,
 } from "react-icons/ai";
+import $api from "../../config";
 
-export default function Address() {
+export default function Address({ address }: any) {
   const [isOpen, setIsOpen] = useState(false);
 
   const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
-      surname: "",
-      name: "",
-      middlename: "",
-      country: "",
-      region: "",
-      city: "",
-      street: "",
-      home_number: "",
-      flat_number: "",
-      postcode: "",
-      phone: ""
+      surname: address?.surname || "",
+      name: address?.name || "",
+      middlename: address?.middlename || "",
+      country: address?.country || "",
+      region: address?.region || "",
+      city: address?.city || "",
+      street: address?.street || "",
+      home_number: address?.home_number || "",
+      flat_number: address?.flat_number || "",
+      postal_code: address?.postal_code || "",
+      phone_number: address?.phone_number || ""
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
 
-  const handleSave = (log: any) => {
+  const handleSave = async (log: any) => {
     console.log(log)
+    try {
+      await $api.post('/user/update', {
+        address: {
+          update: {
+            ...log
+          }
+        }
+      })
+    } catch (error) {
+      
+    }
   }
 
   return (
@@ -66,13 +78,11 @@ export default function Address() {
         </div>
       </div>
       <form onSubmit={formik.handleSubmit}>
-      <button type="submit">Submit</button>
         <div
-          className={`${
-            isOpen ? "flex flex-col sm:flex-row" : "hidden"
-          } pt-[10px] items-center justify-between`}
+          className={`${isOpen ? "flex flex-col sm:flex-row" : "hidden"
+            } pt-[10px] items-center justify-between`}
         >
-          <div className="relative ">
+          <div className="relative w-full">
             <label htmlFor="surname" className="text-gray-700">
               Фамилия
               <span className="text-red-500 required-dot">*</span>
@@ -85,9 +95,10 @@ export default function Address() {
               placeholder="Фамилия"
               onChange={formik.handleChange}
               value={formik.values.surname}
+              onBlur={() => handleSave({surname: formik.values.surname})}
             />
           </div>
-          <div className="sm:mx-[15px] relative ">
+          <div className="sm:mx-[15px] w-full relative ">
             <label htmlFor="name" className="text-gray-700">
               Имя
               <span className="text-red-500 required-dot">*</span>
@@ -97,12 +108,13 @@ export default function Address() {
               id="name"
               className=" rounded-lg border flex-1 appearance-none border-gray-300 w-full py-1 px-2 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
               name="name"
-              placeholder="Имя"     
+              placeholder="Имя"
               onChange={formik.handleChange}
               value={formik.values.name}
+              onBlur={() => handleSave({name: formik.values.name})}
             />
           </div>
-          <div className=" relative ">
+          <div className="relative w-full">
             <label htmlFor="middlename" className="text-gray-700">
               Отчество
               <span className="text-red-500 required-dot">*</span>
@@ -115,15 +127,15 @@ export default function Address() {
               placeholder="Отчество"
               onChange={formik.handleChange}
               value={formik.values.middlename}
+              onBlur={() => handleSave({middlename: formik.values.middlename})}
             />
           </div>
         </div>
         <div
-          className={`${
-            isOpen ? "flex flex-col sm:flex-row" : "hidden"
-          } pt-[10px] items-center justify-between`}
+          className={`${isOpen ? "flex flex-col sm:flex-row" : "hidden"
+            } pt-[10px] items-center justify-between`}
         >
-          <div className="relative ">
+          <div className="relative w-full">
             <label htmlFor="country" className="text-gray-700">
               Страна
               <span className="text-red-500 required-dot">*</span>
@@ -136,9 +148,10 @@ export default function Address() {
               placeholder="Страна"
               onChange={formik.handleChange}
               value={formik.values.country}
+              onBlur={() => handleSave({country: formik.values.country})}
             />
           </div>
-          <div className="sm:mx-[15px] relative ">
+          <div className="sm:mx-[15px] w-full relative ">
             <label htmlFor="region" className="text-gray-700">
               Область
               <span className="text-red-500 required-dot">*</span>
@@ -151,10 +164,10 @@ export default function Address() {
               placeholder="Область"
               onChange={formik.handleChange}
               value={formik.values.region}
-              onBlur={() => handleSave(formik.values.region)}
+              onBlur={() => handleSave({region: formik.values.region})}
             />
           </div>
-          <div className=" relative ">
+          <div className="relative w-full">
             <label htmlFor="city" className="text-gray-700">
               Город
               <span className="text-red-500 required-dot">*</span>
@@ -171,11 +184,10 @@ export default function Address() {
           </div>
         </div>
         <div
-          className={`${
-            isOpen ? "flex flex-col sm:flex-row" : "hidden"
-          } pt-[10px] items-center justify-between`}
+          className={`${isOpen ? "flex flex-col sm:flex-row" : "hidden"
+            } pt-[10px] items-center justify-between`}
         >
-          <div className=" relative ">
+          <div className="relative w-full">
             <label htmlFor="street" className="text-gray-700">
               Улица
               <span className="text-red-500 required-dot">*</span>
@@ -188,9 +200,10 @@ export default function Address() {
               placeholder="Улица"
               onChange={formik.handleChange}
               value={formik.values.street}
+              onBlur={() => handleSave({street: formik.values.street})}
             />
           </div>
-          <div className="sm:mx-[15px] relative ">
+          <div className="sm:mx-[15px] w-full relative ">
             <label htmlFor="home_number" className="text-gray-700">
               Дом
               <span className="text-red-500 required-dot">*</span>
@@ -203,9 +216,10 @@ export default function Address() {
               placeholder="Дом"
               onChange={formik.handleChange}
               value={formik.values.home_number}
+              onBlur={() => handleSave({home_number: formik.values.home_number})}
             />
           </div>
-          <div className=" relative ">
+          <div className="relative w-full">
             <label htmlFor="flat_number" className="text-gray-700">
               Квартира
               <span className="text-red-500 required-dot">*</span>
@@ -218,27 +232,28 @@ export default function Address() {
               placeholder="Квартира"
               onChange={formik.handleChange}
               value={formik.values.flat_number}
+              onBlur={() => handleSave({flat_number: formik.values.flat_number})}
             />
           </div>
         </div>
         <div
-          className={`${
-            isOpen ? "flex flex-col sm:flex-row" : "hidden"
-          } pt-[10px] items-center justify-start`}
+          className={`${isOpen ? "flex flex-col sm:flex-row" : "hidden"
+            } pt-[10px] items-center w-full justify-start`}
         >
-          <div className="w-[200px] relative ">
+          <div className=" w-full sm:w-[200px] relative ">
             <label htmlFor="postcode" className="text-gray-700">
               Почтовый индекс
               <span className="text-red-500 required-dot">*</span>
             </label>
             <input
               type="text"
-              id="postcode"
+              id="postal_code"
               className=" rounded-lg border flex-1 appearance-none border-gray-300 w-full py-1 px-2 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-              name="postcode"
+              name="postal_code"
               placeholder="Индекс"
               onChange={formik.handleChange}
-              value={formik.values.postcode}
+              value={formik.values.postal_code}
+              onBlur={() => handleSave({postal_code: formik.values.postal_code})}
             />
           </div>
           <div className="sm:mx-[15px] w-full sm:w-[200px] relative ">
@@ -247,12 +262,13 @@ export default function Address() {
             </label>
             <input
               type="text"
-              id="phone"
+              id="phone_number"
               className=" rounded-lg border flex-1 appearance-none border-gray-300 w-full py-1 px-2 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-              name="phone"
+              name="phone_number"
               placeholder="Телефон"
               onChange={formik.handleChange}
-              value={formik.values.phone}
+              value={formik.values.phone_number}
+              onBlur={() => handleSave({phone_number: formik.values.phone_number})}
             />
           </div>
         </div>

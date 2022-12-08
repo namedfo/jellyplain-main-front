@@ -48,7 +48,7 @@ const VK = () => {
         fontStyle: "700",
       }}
       onClick={() =>
-        router.push("https://jellyplain-back.onrender.com/auth/login/vkontakte")
+        router.push("http://localhost:3333/auth/login/vkontakte")
       }
     >
       <svg
@@ -84,7 +84,7 @@ const GOOGLE = () => {
       }}
       className="border hover:bg-[#86368D1A]"
       onClick={() =>
-        router.push("https://jellyplain-back.onrender.com/auth/login/google")
+        router.push("http://localhost:3333/auth/login/google")
       }
     >
       <svg

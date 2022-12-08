@@ -17,10 +17,11 @@ import useActions from "../../hooks/useActions";
 
 export default function Checkout() {
   const [orderLocal, setOrderLocal] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState<"idle" | "loading" | "success" | "error">("idle")
 
   // const { isAuth } = useTypedSelector(state => state.user)
   const isAuth = true;
-  const { shipping } = useTypedSelector((state:any) => state.main)
+  const { shipping } = useTypedSelector((state: any) => state.main)
   const { setOrder } = useActions()
 
   const router = useRouter();
@@ -33,16 +34,21 @@ export default function Checkout() {
 
     (async () => {
       try {
+        setIsLoading("loading")
         const res = await $api.get(`order/getOne?id=${router.query?.id}`);
 
         if (res?.data?.order?.yookassa?.yookassaId) {
           router.push(`/order/${res?.data?.order?.id}`)
+          setIsLoading("success")
           return
         }
 
+        setIsLoading("success")
         setOrderLocal(res.data?.order);
         setOrder(res.data?.order)
-      } catch (error) {}
+      } catch (error) { 
+        setIsLoading("error")
+      }
     })();
   }, [isAuth]);
 
@@ -51,11 +57,19 @@ export default function Checkout() {
   return (
     <Container>
       <Header />
-      {isAuth && (
-        <div className="w-full flex justify-between md:pt-[50px]">
+      {isLoading === "loading" && (
+        
+        <div className="h-full flex justify-center items-center md:pt-[30px]">
+          <span className="text-[#333333] text-[20px] font-medium">
+            Загрузка...
+          </span>
+        </div>
+      )}
+      {isAuth && isLoading === 'success' && (
+        <div className="w-full flex justify-between md:pt-[30px]">
           <div className="flex w-full md:w-[750px] flex-col">
             <Info order={orderLocal} />
-            <div  className="shadow-jj text-[#292929] font-medium flex-col py-[15px] flex md:hidden px-[20px] mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
+            <div className="shadow-jj text-[#292929] font-medium flex-col py-[15px] flex md:hidden px-[20px] mt-[10px] md:mt-[30px] bg-white rounded-[10px]">
               <div className="flex justify-between">
                 <span>
                   Товары
@@ -65,7 +79,7 @@ export default function Checkout() {
                 </span>
               </div>
               <div className="flex mt-[5px] justify-between">
-              <span>
+                <span>
                   Доставка
                 </span>
                 <span>
@@ -150,11 +164,11 @@ const Products = ({ products }: any) => {
       </div>
       <div className="flex pt-[10px] flex-col">
         {products?.map((product: any, i: number) => (
-          <div 
-          key={product.id}
-          style={{
-            marginTop: i !== 0 ? "20px" : ""
-          }} className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+          <div
+            key={product.id}
+            style={{
+              marginTop: i !== 0 ? "20px" : ""
+            }} className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center">
               <img
                 className="cursor-pointer w-[80px] h-[60px] object-contain border rounded-[10px]"

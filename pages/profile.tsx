@@ -36,7 +36,7 @@ export default function Profile() {
   return (
     <Container>
       <Header />
-      <div className="pt-0 sm:pt-[50px] h-full">
+      <div className="pt-0 sm:pt-[30px] h-full">
         <div className="flex flex-col md:flex-row justify-between w-full">
           <Sidebar
             menuActive={menuActive}

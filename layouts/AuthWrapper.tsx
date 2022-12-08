@@ -20,7 +20,7 @@ export default function AuthWrapper({ children }: any) {
       setIsLoading("loading");
       try {
         const res = await $api.get(
-          "https://jellyplain-back.onrender.com/auth/me"
+          "http://localhost:3333/auth/me"
         );
         console.log(res)
         const user = {
@@ -28,6 +28,7 @@ export default function AuthWrapper({ children }: any) {
           createdAt: res.data.createdAt,
           first_name: res.data.first_name,
           last_name: res.data.last_name,
+          phone_number: res.data.phone_number,
           avatar_url: res.data.avatar_url,
           address: res.data.address,
           orders: res.data.orders

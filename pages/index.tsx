@@ -59,7 +59,7 @@ export default function Home() {
       try {
         setLoading("loading");
         const res = await axios.post(
-          `https://jellyplain-back.onrender.com/product/getAll`,
+          `http://localhost:3333/product/getAll`,
           {
             category: selectedCategory.category,
             subcategory: selectedCategory.subcategory,
@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <Container>
       <Header />
-      <div className="flex md:pt-[50px] justify-between">
+      <div className="flex md:pt-[30px] justify-between">
         <div className="w-[270px] items-center hidden flex-col md:flex">
           <SidebarFiltred />
           <a

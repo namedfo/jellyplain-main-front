@@ -1,15 +1,12 @@
-import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 import dayjs from "dayjs";
 import "dayjs/locale/ru";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import { FreeMode, Pagination } from "swiper";
 import $api from "../../config";
 import useActions from "../../hooks/useActions";
 import Container from "../../layouts/Container";
+import Developer from "../../components/Developer";
 //
 dayjs.locale("ru");
 
@@ -38,14 +35,20 @@ export default function Order() {
 
   return (
     <Container>
-      <div className="h-full flex items-center justify-center">
+      <div className="h-full flex justify-center">
         {isLoading && (
           <span className="text-[#333333] font-[600] text-[16px]">
             Загрузка...
           </span>
         )}
         {orderLocal?.order ? (
-          <BlockOrder orderLocal={orderLocal} />
+          <div className="flex w-[90%] sm:w-auto sm:mt-[20px] flex-col">
+            <BlockOrder orderLocal={orderLocal} />
+            <div className="flex mt-[100px] justify-center">
+              <Developer />
+            </div>
+            <div className="py-[10px]" />
+          </div>
         ) : (
           !isLoading && (
             <div className="flex w-full items-center flex-col">
@@ -80,8 +83,13 @@ const BlockOrder = ({ orderLocal }: any) => {
 
   const date = dayjs(orderLocal?.order?.createdAt).format("DD.MM.YYYY HH:mm");
 
+  console.log(orderLocal?.order)
+
+
+  const address = orderLocal?.order?.address
+
   return (
-    <div className="shadow-jj flex flex-col rounded-[10px] p-[20px] bg-white">
+    <div className="shadow-jj flex flex-col rounded-[10px] px-[12px] py-[9px] bg-white">
       <div className="flex text-[8px] sm:text-[14px] justify-between">
         <div className="flex text-gray-400 items-center">
           <span>Оплачено</span>
@@ -112,35 +120,97 @@ const BlockOrder = ({ orderLocal }: any) => {
       <div className="bg-neutral-100 my-[5px] mt-[15px] rounded-[5px] pb-[8px] px-[5px]">
         <span className="text-[14px] text-slate-900 leading-[5px]">Товары</span>
         {/* <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]"></div> */}
-        <div className="max-w-[100px]">
+        <div className="max-w-[200px] flex">
           {orderLocal?.order?.productsOrder?.map((productOrder: any) => (
             <div
+              key={productOrder?.id}
               onClick={() => router.push(`/product/${productOrder?.id}`)}
-              className="relative w-[70px]"
+              className="relative flex flex-col w-[70px]"
             >
               <img
                 className="h-[70px] rounded-[10px] border object-cover w-[70px]"
                 src={productOrder.images[0]}
                 alt="image"
               />
+              <div className="flex text-[15px] items-center justify-around">
+                <div className="bg-black w-[30px] h-[15px] rounded-[5px]" />
+                <span className="font-medium text-[#333333]">
+                  37
+                </span>
+              </div>
             </div>
           ))}
         </div>
       </div>
-      <div className="flex text-[14px] sm:text-[16px] border mt-[20px] px-[15px] py-[10px] rounded-[10px]  w-full flex-col">
+
+      <div className="flex text-[14px] border mt-[20px] px-[8px] py-[5px] rounded-[10px]  w-full flex-col">
         <div className="flex justify-between">
-          <span className="font-[500]">Номер заказа</span>
-          <span>#292928</span>
+          <span className="font-[500]">Фамилия:</span>
+          <span>{address?.surname}</span>
         </div>
         <div className="flex justify-between">
-          <span className="font-[500]">Статус заказа</span>
-          <span>Ожидает подтвержения</span>
+          <span className="font-[500]">Имя:</span>
+          <span>{address?.name}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Отчество:</span>
+          <span>{address?.middlename}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Страна:</span>
+          <span>{address?.country}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Область:</span>
+          <span>{address?.region}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Город:</span>
+          <span>{address?.city}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Улица:</span>
+          <span>{address?.street}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Дом:</span>
+          <span>{address?.home_number}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Квартира:</span>
+          <span>{address?.flat_number}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Почтовый индекс:</span>
+          <span>{address?.postal_code}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Номер:</span>
+          <span>{address?.phone_number}</span>
+        </div>
+      </div>
+      <div className="flex mt-[20px] flex-col">
+        <div className="flex justify-between">
+          <span className="text-[16px] text-slate-900 font-medium">
+            Итого:
+          </span>
+          <span className="text-[16px] text-slate-900 font-medium">
+            {orderLocal?.order?.totalPrice + (orderLocal?.order?.delivery === 'pochtaru' ? 850 : 0)} &#8381;
+          </span>
+        </div>
+        <div className="ml-[20px] flex justify-between items-center text-slate-900">
+          <span>Товары ({orderLocal?.order?.productsOrder?.reduce((prev: number, next: any) => prev + next.count, 0)})</span>
+          <span>{orderLocal?.order?.totalPrice} &#8381;</span>
+        </div>
+        <div className="ml-[20px] flex justify-between items-center text-slate-900">
+          <span>Доставка</span>
+          <span>{orderLocal?.order?.delivery === 'pochtaru' ? 850 : 0} &#8381;</span>
         </div>
       </div>
       {orderLocal?.order?.status === "pending" ? (
         <>
           {!orderLocal?.confirmation_url &&
-          !orderLocal?.order?.yookassa?.yookassaId ? (
+            !orderLocal?.order?.yookassa?.yookassaId ? (
             <>
               <div>
                 <button

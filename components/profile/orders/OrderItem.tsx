@@ -1,8 +1,11 @@
 import dayjs from "dayjs";
-import { useState } from "react";
+import { useRouter } from "next/router";
+
 
 export default function OrderItem({ order }: any) {
-  const [isShowDetail, setIsShowDetail] = useState(false);
+
+  console.log(order)
+  const router = useRouter()
 
   const date = dayjs(order?.createdAt).format("DD.MM.YYYY HH:mm");
 
@@ -30,8 +33,10 @@ export default function OrderItem({ order }: any) {
             <span className="text-[14px] text-slate-900 leading-[5px]">
               Товары
             </span>
-            <div className="flex">
-              <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]"></div>
+            <div className="flex flex-wrap">
+              {order?.productsOrder.map((productOrder: any) => (
+                <img key={productOrder.id} src={productOrder?.images[0]} className="h-[50px] shadow-sm rounded-[8px] object-contain bg-slate-700 w-[50px]" />
+              ))}
             </div>
           </div>
         </div>
@@ -46,7 +51,8 @@ export default function OrderItem({ order }: any) {
                 </button>
               ) : ( */}
             <button
-              onClick={() => setIsShowDetail(true)}
+              // onClick={() => setIsShowDetail(true)}
+              onClick={() => router.push('/order/' + order?.id)}
               className="text-indigo-500 hover:text-indigo-800"
             >
               Подробная информация
@@ -83,16 +89,16 @@ export default function OrderItem({ order }: any) {
               Итого:
             </span>
             <span className="text-[16px] text-slate-900 font-medium">
-              24 690 Р
+              {order?.totalPrice} &#8381;
             </span>
           </div>
           <div className="ml-[20px] flex justify-between items-center text-slate-900">
-            <span>Товары (15)</span>
-            <span>24 000 Р</span>
+            <span>Товары ({order?.productsOrder?.reduce((prev: number, next: any) => prev + next.count,0)})</span>
+            <span>{order?.totalPrice - (order?.delivery === "pochtaru" ? 850 : 0)} &#8381;</span>
           </div>
           <div className="ml-[20px] flex justify-between items-center text-slate-900">
             <span>Доставка</span>
-            <span>850 P</span>
+            <span>{order?.delivery === 'pochtaru' ? 850 : 0} &#8381;</span>
           </div>
         </div>
       </div>

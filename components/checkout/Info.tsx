@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 //
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
+import $api from "../../config";
 import useActions from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 // components
@@ -18,17 +19,29 @@ export default function Info({ order }: any) {
 
   return (
     <div className="shadow-jj flex flex-col text-[18px] rounded-[10px] bg-white px-[20px] py-[15px]">
-      <Address />
-      <ShippingCost />
+      <Address address={order?.address} />
+      <ShippingCost orderId={order?.id} />
     </div>
   );
 }
 
-const ShippingCost = () => {
+const ShippingCost = ({ orderId }: any) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { shipping } = useTypedSelector((state => state.main))
   const { setShipping } = useActions()
+
+  const onChangeDelivery = async (type: string) => {
+    try {
+      setShipping(type)
+      await $api.post('/order/updateDelivery', {
+        orderId,
+        delivery: type
+      })
+    } catch (error) {
+      
+    }
+  }
 
 
   return (
@@ -56,7 +69,7 @@ const ShippingCost = () => {
         } mt-[15px] flex-col sm:flex-row items-center justify-start`}
       >
         <button
-          onClick={() => setShipping("pochtaru")}
+          onClick={async() => onChangeDelivery("pochtaru")}
           type="button"
           className={`h-[40px] text-[16px]  font-medium px-4 md:mr-[20px] flex justify-center items-center ${
             shipping === "pochtaru" ? "bg-gray-600 text-white" : "text-gray-600 border border-gray-600"
@@ -65,7 +78,7 @@ const ShippingCost = () => {
           Почта России
         </button>
         <button
-          onClick={() => setShipping("pickup")}
+          onClick={async() => onChangeDelivery("pickup")}
           type="button"
           className={`h-[40px] mt-[15px] md:mt-0  text-[16px]  font-medium px-4 md:ml-[20px] flex flex-col  justify-center items-center ${
             shipping === "pickup" ? "bg-gray-600 text-white" : "text-gray-600 border border-gray-600"
