@@ -10,7 +10,6 @@ import Container from "../layouts/Container";
 import MenuCatalog from "../components/MenuCatalog";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import LLoading from "../components/Loading";
-import { useRouter } from "next/router";
 import Developer from "../components/Developer";
 
 // const cards = [

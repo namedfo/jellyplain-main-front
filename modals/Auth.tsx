@@ -48,7 +48,7 @@ const VK = () => {
         fontStyle: "700",
       }}
       onClick={() =>
-        router.push("https://jellyplain-back.onrender.comom/auth/login/vkontakte")
+        router.push("https://jellyplain-back.onrender.com/auth/login/vkontakte")
       }
     >
       <svg
