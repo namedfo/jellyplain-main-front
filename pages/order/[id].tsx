@@ -109,16 +109,6 @@ const BlockOrder = ({ orderLocal }: any) => {
           <span>№{orderLocal?.order?.id}</span>
         </div>
       </div>
-      <div className="flex text-[14px] sm:text-[16px] border mt-[20px] px-[15px] py-[10px] rounded-[10px]  w-full flex-col">
-        <div className="flex justify-between">
-          <span className="font-bold">Номер заказа</span>
-          <span>#292928</span>
-        </div>
-        <div className="flex justify-between">
-          <span className="font-bold">Статус заказа</span>
-          <span>Ожидает подтвержения</span>
-        </div>
-      </div>
       <div className="bg-neutral-100 my-[5px] mt-[15px] rounded-[5px] pb-[8px] px-[5px]">
         <span className="text-[14px] text-slate-900 leading-[5px]">Товары</span>
         {/* <div className="h-[50px] rounded-[5px] bg-slate-700 w-[50px]"></div> */}
@@ -135,6 +125,16 @@ const BlockOrder = ({ orderLocal }: any) => {
               />
             </div>
           ))}
+        </div>
+      </div>
+      <div className="flex text-[14px] sm:text-[16px] border mt-[20px] px-[15px] py-[10px] rounded-[10px]  w-full flex-col">
+        <div className="flex justify-between">
+          <span className="font-[500]">Номер заказа</span>
+          <span>#292928</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-[500]">Статус заказа</span>
+          <span>Ожидает подтвержения</span>
         </div>
       </div>
       {orderLocal?.order?.status === "pending" ? (
