@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const $api = axios.create({
-  baseURL: "https://jellyplainv2.herokuapp.com/",
+  baseURL: "https://jellyplain-back.onrender.com/",
 });
 
 $api.interceptors.request.use((config: any) => {

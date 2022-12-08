@@ -45,7 +45,7 @@ export default function Home() {
   >("idle");
 
   const { selectedCategory, minPrice, maxPrice, brands, colors } =
-    useTypedSelector((state) => state.main);
+    useTypedSelector((state: any) => state.main);
 
   let newBrands: any = [];
 
@@ -60,7 +60,7 @@ export default function Home() {
       try {
         setLoading("loading");
         const res = await axios.post(
-          `https://jellyplainv2.herokuapp.com/product/getAll`,
+          `https://jellyplain-back.onrender.com/product/getAll`,
           {
             category: selectedCategory.category,
             subcategory: selectedCategory.subcategory,

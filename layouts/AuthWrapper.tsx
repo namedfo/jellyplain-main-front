@@ -20,7 +20,7 @@ export default function AuthWrapper({ children }: any) {
       setIsLoading("loading");
       try {
         const res = await $api.get(
-          "https://jellyplainv2.herokuapp.com/auth/me"
+          "https://jellyplain-back.onrender.com/auth/me"
         );
         console.log(res)
         const user = {

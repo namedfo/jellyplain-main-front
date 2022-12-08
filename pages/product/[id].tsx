@@ -85,7 +85,7 @@ export default function Product() {
       setIsLoading("loading");
       try {
         const res = await axios.get(
-          `https://jellyplainv2.herokuapp.com/product/getOne?id=${Number(
+          `https://jellyplain-back.onrender.com/product/getOne?id=${Number(
             router.query.id
           )}`
         );

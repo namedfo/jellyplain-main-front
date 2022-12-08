@@ -17,7 +17,7 @@ export default function Redirect() {
       const dirtyData = router.asPath.split(/[&\/=\/?]/);
 
       try {
-        const res = await axios.post("https://jellyplainv2.herokuapp.com/auth/login/vk", {
+        const res = await axios.post("https://jellyplain-back.onrender.com/auth/login/vk", {
           code: dirtyData[3]
         });
         const user = {
